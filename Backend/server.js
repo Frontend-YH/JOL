@@ -16,10 +16,11 @@ connectToDb((err) => {
 })
 
 //routes
-app.get('/Products', (req, res) => {
+app.get('/products', (req, res) => {
+    
     let productArr = []
 
-    db.collection('Products')
+    db.collection('products')
     .find()
     .forEach(product => productArr.push(product))
     .then(() => {
