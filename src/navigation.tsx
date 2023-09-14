@@ -9,7 +9,7 @@ interface CustomLinkProps{
     return(
     <nav className="nav">
       <ul>
-        <Link to="/">Home</Link>
+        <Link to="/"></Link>
         <CustomLink to="/admin">admin</CustomLink>
         <CustomLink to="/about">About</CustomLink>
         <CustomLink to="/products">products</CustomLink>
