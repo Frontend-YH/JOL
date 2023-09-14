@@ -7,6 +7,8 @@ import About from "./pages/about.tsx"
 import Betala from "./pages/betala.tsx"
 import Frakta from "./pages/frakt.tsx"
 import Products from "./pages/products.tsx"
+import Footer from "./Footer.tsx"
+
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
             <Route path="/betala" element={<Betala />} />
             <Route path="/products" element={<Products />} />
             </Routes>
+            <div>
+              <Footer/>
+            </div>
       </>
   )
 }
