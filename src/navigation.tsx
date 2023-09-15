@@ -1,26 +1,78 @@
 import { ReactNode } from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
+import { Grid, Box, Button } from '@mui/material';
 
 interface CustomLinkProps{
     to: string;
     children: ReactNode;
 }
  const Navigation = () => {
-    return(
+  const location = useLocation();
+  const isNotAdminRoute = !location.pathname.startsWith('/admin');
+    return isNotAdminRoute ? (
     <nav className="nav">
       <ul>
         <Link to="/">Home</Link>
-        <CustomLink to="/admin">admin</CustomLink>
-        <CustomLink to="/about">About</CustomLink>
-        <CustomLink to="/products">products</CustomLink>
-        <CustomLink to="/frakt">frakt</CustomLink>
-        <CustomLink to="/betala">betalning</CustomLink>
+        <CustomLink to="/product">Product</CustomLink>
+        <CustomLink to="/shop">Shop1</CustomLink>
+        <CustomLink to="/checkout">Checkout</CustomLink>
+        <CustomLink to="/orders">Order</CustomLink>
       </ul>
     </nav>
-    );
+    ) : null;
 }
 
 export default Navigation;
+
+const AdminNavigation = () =>{
+  return(<>
+    <Grid 
+      container spacing={2}
+      alignItems="center"
+      justifyContent="center">
+      <Grid item xs={6}>
+        <Box 
+        justifyContent="center"
+        display="flex"
+        sx={{background: "D9D9D9"}}>
+          <AdminCustomLink to="/admin/editproduct">editproduct</AdminCustomLink>
+        </Box>
+      </Grid>
+      <Grid item xs={6}>
+        <Box 
+        justifyContent="center"
+        display="flex"
+        sx={{background: "D9D9D9"}}>
+          <AdminCustomLink to="/admin/addproduct">addproduct</AdminCustomLink>
+        </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <Box
+        justifyContent="center"
+        display="flex">
+          <AdminCustomLink to="/admin/orders">Adminorders</AdminCustomLink>
+        </Box>
+      </Grid>
+    </Grid>
+  </>);
+}
+
+export {AdminNavigation};
+
+
+function AdminCustomLink({ to, children, ...props }: CustomLinkProps) {
+  
+  const resolvePath = useResolvedPath(to)
+  const isActive = useMatch({ path: resolvePath.pathname, end: true})
+
+  return (
+      <Button sx={{color: "black", backgroundColor: '#D9D9D9'}} className={isActive ? "active" : ""}>
+        <Link to={to} {...props}>
+          {children}
+        </Link>
+      </Button>
+    ); 
+}
 
 function CustomLink({ to, children, ...props}: CustomLinkProps){
     const resolvePath = useResolvedPath(to)
