@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 
-const databaseName = 'gardsjosmedja';
+const databaseName = 'GardsjoSmedjan';
 
 
 mongoose.connect(`mongodb+srv://mongo:jdQsqmYtqqAzyysD@cluster0.pt9awdy.mongodb.net/?retryWrites=true&w=majority`, {
@@ -123,15 +123,18 @@ const customerDataSchema = new Schema({
       },
 });
 
-const ProdModel = mongoose.model('products2', productSchema);
+// Minimalt schema (inte optimalt, men dynamiskt vid byggande)
+const minimalSchema = new mongoose.Schema({}, { strict: false });
+
+const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
 
 
 app.get('/products', async (req, res) => {
   try {
-    const data = await ProdModel.find();
-    res.json(data);
+    const dBdata = await ProdModel.find();
+    res.json(dBdata);
   } catch (error) {
-    console.error('Error fetching data:', error);x
+    console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
