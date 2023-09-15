@@ -22,9 +22,12 @@ function App() {
             <Route path="/betala" element={<Betala />} />
             <Route path="/products" element={<Products />} />
             </Routes>
+            <div className="products-div">
             <ProdCard/>
             <ProdCard/>
             <ProdCard/>
+            </div>
+           
             <Footer/>
       </>
   )
