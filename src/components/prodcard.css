@@ -1,0 +1,19 @@
+*{
+    font-family: Helvetica, Arial,sans-serif;
+}
+.btn-quantity{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.price{
+    font-weight: bold;
+}
+
+@media (min-width:900px) {
+    .prod-card{
+        display: flex;
+        flex-direction: column;
+        background-color: red;
+}
+}
