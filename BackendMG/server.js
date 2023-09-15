@@ -18,117 +18,14 @@ mongoose.connect(`mongodb+srv://mongo:jdQsqmYtqqAzyysD@cluster0.pt9awdy.mongodb.
   console.error('Error connecting to MongoDB Atlas:', error);
 });
 
-// Scheman för respektive Collection i MongoDB
-
-const Schema = mongoose.Schema;
-const productSchema = new Schema({
-    articleNumber: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-      },
-      name: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: false,
-      },
-      description: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: false,
-      },
-      price: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-      picture: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-      category: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-      numberAvailable: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-});
-
-const customerDataSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-      },
-      lastName: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: false,
-      },
-      phoneNumber: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: false,
-      },
-      email: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-      city: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },     
-      postcode: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-      address: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        lowercase: true,
-      },
-});
-
+// Scheman för respektive Collection i MongoD
 // Minimalt schema (inte optimalt, men dynamiskt vid byggande)
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
-const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
+const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
+const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
 
-
+//hämtar alla produkter
 app.get('/products', async (req, res) => {
   try {
     const dBdata = await ProdModel.find();
@@ -139,6 +36,27 @@ app.get('/products', async (req, res) => {
   }
 });
 
+//hämtar alla kunder
+app.get('/CustomerData', async (req, res) => {
+  try {
+    const dBdata = await customerModel.find();
+    res.json(dBdata);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+//Hämtar bara id för kunder.
+app.get('/CustomerID', async (req, res) => {
+  try {
+    const dBdata = await customerModel.distinct("_id", {});
+    res.json(dBdata);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
