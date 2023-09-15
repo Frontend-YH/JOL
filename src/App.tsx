@@ -28,9 +28,12 @@ function App() {
             <Route path="/admin/Addproduct" element={<AdminAddProduct />} />
             <Route path="/admin/Orders" element={<AdminOrders />} />
             </Routes>
+            <div className="products-div">
             <ProdCard/>
             <ProdCard/>
             <ProdCard/>
+            </div>
+           
             <Footer/>
       </>
   )
