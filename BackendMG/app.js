@@ -6,12 +6,10 @@ app.use(express.json());
 const Product = require('./productSchema')
 const Customer = require('./customerSchema')
 
-
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
 
 
 // ############## Uppkoppling mot MongoDB Atlas ##########################################################################
@@ -45,11 +43,15 @@ function comparePassword(password, hashedPassword) {
 }
 // ####################################################################################
 
+
+// ############# Scheman för respektive Collection i MongoDB ##########################
 // Minimalt schema (inte optimalt, men dynamiskt vid byggande)
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
-const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'products');
-const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
+const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
+const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
+// ####################################################################################
+
 
 //hämtar alla produkter
 app.get('/products', async (req, res) => {
@@ -84,6 +86,7 @@ app.get('/customers', async (req, res) => {
  // }
 //});
 
+
 app.post('/newCustomerData', async (req, res) => {
   try {
     const dBdata = await ProdModel.find();
@@ -108,3 +111,53 @@ app.post('/addCustomer', async (req, res) => {
   const result = await data.save();
   res.send(result);
   });
+
+
+
+
+
+
+app.get("/admins", (req, res) => {
+
+      res.json({"admin": "gardsjosmedja"});
+
+})
+
+
+const admins = [
+  {
+    "email": "admin@gardsjosmedja.com",
+    "password": "hemligt"
+  }
+]
+
+
+// LOGGA IN USER
+app.post('/admins/login', (req, res) => {
+
+  const { email, password } = req.body;
+
+  let filteredUser = admins.find(user => user.email == email);
+
+      if (filteredUser===undefined) { 
+          res.status(401).json({ "status": 'Invalid login credentials'}); 
+      } 
+      else {
+
+          // jämför det angivna lösenordet med det lagrade och krypterade
+          //const passwordMatch = comparePassword(password, filteredUser.password);
+          let filteredPassword = admins.find(user => user.password == password);
+      
+          if (filteredPassword) {
+          res.status(200).json({ status: "Login successful"});
+          } else {
+          res.status(401).json({ status: "Invalid password credentials"});
+          }
+
+      }
+
+});
+
+
+
+
