@@ -1,0 +1,22 @@
+//
+// API ENDPOINTS USER
+//
+
+// HÄMTA ALLA USERS // SKICKA INTE MED LÖSENORD // BARA ID, NAMN + EMAIL PÅ ALLA USERS
+# 
+GET http://localhost:3000/admins
+
+###
+
+###
+
+// LOGGA IN USER
+POST http://localhost:3000/admins/login
+Content-Type: application/json
+
+{
+  "email": "admin@gardsjosmedja.com",
+  "password": "hemligtx"
+}
+
+###

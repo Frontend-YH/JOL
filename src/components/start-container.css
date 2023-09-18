@@ -1,0 +1,25 @@
+.start-container{
+    
+  display: grid;
+ vertical-align: bottom;
+    height: 100vh;
+    background-image: url("../assets/Images/smedjan.jpg");
+    text-align: center;
+    color: antiquewhite;
+    
+}
+.start-text h2{
+    margin-top: 5%;
+    font-size: 3.5rem;
+    color: whitesmoke;
+}
+.start-text h4{
+    font-size: 1rem;
+    color: whitesmoke;
+}
+
+.start-btn{
+    margin: auto!important;
+    height: 8vh;
+    width: 350px;
+}
