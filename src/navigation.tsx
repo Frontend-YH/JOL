@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
 import { Grid, Box, Button } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import './Navigation.css'
 
 interface CustomLinkProps{
     to: string;
@@ -12,11 +14,11 @@ interface CustomLinkProps{
     return isNotAdminRoute ? (
     <nav className="nav">
       <ul>
-        <Link to="/">Home</Link>
-        <CustomLink to="/product">Product</CustomLink>
-        <CustomLink to="/shop">Shop1</CustomLink>
-        <CustomLink to="/checkout">Checkout</CustomLink>
-        <CustomLink to="/orders">Order</CustomLink>
+          <Link to="/">Home</Link>
+          <CustomLink to="/product">Product</CustomLink>
+          <Button onClick={() => { console.log('onClick'); }}>
+            <ShoppingCartIcon fontSize="large"/>
+          </Button>
       </ul>
     </nav>
     ) : null;
