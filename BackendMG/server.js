@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+app.use(express.json());
 const port = 3000;
+
+const Product = require('./productSchema')
+const Customer = require('./customerSchema')
 
 const databaseName = 'GardsjoSmedjan';
 
@@ -19,12 +23,14 @@ mongoose.connect(`mongodb+srv://mongo:jdQsqmYtqqAzyysD@cluster0.pt9awdy.mongodb.
 });
 
 // Scheman för respektive Collection i MongoD
+
+
+
 // Minimalt schema (inte optimalt, men dynamiskt vid byggande)
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
-
 //hämtar alla produkter
 app.get('/products', async (req, res) => {
   try {
@@ -48,15 +54,42 @@ app.get('/CustomerData', async (req, res) => {
 });
 
 //Hämtar bara id för kunder.
-app.get('/CustomerID', async (req, res) => {
+//app.get('/CustomerID', async (req, res) => {
+  //try {
+    //const dBdata = await customerModel.distinct("_id", {});
+    //res.json(dBdata);
+  //} catch (error) {
+    //console.error('Error fetching data:', error);
+    //res.status(500).json({ error: 'Internal Server Error' });
+ // }
+//});
+
+app.post('/newCustomerData', async (req, res) => {
   try {
-    const dBdata = await customerModel.distinct("_id", {});
+    const dBdata = await ProdModel.find();
     res.json(dBdata);
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+//Spara produkter i databasen.
+app.post('/addProduct', async (req, res) => {
+let data = Product(req.body);
+const result = await data.save();
+res.send(result);
+});
+
+//Spara kunder i databasen
+app.post('/addCustomer', async (req, res) => {
+  let data = Customer(req.body);
+  const result = await data.save();
+  res.send(result);
+  });
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
