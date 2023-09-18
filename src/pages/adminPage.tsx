@@ -1,10 +1,7 @@
-import { AdminNavigation } from "../navigation";
-
-function AdminContainer() {
+function Admin() {
     return ( <>
     <h1>Admin</h1>
-    <AdminNavigation></AdminNavigation>
     </> );
 }
 
-export default AdminContainer;
+export default Admin;
