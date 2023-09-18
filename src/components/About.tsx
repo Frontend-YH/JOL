@@ -1,6 +1,7 @@
+import "../components/about.css";
 function About() {
   return (
-    <div>
+    <div className="about-container">
       <img
         src="http://paim.net/gardsjosmedja.se/foton/anders_lars.jpg"
         alt="About-pic"

@@ -3,15 +3,15 @@ footer {
   flex-direction: column;
   padding: 20px;
 }
-p{
-    margin: 0;
+p {
+  margin: 0;
 }
 .open-hour {
   margin: auto;
   padding: 20px;
 }
-.open-hour p{
-    padding: 20px;
+.open-hour p {
+  padding: 20px;
 }
 .company-info {
   display: flex;
@@ -24,6 +24,5 @@ p{
   .company-info {
     display: flex;
     flex-direction: column;
-    
   }
 }
