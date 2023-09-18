@@ -1,0 +1,11 @@
+*{
+    font-family:Helvetica, Arial, sans-serif;
+}
+
+
+@media (min-width: 900px) {
+    .products-div{
+    display: flex;
+    flex-direction: row;
+}
+}

@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 const port = 3000;
-
 const Product = require('./productSchema')
 const Customer = require('./customerSchema')
-
 const databaseName = 'GardsjoSmedjan';
 
 
@@ -32,7 +30,7 @@ const minimalSchema = new mongoose.Schema({}, { strict: false });
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
 //hämtar alla produkter
-app.get('/products', async (req, res) => {
+app.get('/Products', async (req, res) => {
   try {
     const dBdata = await ProdModel.find();
     res.json(dBdata);
@@ -91,5 +89,4 @@ app.post('/addCustomer', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
-
+})

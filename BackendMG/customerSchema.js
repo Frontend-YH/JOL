@@ -10,4 +10,4 @@ const customerSchema = mongoose.Schema({
       postCode:Number
 });
 
-module.exports= mongoose.model('CustomerData',customerSchema)
+module.exports= mongoose.model('CustomerData',customerSchema);
