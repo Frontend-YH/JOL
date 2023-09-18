@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 
+const Product = require('./productSchema')
+const Customer = require('./customerSchema')
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
@@ -62,7 +65,7 @@ app.get('/products', async (req, res) => {
 });
 
 //hämtar alla kunder
-app.get('/CustomerData', async (req, res) => {
+app.get('/customers', async (req, res) => {
   try {
     const dBdata = await customerModel.find();
     res.json(dBdata);
@@ -73,9 +76,20 @@ app.get('/CustomerData', async (req, res) => {
 });
 
 //Hämtar bara id för kunder.
-app.get('/CustomerID', async (req, res) => {
+//app.get('/CustomerID', async (req, res) => {
+  //try {
+    //const dBdata = await customerModel.distinct("_id", {});
+    //res.json(dBdata);
+  //} catch (error) {
+    //console.error('Error fetching data:', error);
+    //res.status(500).json({ error: 'Internal Server Error' });
+ // }
+//});
+
+
+app.post('/newCustomerData', async (req, res) => {
   try {
-    const dBdata = await customerModel.distinct("_id", {});
+    const dBdata = await ProdModel.find();
     res.json(dBdata);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -84,19 +98,31 @@ app.get('/CustomerID', async (req, res) => {
 });
 
 
+//Spara produkter i databasen.
+app.post('/addProduct', async (req, res) => {
+let data = Product(req.body);
+const result = await data.save();
+res.send(result);
+});
+
+//Spara kunder i databasen
+app.post('/addCustomer', async (req, res) => {
+  let data = Customer(req.body);
+  const result = await data.save();
+  res.send(result);
+  });
 
 
 
 
 
 
-/*
 app.get("/admins", (req, res) => {
 
       res.json({"admin": "gardsjosmedja"});
 
 })
-*/
+
 
 const admins = [
   {
@@ -131,3 +157,7 @@ app.post('/admins/login', (req, res) => {
       }
 
 });
+
+
+
+
