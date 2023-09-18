@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Navigation from "./navigation.tsx"
 import Home from "./pages/home.tsx"
 import Admin from "./pages/adminPage.tsx"
-import Footer from "./Footer.tsx"
+import Footer from "./components/Footer.tsx"
 import ProdCard from "./components/ProdCard.tsx"
 import ShopContainer from "./pages/shop.tsx"
 import CheckoutContainer from "./pages/checkout.tsx"
@@ -11,8 +11,10 @@ import ProductsContainer from "./pages/product.tsx"
 import AdminEditProduct from "./admin/EditProduct.tsx"
 import AdminAddProduct from "./admin/AddProduct.tsx"
 import AdminOrders from "./admin/Order.tsx"
+import About from "./components/About.tsx"
 
-
+/* import images from "./assets/Images/images.ts";
+import ImageCarousel from "./components/ImageCarousel.tsx"; */
 function App() {
   return (
     <>
@@ -28,6 +30,8 @@ function App() {
             <Route path="/admin/Addproduct" element={<AdminAddProduct />} />
             <Route path="/admin/Orders" element={<AdminOrders />} />
             </Routes>
+            {/* <ImageCarousel images={images} /> */}
+            <About/>
             <div className="products-div">
             <ProdCard/>
             <ProdCard/>
