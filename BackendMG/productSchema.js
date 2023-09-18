@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const productSchema = mongoose.Schema({
     articleNumber:Number,
       name:String,

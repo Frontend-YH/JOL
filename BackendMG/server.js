@@ -48,11 +48,11 @@ function comparePassword(password, hashedPassword) {
 // Minimalt schema (inte optimalt, men dynamiskt vid byggande)
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
-const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
-const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
+const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'products');
+const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 
 //hämtar alla produkter
-app.get('/Products', async (req, res) => {
+app.get('/products', async (req, res) => {
   try {
     const dBdata = await ProdModel.find();
     res.json(dBdata);
@@ -63,7 +63,7 @@ app.get('/Products', async (req, res) => {
 });
 
 //hämtar alla kunder
-app.get('/CustomerData', async (req, res) => {
+app.get('/customers', async (req, res) => {
   try {
     const dBdata = await customerModel.find();
     res.json(dBdata);
