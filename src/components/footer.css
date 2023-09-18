@@ -1,0 +1,29 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+p{
+    margin: 0;
+}
+.open-hour {
+  margin: auto;
+  padding: 20px;
+}
+.open-hour p{
+    padding: 20px;
+}
+.company-info {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+@media (max-width: 390px) {
+  .company-info {
+    display: flex;
+    flex-direction: column;
+    
+  }
+}
