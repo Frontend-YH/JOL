@@ -21,6 +21,7 @@ const Navigation = () => {
     isNotAdminRoute && (
       <>
         <nav className={"nav"}>
+          <h1>Gärdsjö smedja</h1>
           <ul>
             <Link to="/">Home</Link>
             <CustomLink to="/product">Product</CustomLink>

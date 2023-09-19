@@ -1,29 +1,31 @@
-nav{
-    height: 100px;
-    align-items: center;
-    display: grid;
+nav {
+  height: 100px;
+  align-items: center;
+  display: flex;
+  gap: 18vw;
+  justify-content: space-between;
 }
-#sidebar-Meny{
-    background-color: black;
+#sidebar-Meny {
+  background-color: black;
 }
-ul{    
-    display: flex;
-    gap: 5%;
-    margin: 0px;
-    justify-content: end;
-    align-items: center;
-    font-size: 25px;
-    margin-right: 5%;
+ul {
+  display: flex;
+  gap: 5%;
+  margin: 0px;
+  justify-content: end;
+  align-items: center;
+  font-size: 25px;
+  margin-right: 5%;
 }
-li{
-    list-style: none;
-    font-size: 25px;
-    align-items: center;
-    color: black;
+li {
+  list-style: none;
+  font-size: 25px;
+  align-items: center;
+  color: black;
 }
-a{
-    list-style: none;
-    font-size: 25px;
-    align-items: center;
-    color: black;
+a {
+  list-style: none;
+  font-size: 25px;
+  align-items: center;
+  color: black;
 }
