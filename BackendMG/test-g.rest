@@ -15,8 +15,8 @@ POST http://localhost:3000/admins/login
 Content-Type: application/json
 
 {
-  "email": "admin@gardsjosmedja.com",
-  "password": "hemligtx"
+  "username": "admin",
+  "password": "hemligt"
 }
 
 ###
