@@ -6,6 +6,7 @@ footer {
 p {
   margin: 0;
 }
+
 .open-hour {
   margin: auto;
   padding: 20px;
@@ -19,9 +20,16 @@ p {
   gap: 20px;
   padding-top: 20px;
 }
+.company-info h4 {
+  margin: 0;
+}
 
-@media (max-width: 390px) {
+@media (max-width: 900px) {
   .company-info {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
     display: flex;
     flex-direction: column;
   }
