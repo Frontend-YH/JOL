@@ -1,28 +1,39 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
 import { Grid, Box, Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Navigation.css'
+import ShopBlock from "./components/shopBlock";
 
 interface CustomLinkProps{
     to: string;
     children: ReactNode;
 }
- const Navigation = () => {
+
+const Navigation = () => {
+  const [showCart, setShowCart] = useState(false);
+  const showSidebar = () => setShowCart(!showCart);
+
   const location = useLocation();
   const isNotAdminRoute = !location.pathname.startsWith('/admin');
-    return isNotAdminRoute ? (
-    <nav className="nav">
-      <ul>
-          <Link to="/">Home</Link>
-          <CustomLink to="/product">Product</CustomLink>
-          <Button onClick={() => { console.log('onClick'); }}>
-            <ShoppingCartIcon fontSize="large"/>
-          </Button>
-      </ul>
-    </nav>
-    ) : null;
-}
+
+  return (
+    isNotAdminRoute && (
+      <>
+        <nav className={"nav"}>
+          <ul>
+            <Link to="/">Home</Link>
+            <CustomLink to="/product">Product</CustomLink>
+            <Button onClick={showSidebar}>
+              <ShoppingCartIcon fontSize="large" />
+            </Button>
+          </ul>
+        </nav>
+        {showCart && <ShopBlock />}
+      </>
+    )
+  );
+};
 
 export default Navigation;
 

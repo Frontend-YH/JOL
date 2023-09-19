@@ -3,6 +3,9 @@ nav{
     align-items: center;
     display: grid;
 }
+#sidebar-Meny{
+    background-color: black;
+}
 ul{    
     display: flex;
     gap: 5%;
