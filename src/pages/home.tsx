@@ -1,9 +1,13 @@
+
 import About from "../components/About.tsx";
 import Footer from "../components/Footer.tsx";
 import ProdCard from "../components/ProdCard.tsx";
 import "../components/start-container.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
+import Smallshop from "../components/ShopSmall.tsx"
+
+
 function Home() {
   const [data, setData] = useState([]);
 
@@ -32,12 +36,13 @@ function Home() {
             våran butik
           </h4>
         </div>
+
         <Button variant="contained" size="large" className="start-btn">
           Till butiken
         </Button>
       </div>
       <About />
-
+<Smallshop/>
       <div className="products-div">
         {data.map((dataItem) => (
           <ProdCard
