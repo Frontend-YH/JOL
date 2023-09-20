@@ -1,11 +1,16 @@
 .start-container{
     
-  display: grid;
- vertical-align: bottom;
-    height: 100vh;
+    display: grid;
+    vertical-align: bottom;
+    height: 80vh;
     background-image: url("../assets/Images/smedjan.jpg");
+    background-position: center -180px;
+    background-attachment: fixed; /* Background stays fixed */
+    background-repeat: no-repeat; /* No repetition */
+    background-size: cover; 
     text-align: center;
     color: antiquewhite;
+    border-radius: 6px;
     
 }
 .start-text h2{
