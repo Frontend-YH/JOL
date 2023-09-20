@@ -6,7 +6,7 @@ const app = express();
 // CORS konfiguration som allowar access från http://localhost:5137
 const corsOptions = {
   origin: 'http://localhost:5137',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillågna metoder
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillåtna metoder
   optionsSuccessStatus: 204, 
 };
 
