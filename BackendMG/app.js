@@ -1,6 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
+// Enable CORS 
+app.use(cors());
 app.use(express.json());
 
 const Product = require('./productSchema')
@@ -50,6 +53,7 @@ const minimalSchema = new mongoose.Schema({}, { strict: false });
 
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
+const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
 // ####################################################################################
 
 
@@ -119,42 +123,51 @@ app.post('/addCustomer', async (req, res) => {
 
 app.get("/admins", (req, res) => {
 
-      res.json({"admin": "gardsjosmedja"});
+      res.json({"admin": "admin"});
 
 })
 
-
+/*
+// Är numera lagt i MongoDB Atlas
+// i LogIn collectionen
 const admins = [
   {
-    "email": "admin@gardsjosmedja.com",
+    "username": "admin",
     "password": "hemligt"
   }
 ]
+*/
 
+// Logga in ADMIN i adminpanelen i Frontendet vid en fetch POST till /admin/login
+// Vid korrekt POST username och password skickat till backendet så returnas:
+// 200 OK och {"Status": "Login successful"}
+app.post('/admins/login', async (req, res) => {
 
-// LOGGA IN USER
-app.post('/admins/login', (req, res) => {
+  const { username, password } = req.body;
 
-  const { email, password } = req.body;
+  try {
+    const dBdata = await LoginModel.find();
+    let filteredUser = dBdata.find(user => user.username == username);
+    if (filteredUser===undefined) { 
+        res.status(401).json({ "status": 'Invalid login credentials'}); 
+    } 
+    else {
+        // jämför det angivna lösenordet med det lagrade och krypterade
+        //const passwordMatch = comparePassword(password, filteredUser.password);
+        let filteredPassword = dBdata.find(user => user.password == password);
+    
+        if (filteredPassword) {
+        res.status(200).json({ status: "Login successful"});
+        } else {
+        res.status(401).json({ status: "Invalid password credentials"});
+        }
+    }
 
-  let filteredUser = admins.find(user => user.email == email);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 
-      if (filteredUser===undefined) { 
-          res.status(401).json({ "status": 'Invalid login credentials'}); 
-      } 
-      else {
-
-          // jämför det angivna lösenordet med det lagrade och krypterade
-          //const passwordMatch = comparePassword(password, filteredUser.password);
-          let filteredPassword = admins.find(user => user.password == password);
-      
-          if (filteredPassword) {
-          res.status(200).json({ status: "Login successful"});
-          } else {
-          res.status(401).json({ status: "Invalid password credentials"});
-          }
-
-      }
 
 });
 

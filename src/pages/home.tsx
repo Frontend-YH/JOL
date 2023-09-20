@@ -5,7 +5,6 @@ import "../components/start-container.css"
 import Button from '@mui/material/Button';
 function Home() {
     return ( <>
-    <h1>Gärdsjö Smedja</h1>
     <div className="start-container">
         <div className="start-text">
         <h2>Välkommen till Gärdsjösmedja</h2>

@@ -23,3 +23,9 @@
     height: 8vh;
     width: 350px;
 }
+
+@media (min-width: 390px) {
+    .start-text h2{
+        font-size: 3.0rem;
+    }
+}
