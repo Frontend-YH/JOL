@@ -38,14 +38,17 @@
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
-    padding: 28px;
+    padding-left: 28px;
+    padding-right: 28px;
 }
 .start-text h4{
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
-    padding: 28px;
+    padding-left: 28px;
+    padding-right: 28px;
+    line-height: 30px;
 }
 
 .start-btn{
