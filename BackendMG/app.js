@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 const Product = require('./productSchema')
-const Customer = require('./customerSchema')
+const CustomerData = require('./customerSchema')
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -49,7 +49,7 @@ function comparePassword(password, hashedPassword) {
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
-const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
+const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 // ####################################################################################
 
 
@@ -107,7 +107,7 @@ res.send(result);
 
 //Spara kunder i databasen
 app.post('/addCustomer', async (req, res) => {
-  let data = Customer(req.body);
+  let data = CustomerData(req.body);
   const result = await data.save();
   res.send(result);
   });
