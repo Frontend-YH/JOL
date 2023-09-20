@@ -8,6 +8,11 @@ GET http://localhost:3000/admins
 
 ###
 
+# 
+GET http://localhost:3000/information
+
+###
+
 ###
 
 // LOGGA IN USER

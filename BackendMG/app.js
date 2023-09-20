@@ -10,7 +10,7 @@ const corsOptions = {
   optionsSuccessStatus: 204, 
 };
 
-// Aktivera vors
+// Aktivera vors med vald cors-konfiguration
 app.use(cors(corsOptions));
 
 app.use(express.json());
@@ -60,11 +60,23 @@ function comparePassword(password, hashedPassword) {
 // Minimalt schema (inte optimalt, men dynamiskt vid byggande)
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
+const InfoModel = mongoose.model('DynamicModel', minimalSchema, 'Information');
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'CustomerData');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
 // ####################################################################################
 
+
+//hämtar informationstexter 
+app.get('/information', async (req, res) => {
+  try {
+    const dBdata = await InfoModel.find();
+    res.json(dBdata);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 //hämtar alla produkter
 app.get('/products', async (req, res) => {
