@@ -30,7 +30,7 @@ function Home() {
     <>
       <div className="start-container">
         <div className="start-text">
-          <h2>Välkommen till Gärdsjösmedja</h2>
+          <h2>Välkommen till Gärdsjö Smedja</h2>
           <h4>
             Vi tillverkar allt från krokar till ljusstakar. Klicka dig in på
             våran butik
