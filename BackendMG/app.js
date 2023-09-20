@@ -2,8 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-// Enable CORS 
-app.use(cors());
+
+// CORS konfiguration som allowar access från http://localhost:5137
+const corsOptions = {
+  origin: 'http://localhost:5137',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillågna metoder
+  optionsSuccessStatus: 204, 
+};
+
+// Aktivera vors
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 const Product = require('./productSchema')
