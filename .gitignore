@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# to add/remove manually in package.json depending on Windows/Intel or Mac Arm64 CPU:    
+# "@esbuild-darwin-arm64": "^0.15.18", << Use this if you have Darwin Arm64 / M1-M2 Mac
+# "@esbuild/win32-x64": "^0.19.3", << Use this if you have an Intel system
+# then, after add/removal, run npm i again
