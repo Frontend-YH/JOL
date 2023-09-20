@@ -2,8 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-// Enable CORS 
-app.use(cors());
+
+// CORS konfiguration som allowar access från http://localhost:5137
+const corsOptions = {
+  origin: 'http://localhost:5137',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillåtna metoder
+  optionsSuccessStatus: 204, 
+};
+
+// Aktivera vors med vald cors-konfiguration
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 const Product = require('./productSchema')
@@ -51,11 +60,23 @@ function comparePassword(password, hashedPassword) {
 // Minimalt schema (inte optimalt, men dynamiskt vid byggande)
 const minimalSchema = new mongoose.Schema({}, { strict: false });
 
+const InfoModel = mongoose.model('DynamicModel', minimalSchema, 'Information');
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
 // ####################################################################################
 
+
+//hämtar informationstexter 
+app.get('/information', async (req, res) => {
+  try {
+    const dBdata = await InfoModel.find();
+    res.json(dBdata);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 //hämtar alla produkter
 app.get('/products', async (req, res) => {
