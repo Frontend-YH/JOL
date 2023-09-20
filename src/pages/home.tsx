@@ -1,6 +1,7 @@
 import About from "../components/About.tsx"
 import Footer from "../components/Footer.tsx"
 import ProdCard from "../components/ProdCard.tsx"
+import Smallshop from "../components/ShopSmall.tsx"
 import "../components/start-container.css"
 import Button from '@mui/material/Button';
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
         <Button variant="contained" size="large"className="start-btn">Till butiken</Button>
 </div>
     <About/> 
+            <Smallshop/>
             <div className="products-div">
             <ProdCard/>
             <ProdCard/>

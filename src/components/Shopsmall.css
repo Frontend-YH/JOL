@@ -1,0 +1,17 @@
+.SSDiv{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#All-Products{
+    background-color: rgb(13, 184, 13);
+    color: white;
+    margin: 30px;
+}
+@media only screen and (max-width: 600px) {
+.SSDiv{
+    margin-left: 10px;
+    margin-left: 10px;
+}
+  }
