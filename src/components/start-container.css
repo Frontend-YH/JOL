@@ -1,5 +1,5 @@
 @font-face {
-    font-family: blacksmith;
+    font-family: MiltonOne;
     src: url(../assets/fonts/Milton_One.otf);
   }
 
@@ -20,7 +20,6 @@
     position: relative;
     width: 100%;
    
-    
 }
 
 .start-container::before {
@@ -38,7 +37,7 @@
   }
 
 .start-text h2{
-    font-family: blacksmith;
+    font-family: MiltonOne;
     font-weight: 500;
     margin-top: 5%;
     font-size: 12vw;
@@ -51,7 +50,7 @@
     padding-bottom: 0px;
 }
 .start-text h3{
-    font-family: blacksmith;
+    font-family: MiltonOne;
     margin-top: 2%;
     margin-bottom: 0px;
     font-size: 8vw;
