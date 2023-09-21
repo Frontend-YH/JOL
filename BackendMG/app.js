@@ -4,14 +4,16 @@ const mongoose = require('mongoose');
 const app = express();
 
 // CORS konfiguration som allowar access från http://localhost:5137
+/*
 const corsOptions = {
-  origin: 'http://localhost:5137',
+  origin: 'http://localhost:5137/',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillåtna metoder
   optionsSuccessStatus: 204, 
 };
+*/
 
 // Aktivera vors med vald cors-konfiguration
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
