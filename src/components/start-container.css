@@ -3,6 +3,12 @@
     src: url(../assets/fonts/Milton_One.otf);
   }
 
+  @font-face {
+    font-family: Quicksand;
+    src: url(../assets/fonts/geo_sans_light/GeosansLight.ttf);
+  }
+
+
 .start-container{
     
     display: grid;
@@ -19,7 +25,7 @@
 
     position: relative;
     width: 100%;
-   
+    /* border: 1px solid black; */
 }
 
 .start-container::before {
@@ -34,6 +40,7 @@
     height: 76vh;
     border-radius: 6px;
     bottom: 0;
+    
   }
 
 .start-text h2{
@@ -62,7 +69,8 @@
     font-weight: 100;
 }
 .start-text h4{
-    font-size: 1.3rem;
+    font-family: Quicksand;
+    font-size: 1.5rem;
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
