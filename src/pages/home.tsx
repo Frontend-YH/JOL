@@ -31,6 +31,7 @@ function Home() {
       <div className="start-container">
         <div className="start-text">
           <h2>Välkommen till Gärdsjö Smedja</h2>
+          <h3>Rättvik</h3>
           <h4>
             Vi tillverkar allt från krokar till ljusstakar.<br/>Klicka dig in på
             våran butik.

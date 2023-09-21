@@ -1,10 +1,15 @@
+@font-face {
+    font-family: blacksmith;
+    src: url(../assets/fonts/Milton_One.otf);
+  }
+
 .start-container{
     
     display: grid;
     vertical-align: bottom;
-    height: 74vh;
+    height: 81vh;
     background-image: url("../assets/Images/smedjan.jpg");
-    background-position: center top;
+    background-position: center 100px;
     background-attachment: fixed; /* Background stays fixed */
     background-repeat: no-repeat; /* No repetition */
     background-size: cover; 
@@ -27,40 +32,61 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 74vh;
+    height: 81vh;
     border-radius: 6px;
     bottom: 0;
   }
 
 .start-text h2{
+    font-family: blacksmith;
     margin-top: 5%;
-    font-size: 3.5rem;
+    font-size: 5rem;
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
     padding-left: 28px;
     padding-right: 28px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.start-text h3{
+    font-family: blacksmith;
+    margin-top: 2%;
+    margin-bottom: 0px;
+    font-size: 4.4rem;
+    color: whitesmoke;
+    position: relative;
+    z-index: 1; /* Ensure text is above the overlay */
+    padding-left: 28px;
+    padding-right: 28px;
+    font-weight: 100;
 }
 .start-text h4{
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
     padding-left: 28px;
     padding-right: 28px;
     line-height: 30px;
+    font-weight: 100;
+    
 }
 
 .start-btn{
-    margin: auto!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
     height: 8vh;
     width: 350px;
+    margin-top: 0px;
     
 }
 
 @media (min-width: 390px) {
     .start-text h2{
-        font-size: 3.0rem;
+        font-size: 9.0rem;
+        font-weight: 500;
+        text-shadow: 3px 3px 3px 3px;
     }
 }
 
