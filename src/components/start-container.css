@@ -7,9 +7,9 @@
     
     display: grid;
     vertical-align: bottom;
-    height: 81vh;
+    height: 76vh;
     background-image: url("../assets/Images/smedjan.jpg");
-    background-position: center 100px;
+    background-position: center top;
     background-attachment: fixed; /* Background stays fixed */
     background-repeat: no-repeat; /* No repetition */
     background-size: cover; 
@@ -32,15 +32,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 81vh;
+    height: 76vh;
     border-radius: 6px;
     bottom: 0;
   }
 
 .start-text h2{
     font-family: blacksmith;
+    font-weight: 500;
     margin-top: 5%;
-    font-size: 5rem;
+    font-size: 12vw;
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
@@ -53,7 +54,7 @@
     font-family: blacksmith;
     margin-top: 2%;
     margin-bottom: 0px;
-    font-size: 4.4rem;
+    font-size: 8vw;
     color: whitesmoke;
     position: relative;
     z-index: 1; /* Ensure text is above the overlay */
@@ -82,22 +83,61 @@
     
 }
 
-@media (min-width: 390px) {
+@media (min-width: 360px) {
     .start-text h2{
-        font-size: 9.0rem;
+        font-size: 20vw;
         font-weight: 500;
-        text-shadow: 3px 3px 3px 3px;
+        
+    }
+    .start-container {
+     
     }
 }
 
-@media (min-width: 1220px) {
+@media (min-width: 600px) {
+    .start-text h2{
+        font-size: 14vw;
+        font-weight: 500;
+        
+    }
     .start-container {
-        background-position: center -160px;
+     
     }
 }
+
+@media (min-width: 890px) {
+    .start-text h2{
+        font-size: 12vw;
+        font-weight: 500;
+        
+    }
+    .start-container {
+     
+    }
+}
+
+
 
 @media (min-width: 1350px) {
     .start-container {
-        background-position: center -240px;
-    }
+         background-position: center -160px;
+         font-size: 12vw;
+         font-weight: 500;
+    
+               
+     }
+     .start-container h2 {
+       /*  background-position: center -160px; */
+         font-size: 10vw;
+         font-weight: 500;
+         
+         
+     }
+     .start-container h3 {
+        /*  background-position: center -160px; */
+          font-size: 5vw;
+          font-weight: 500;
+          
+          
+      }
 }
