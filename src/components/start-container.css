@@ -14,7 +14,7 @@
       background-position: 50% 50%; 
     }
     50% {
-      background-position: 100% 100%; 
+      background-position: 50% 100%; 
     }
   }
   
@@ -41,7 +41,7 @@
     padding-bottom: 60px;
 
     /* Backgrundsanimation */
-    animation: moveBackground 100s linear infinite alternate; 
+    animation: moveBackground 50s linear infinite alternate; 
         
     
    
