@@ -11,7 +11,7 @@
 
   @keyframes moveBackground {
     0%, 100% {
-      background-position: 0% 0%; /* Start and end at the upper left corner */
+      background-position: 50% 50%; /* Start and end at the upper left corner */
     }
     50% {
       background-position: 100% 100%; /* Move to the lower right corner in the middle of the animation */
