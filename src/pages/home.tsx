@@ -33,7 +33,7 @@ function Home() {
           <h2>Välkommen till Gärdsjö Smedja</h2>
           <h3>Rättvik</h3>
           <h4>
-            Vi tillverkar allt från krokar till ljusstakar.<br/>Klicka dig in på
+            Vi tillverkar allt från krokar till ljuskronor.<br/>Klicka dig in på
             våran butik.
           </h4>
         </div>
