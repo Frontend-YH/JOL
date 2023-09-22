@@ -11,10 +11,10 @@
 
   @keyframes moveBackground {
     0%, 100% {
-      background-position: 50% 50%; /* Start and end at the upper left corner */
+      background-position: 50% 50%; 
     }
     50% {
-      background-position: 100% 100%; /* Move to the lower right corner in the middle of the animation */
+      background-position: 100% 100%; 
     }
   }
   
@@ -41,12 +41,10 @@
     padding-bottom: 60px;
 
     /* Backgrundsanimation */
- 
-    animation: moveBackground 100s linear infinite alternate; /* Animation to move the background */
+    animation: moveBackground 100s linear infinite alternate; 
         
     
    
-    /* border: 1px solid black; */
 }
 
   
@@ -55,7 +53,7 @@
 
 .start-container::before {
     content: '';
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
     background-attachment: fixed; /* Background stays fixed */
     background-repeat: no-repeat; /* No repetition */
    
