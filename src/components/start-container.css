@@ -4,7 +4,7 @@
   }
 
   @font-face {
-    font-family: CaviarDreams;
+    font-family: FashionFetishLight;
     src: url(../assets/fonts/fashion_fetish/Fashion Fetish Light.ttf);
   }
 
@@ -98,7 +98,7 @@
     
 }
 .start-text h4{
-    font-family: CaviarDreams;
+    font-family: FashionFetishLight;
     font-size: 2.4vw;
     color: whitesmoke;
     position: relative;
@@ -116,7 +116,6 @@
     margin-right: auto!important;
     height: 8vh;
     width: 350px;
-   
     
 }
 
