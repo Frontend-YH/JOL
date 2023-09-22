@@ -41,6 +41,7 @@ function Home() {
         <Button variant="contained" size="large" className="start-btn">
           Till butiken
         </Button>
+        
       </div>
       <About />
 <Smallshop/>
