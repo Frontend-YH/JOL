@@ -14,13 +14,13 @@
     display: grid;
     vertical-align: bottom;
     height:auto;
-    background-image: url("../assets/Images/smedjan_fixed.jpg");
+    background-image: url("../assets/Images/1.jpg");
     background-position: center top;
-    background-attachment:fixed; /* Background stays fixed */
-    background-repeat: no-repeat; /* No repetition */
+    background-attachment:fixed; /* fixed or scroll */
+    background-repeat: no-repeat; 
     background-size:cover; 
-
-  
+    background-clip: border-box;
+   
     text-align: center;
     color: antiquewhite;
     border-radius: 6px;
