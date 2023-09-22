@@ -34,7 +34,7 @@ function Home() {
           <h3>Rättvik</h3>
           <h4>
             Vi tillverkar allt från krokar till ljuskronor.<br/>Klicka dig in på
-            våran butik &darr;
+            vår butik &darr;
           </h4>
         </div>
 
