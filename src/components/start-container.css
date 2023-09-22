@@ -141,7 +141,11 @@
         font-weight: 500;
         
     }
-    .start-container {
+    .start-container h3 {
+      
+        font-size: 7vw;
+        font-weight: 500;
+        
         
     }
 }
@@ -152,8 +156,12 @@
         font-weight: 500;
         
     }
-    .start-container {
-       
+    .start-container h3 {
+      
+        font-size: 6vw;
+        font-weight: 500;
+        
+        
     }
 }
 
