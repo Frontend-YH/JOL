@@ -4,8 +4,8 @@
   }
 
   @font-face {
-    font-family: GeoSansLight;
-    src: url(../assets/fonts/geo_sans_light/GeosansLight.ttf);
+    font-family: CaviarDreams;
+    src: url(../assets/fonts/fashion_fetish/Fashion Fetish Light.ttf);
   }
 
 
@@ -98,7 +98,7 @@
     
 }
 .start-text h4{
-    font-family: GeoSansLight;
+    font-family: CaviarDreams;
     font-size: 1.5rem;
     color: whitesmoke;
     position: relative;
