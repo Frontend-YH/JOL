@@ -13,12 +13,13 @@
     
     display: grid;
     vertical-align: bottom;
-    height: auto;
-    background-image: url("../assets/Images/smedjan.jpg");
-    /*background-position: center top; */
+    height:auto;
+    background-image: url("../assets/Images/smedjan_fixed.jpg");
+    background-position: center top;
     background-attachment:fixed; /* Background stays fixed */
     background-repeat: no-repeat; /* No repetition */
-    background-size: cover; 
+    background-size:cover; 
+
   
     text-align: center;
     color: antiquewhite;
@@ -26,7 +27,10 @@
 
     position: relative;
     width: 100%;
+
     padding-bottom: 60px;
+    
+   
     /* border: 1px solid black; */
 }
 
@@ -35,6 +39,7 @@
     background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
     background-attachment: fixed; /* Background stays fixed */
     background-repeat: no-repeat; /* No repetition */
+   
     position: absolute;
     top: 0;
     left: 0;
@@ -43,8 +48,12 @@
     border-radius: 6px;
     bottom: 0;
     
+    
+    
   }
 
+
+  
 .start-text h2{
     font-family: MiltonOne;
     font-weight: 500;
@@ -89,18 +98,21 @@
     margin-right: auto!important;
     height: 8vh;
     width: 350px;
-    margin-top: 0px;
+   
     
 }
 
-@media (min-width: 360px) {
+
+
+
+ @media (min-width: 360px) {
     .start-text h2{
         font-size: 20vw;
         font-weight: 500;
         
     }
     .start-container {
-        background-position: center center;
+       
     }
 }
 
@@ -137,17 +149,18 @@
                
      }
      .start-container h2 {
-       /*  background-position: center -160px; */
+
          font-size: 10vw;
          font-weight: 500;
          
          
      }
      .start-container h3 {
-        /*  background-position: center -160px; */
+      
           font-size: 5vw;
           font-weight: 500;
           
           
       }
-}
+
+} 
