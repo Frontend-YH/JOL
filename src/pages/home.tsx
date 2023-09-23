@@ -66,7 +66,7 @@ function Home(props) {
             <h2>Välkommen till Gärdsjö Smedja</h2>
             <h3>Rättvik</h3>
             <h4>
-              Vi tillverkar allt från krokar till ljuskronor.<br />Klicka dig in på vår butik &darr;
+              Vi tillverkar allt från nycklar till ljuskronor.<br />Klicka dig in på vår butik &darr;
             </h4>
           </>
         ) : (
@@ -74,7 +74,7 @@ function Home(props) {
             <h2>Welcome to Gärdsjö Smedja</h2>
             <h3>Rättvik</h3>
             <h4>
-            We craft everything from hooks to chandeliers.<br/>Visit our store &darr;
+            We craft everything from<br/>keys to chandeliers.<br/>Visit our store &darr;
             </h4>
           </>
         )}
