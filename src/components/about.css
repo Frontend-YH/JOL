@@ -1,6 +1,168 @@
-.about-container {
+
+
+@font-face {
+  font-family: JosefinSlab;
+  src: url(../assets/fonts/geo_sans_light/GeosansLight.ttf);
+}
+
+/*
+@font-face {
+  font-family: FFF;
+  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
+}*/
+
+.about-container1 {
   display: flex;
+  flex-direction: row;
   gap: 20px;
   margin-top: 20px;
-  padding:10px
+  padding:10px 10px 10px 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.about-container2 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+  padding:10px 10px 10px 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+p {
+
+    padding: 0px 15px 20px 5px;
+    font-family: JosefinSlab, Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    font-size: 1.2rem;
+  
+}
+
+.about-container1 img {
+
+  height: 32vw;
+  width: 48vw;
+  border-radius: 6px;
+}
+
+.about-container2 img {
+
+  height: 32vw;
+  width: 48vw;
+  border-radius: 6px;
+}
+
+.smide {
+
+  font-size: 2.2vw;
+  line-height: 4.4vw;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+
+  font-family: JosefinSlab;
+
+}
+
+.smedjan {
+
+  /* font-size: 1.5vw; */
+  /* line-height: 3.56vw; */
+
+  font-size: 2.2vw;
+  line-height: 4.4vw;
+  font-family: JosefinSlab;
+ 
+}
+
+.smedjan a {
+
+    color:dodgerblue;
+    font-size: 2vw;
+    font-family: JosefinSlab;
+
+}
+
+
+
+/* Adapt for small portrait mode displays like smartphones etc */
+@media (max-width: 600px) {
+  
+  .about-container1 {
+    display: flex;
+    flex-direction: column-reverse;
+    
+    gap: 20px;
+    margin-top: 20px;
+    padding:10px 10px 10px 0px;
+  }
+
+  .about-container1 img {
+
+    height: auto;
+    width: 97vw;
+    border-radius: 6px;
+  }
+
+  .smide {
+
+    font-size: 2.6vw;
+    line-height: 6.16vw;
+  
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  
+  }
+
+
+
+  .about-container2 {
+    display: flex;
+    flex-direction: row-reverse;
+    
+    gap: 20px;
+    margin-top: 20px;
+    padding:10px 10px 10px 0px;
+  }
+
+  .about-container2 img {
+
+    
+    width: 40vw;
+    border-radius: 6px;
+  }
+
+
+  .smedjan {
+
+    /* font-size: 1.5vw; */
+    /* line-height: 3.56vw; */
+  
+    font-size: 2.6vw;
+    line-height: 5.2vw;
+   
+  }
+  
+  .smedjan a {
+  
+      font-family: JosefinSlab;
+      color:dodgerblue;
+      font-size: 2.6vw;
+  
+  }
+
+  .smedjan a:visited {
+  
+    font-family: JosefinSlab;
+    color:dodgerblue;
+    font-size: 2.6vw;
+
+}
+
 }
