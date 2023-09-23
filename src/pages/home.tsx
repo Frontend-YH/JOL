@@ -9,8 +9,11 @@ import Smallshop from "../components/ShopSmall.tsx"
 
 
 function Home() {
-  const [data, setData] = useState([]);
 
+  const [data, setData] = useState([]);
+  const [infoText, setInfoText] = useState(["",""]);
+
+  /* Collect Product Data from Backend Database */
   const getData = () => {
     fetch("http://localhost:3000/products")
       .then((res) => res.json())
@@ -22,9 +25,37 @@ function Home() {
         throw new Error("Kan inte hämta data");
       });
   };
-  useEffect(() => {
-    getData();
-  }, []);
+
+
+    /* Collect Information Texts from Backend Database */
+    const getInfo = () => {
+      fetch("http://localhost:3000/information")
+        .then((res) => res.json())
+        .then((data) => {      
+          setInfoText(data.filter(entry => {
+            return entry.type==="about";
+          }))        
+        })
+        .catch((error) => {
+          console.log(error);
+          throw new Error("Kan inte hämta data");
+        });
+    };
+
+    useEffect(() => {
+      getData();
+    }, []);
+
+    useEffect(() => {
+      getInfo();
+      
+    }, []);
+
+
+
+    
+
+// text={infoText}/
 
   return (
     <>
@@ -43,7 +74,7 @@ function Home() {
         </Button>
         
       </div>
-      <About />
+      <About text={infoText}/>
 <Smallshop/>
       <div className="products-div">
         {data.map((dataItem) => (
