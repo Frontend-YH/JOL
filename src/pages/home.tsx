@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Smallshop from "../components/ShopSmall.tsx"
 
 
-function Home() {
+function Home(props) {
 
   const [data, setData] = useState([]);
   const [infoText, setInfoText] = useState(["",""]);
@@ -59,22 +59,34 @@ function Home() {
 
   return (
     <>
-      <div className="start-container">
-        <div className="start-text">
-          <h2>Välkommen till Gärdsjö Smedja</h2>
-          <h3>Rättvik</h3>
-          <h4>
-            Vi tillverkar allt från krokar till ljuskronor.<br/>Klicka dig in på
-            vår butik &darr;
-          </h4>
-        </div>
-
-        <Button variant="contained" size="large" className="start-btn">
-          Till butiken
-        </Button>
-        
+    <div className="start-container">
+      <div className="start-text">
+        {props.lang === "swe" ? (
+          <>
+            <h2>Välkommen till Gärdsjö Smedja</h2>
+            <h3>Rättvik</h3>
+            <h4>
+              Vi tillverkar allt från krokar till ljuskronor.<br />Klicka dig in på vår butik &darr;
+            </h4>
+          </>
+        ) : (
+          <>
+            <h2>Welcome to Gärdsjö Smedja</h2>
+            <h3>Rättvik</h3>
+            <h4>
+            We craft everything from hooks to chandeliers.<br/>Visit our store &darr;
+            </h4>
+          </>
+        )}
       </div>
-      <About text={infoText}/>
+
+      <Button variant="contained" size="large" className="start-btn">
+        {props.lang === "swe" ? "Till butiken" : "Go to store"}
+      </Button>
+
+    </div>
+
+<About text={infoText} lang={props.lang}/>
 <Smallshop/>
       <div className="products-div">
         {data.map((dataItem) => (

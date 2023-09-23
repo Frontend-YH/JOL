@@ -1,8 +1,13 @@
 import "../components/about.css";
 function About(props) {
 
+  /* Detect if Swedish (swe) or English (eng) ########## */
+  let [info1, info2] = props.text[0].info || ["",""];
+  if (props.lang==="eng") {
+    [info1, info2] = props.text[0].engInfo || ["",""];
+  }
+  /* ##################################################### */
 
-  const [info1, info2] = props.text[0].info || ["", ""];
   const [img1, img2] = props.text[0].img || ["loading.gif", "loading.gif"];
  
   const image1 = "./src/assets/Images/" + img1;

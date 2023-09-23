@@ -10,15 +10,22 @@ import AdminEditProduct from "./admin/EditProduct.tsx"
 import AdminAddProduct from "./admin/AddProduct.tsx"
 import AdminOrders from "./admin/Order.tsx"
 
+import { useState } from "react";
 
 /* import images from "./assets/Images/images.ts";
 import ImageCarousel from "./components/ImageCarousel.tsx"; */
 function App() {
+
+  /* ### Switch between eng and swe ########### */
+  const language = "swe";
+  const [lang, setLang] = useState(language);
+  /* ########################################## */
+
   return (
     <>
-    <Navigation />
+    <Navigation lang={lang} setLang={setLang}/>
             <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home lang={lang}/>} />
             <Route path="/adminPage" element={<Admin />} />
             <Route path="/orders" element={<OrdersContainer />} />
             <Route path="/shop" element={<ShopContainer />} />
