@@ -1,14 +1,11 @@
 import { Button } from "@mui/base";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import './AddProduct.css'
 
 function AddProduct() {
     return ( <>
     <Box 
-    className="container"
-    sx={{
-    flexDirection: "row",
+    sx={{flexDirection: "row",
     display: 'flex',
     alignItems: 'flex-end',
     gap: 4}}>
@@ -17,10 +14,8 @@ function AddProduct() {
         className="ProductImg"
         height={250}
         width={250}>
+
         </Box>
-            <Button>
-                lägg till bild
-            </Button>
         <TextField
         label="Namn"
         size="small"

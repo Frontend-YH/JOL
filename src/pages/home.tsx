@@ -11,7 +11,7 @@ import VideoReact from "../components/VideoReact.tsx";
 function Home(props) {
 
   const [data, setData] = useState([]);
-  const [infoText, setInfoText] = useState([{"info": [], "video": ["https://gardsjosmedja.com/spett.mp4"]}]);
+  const [infoText, setInfoText] = useState([{"info": [], "video": [{"name": "Spett", "url": "https://gardsjosmedja.com/spett.mp4"}]}]);
 
   /* Collect Product Data from Backend Database */
   const getData = () => {
@@ -57,7 +57,7 @@ function Home(props) {
     const flexContainer = {
       display: 'flex', 
       flexWrap: 'wrap', 
-      gap: '30px', 
+      gap: '50px', 
       width: "100%", 
       justifyContent: 'center', 
       alignItems: 'center',
@@ -101,7 +101,7 @@ function Home(props) {
 
 <div style={flexContainer}>
 {infoText[0].video.map((filename, index) => (
-        <VideoReact index={index} video={filename}/>
+        <VideoReact index={index} video={filename.url} name={filename.name}/>
       ))}
 </div>
 
