@@ -1,4 +1,5 @@
 import "../components/about.css";
+
 function About(props) {
 
   /* Detect if Swedish (swe) or English (eng) ########## */
@@ -34,7 +35,8 @@ function About(props) {
         src={image2}
         alt="About-pic"
         className="handslaget"/>
-    </div>
+    </div><br/>
+    
     </div>
   );
 }

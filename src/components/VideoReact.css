@@ -1,0 +1,14 @@
+
+
+  .flexItem {
+
+    flex: 1;
+    min-width: 280px;
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+  }
