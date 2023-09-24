@@ -29,8 +29,7 @@
     "react-slick": "^0.29.0",
     "react-swipeable": "^7.0.1",
     "react-swipeable-views": "^0.14.0",
-    "react-swipeable-views-utils": "^0.14.0",
-    "slick-carousel": "^1.8.1"
+    "react-swipeable-views-utils": "^0.14.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
