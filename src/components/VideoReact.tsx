@@ -10,6 +10,7 @@ function VideoReact(props) {
     <Player fluid={true} muted={true} loop autoPlay>
       <source src={props.video}/>
     </Player>
+    <h5>{props.name}</h5>
     </div>
   );
 }
