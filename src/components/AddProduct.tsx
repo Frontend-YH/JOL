@@ -1,11 +1,14 @@
 import { Button } from "@mui/base";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
+import './AddProduct.css'
 
 function AddProduct() {
     return ( <>
     <Box 
-    sx={{flexDirection: "row",
+    className="container"
+    sx={{
+    flexDirection: "row",
     display: 'flex',
     alignItems: 'flex-end',
     gap: 4}}>
@@ -14,13 +17,14 @@ function AddProduct() {
         className="ProductImg"
         height={250}
         width={250}>
-
         </Box>
+            <Button>
+                lägg till bild
+            </Button>
         <TextField
         label="Namn"
         size="small"
         style = {{width: 120}}>
-
         </TextField>
         <TextField
         id="standard-multiline-static"
@@ -37,12 +41,10 @@ function AddProduct() {
         size="small"
         label="Antal"
         style = {{width: 70}}>
-
         </TextField>
         <TextField 
         label="ProductPrice"
         size="small">
-
         </TextField>
         <Button 
         className="AddProduct">
@@ -51,5 +53,4 @@ function AddProduct() {
     </Box>
     </> );
 }
-
 export default AddProduct;
