@@ -5,13 +5,13 @@ import ProdCard from "../components/ProdCard.tsx";
 import "../components/start-container.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import Smallshop from "../components/ShopSmall.tsx"
-
+import Smallshop from "../components/ShopSmall.tsx";
+import VideoReact from "../components/VideoReact.tsx";
 
 function Home(props) {
 
   const [data, setData] = useState([]);
-  const [infoText, setInfoText] = useState(["",""]);
+  const [infoText, setInfoText] = useState([{"info": [], "video": ["https://gardsjosmedja.com/spett.mp4"]}]);
 
   /* Collect Product Data from Backend Database */
   const getData = () => {
@@ -53,9 +53,20 @@ function Home(props) {
 
 
 
-    
+    //flexbox container
+    const flexContainer = {
+      display: 'flex', 
+      flexWrap: 'wrap', 
+      gap: '30px', 
+      width: "100%", 
+      justifyContent: 'center', 
+      alignItems: 'center',
+      marginTop: '30px',
+    };
 
-// text={infoText}/
+
+
+  
 
   return (
     <>
@@ -87,6 +98,13 @@ function Home(props) {
     </div>
 
 <About text={infoText} lang={props.lang}/>
+
+<div style={flexContainer}>
+{infoText[0].video.map((filename, index) => (
+        <VideoReact index={index} video={filename}/>
+      ))}
+</div>
+
 <Smallshop/>
       <div className="products-div">
         {data.map((dataItem) => (
