@@ -3,7 +3,7 @@ import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
 import { Grid, Box, Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Navigation.css'
-import ShopBlock from "./components/shopBlock";
+import BasketStart from "./components/BasketStart";
 
 interface CustomLinkProps{
     to: string;
@@ -30,7 +30,7 @@ const Navigation = () => {
             </Button>
           </ul>
         </nav>
-        {showCart && <ShopBlock />}
+        {showCart && <BasketStart />}
       </>
     )
   );
@@ -100,3 +100,4 @@ function CustomLink({ to, children, ...props}: CustomLinkProps){
         </li>
       );
 }
+
