@@ -9,10 +9,22 @@
 .price {
   font-weight: bold;
 }
-
-@media (min-width: 900px) {
+.products-div {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* Fyra kolumner per rad */
+  gap: 20px !important; /* Avstånd mellan korten */
+}
+.prod-card {
+  display: flex;
+  flex-direction: column; /* Låt kortets innehåll staplas vertikalt */
+  justify-content: space-between;
+}
+/* @media (min-width: 900px) {
   .prod-card {
     display: flex;
     flex-direction: row;
   }
-}
+} */
+
+
+

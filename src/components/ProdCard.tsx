@@ -4,25 +4,28 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
 import './prodcard.css';
+import SwipeableTextMobileStepper from './ImageCarousel';
 
-export default function ProdCard(props) {
- 
+
+
+interface ProdCardProps {
+  imgUrls: string[];
+  name: string;
+  price: string;
+  description: string;
+  id: string;
+}
+
+export default function ProdCard(props: ProdCardProps) {
+  
   return (
     <>
       <div className="prod-card">
         <Card sx={{ padding: 2, marginBottom: 2 }}>
-        {props.imgUrls.map((imgUrl, index) => (
-            <CardMedia
-              key={index}
-              component="img"
-              image={imgUrl}
-              alt={props.alt}
-            />
-          ))}
+        <SwipeableTextMobileStepper imgUrls={props.imgUrls}  />
           <CardContent>
             <Typography gutterBottom variant="h4" component="div">
               {props.name}
@@ -50,6 +53,7 @@ export default function ProdCard(props) {
           </div>
         </Card>
       </div>
+
     </>
   );
 }

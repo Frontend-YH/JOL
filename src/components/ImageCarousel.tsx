@@ -1,64 +1,109 @@
-/* eslint no-use-before-define: 0 */
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { ReactNode, useRef } from "react";
-import images from "../assets/Images/images";
+import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import SwipeableViews from 'react-swipeable-views';
 
 
 
 
-interface Image {
-    id: number;
-    src: string;
-    alt: string;
-  }
 
-  interface ImageCarouselProps {
-    images: Image[]; // En array av Image-objekt
-  }
-  interface Settings {
-    infinite?: boolean;
-    customPaging?: (index: number)=> ReactNode ;
-  }
 
-export default function ImageCarousel({ images }: ImageCarouselProps) {
-    const carousel = useRef<Slider>(null);
-  const settings:Settings = {
-    infinite: true,
-    customPaging: function (i: number) {
-      return (
-        <a>
-          <img
-            src={images[i].src}
-            height="50%"
-            width="50%"
-            alt={images[i].alt}
-          />
-        </a>
-      );
-    },
-    autoplay: true, //this line enables autoplay.
-    autoplaySpeed: 1000,
-    cssEase: "linear",
-    dots: false,
-    slidesToShow: 1,
-    arrows: true,
-    slidesToScroll: 1,
-    lazyLoad: true
+
+function SwipeableTextMobileStepper(props) {
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = React.useState(0);
+  const maxSteps = props.imgUrls.length;
+  
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-  console.log(images);
-  //This code displays the slideshow.
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
+
   return (
-    <div>
-      <Slider {...settings} ref={carousel}>
-        {images.map((item: Image) => (
-          <div key={item.id}>
-            {" "}
-            <img src={item.src} alt={item.alt} />
+    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+      <Paper
+        square
+        elevation={0}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          height: 50,
+          pl: 2,
+          bgcolor: 'background.default',
+        }}
+      >
+      </Paper>
+      <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={activeStep}
+        key={activeStep+ 1}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
+      >
+        {props.imgUrls.map((step, index) => (
+          <div key={index}>
+            {Math.abs(activeStep - index) <= 2 ? (
+              <Box
+                component="img"
+                key={index}
+                sx={{
+                  height: 255,
+                  display: 'block',
+                  maxWidth: 400,
+                  overflow: 'hidden',
+                  width: '100%',
+                }}
+                src={step}
+                alt={index}
+              />
+            ) : null}
           </div>
-        ))}
-      </Slider>
-    </div>
+    ))}
+      </SwipeableViews>
+      <MobileStepper
+        steps={maxSteps}
+        position="static"
+        activeStep={activeStep}
+        nextButton={
+          <Button
+            size="small"
+            onClick={handleNext}
+            disabled={activeStep === maxSteps - 1}
+          >
+            Next
+            {theme.direction === 'rtl' ? (
+              <KeyboardArrowLeft />
+            ) : (
+              <KeyboardArrowRight />
+            )}
+          </Button>
+        }
+        backButton={
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+            {theme.direction === 'rtl' ? (
+              <KeyboardArrowRight />
+            ) : (
+              <KeyboardArrowLeft />
+            )}
+            Back
+          </Button>
+        }
+      />
+    </Box>
   );
 }
+
+export default SwipeableTextMobileStepper;
