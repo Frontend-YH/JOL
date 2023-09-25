@@ -1,18 +1,43 @@
 .SSDiv{
-display: flex;
-flex-direction: column;
-align-items: center;
+display: block;
+text-align: center;
+border: 2px solid #ddd;
+border-radius: 6px;
+width: 100%;
 }
 
 #All-Products{
     background-color: rgb(13, 184, 13);
     color: white;
-    margin: 30px;
+    margin: 0px 30px 30px 30px;
+    
+    box-sizing: border-box;
 }
+
+#All-Products2{
+    background-color: rgb(255, 255, 255);
+    color: green;
+    margin: 0px 30px 30px 30px;
+    border: 1px solid green;
+    box-sizing: border-box;
+}
+
 @media only screen and (max-width: 600px) {
 .SSDiv{
     margin-left: 10px;
     margin-left: 10px;
-}
+    border-top: 1px solid #ccc;
+  }
+
+  .product-categories {
+
+    
+    
+
+  }
+
+  .product-button {
+   
+
   }
 
