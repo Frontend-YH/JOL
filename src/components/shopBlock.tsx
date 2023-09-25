@@ -7,7 +7,7 @@ function ShopBlock() {
 
             <Container sx={{minHeight: '20%'}}>
                 <Container sx={{ height: '10%', width: '100%', alignItems: 'center', display: 'flex', justifyContent: 'end'}}>
-                    <h1>Dina varor!</h1>
+                    <h1></h1>
                          <Box justifyContent={'end'}>  
                             <OrdersContainer></OrdersContainer>          
                         </Box>

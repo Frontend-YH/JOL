@@ -41,15 +41,15 @@ function ShippingForm() {
             >
                 <TextField
                 label = "Adress"
-                sx={{ bgcolor: 'white', borderRadius: "5px" }}
+                sx={{ bgcolor: 'white', borderRadius: "5px", marginTop: "35px"}}
                 ></TextField>
                 <TextField
                 label = "Postnummer" 
-                sx={{ bgcolor: 'white', borderRadius: "5px" }}
+                sx={{ bgcolor: 'white', borderRadius: "5px",marginTop: "35px" }}
                 ></TextField>               
                 <TextField
                 label = "Ort" 
-                sx={{ bgcolor: 'white', borderRadius: "5px" }}
+                sx={{ bgcolor: 'white', borderRadius: "5px",marginTop: "35px", marginBottom: "127px"}}
                 ></TextField>              
             </Box>
 <Box

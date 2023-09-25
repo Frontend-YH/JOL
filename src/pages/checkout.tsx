@@ -35,6 +35,9 @@ function CheckoutContainer() {
             alignItems="center"
             bgcolor="white"
             marginBottom="20px"
+            paddingTop="20px"
+            paddingBottom="20px"
+            borderRadius="15px"
             >
         <Box className ="checkout">
             <h1>Din Beställning</h1>
@@ -67,7 +70,7 @@ function CheckoutContainer() {
             flexDirection="row"
         >
             <Button component={CustomLink} to="/Payment"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin:'10px'}}>Tillbaka</Button>
-            <Button component={CustomLink} to="/Home"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}}>Beställ</Button>
+            <Button component={CustomLink} to="/"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}}>Beställ</Button>
         </Box>
         </Box> 
         </Box>
