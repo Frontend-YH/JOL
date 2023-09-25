@@ -11,11 +11,11 @@ import './prodcard.css';
 
 
 interface ProdCardProps {
-imgUrls: string[];
-name: string;
-price: string;
-description: string;
-id: string;
+    imgUrls: string[];
+    name: string;
+    price: string;
+    description: string;
+    id: string;
 }
 
 
@@ -24,8 +24,9 @@ return (
 <>
 <div className="prod-card">
 <Card sx={{ padding: 2, marginBottom: 2 }}>
+    <img src={props.imgUrls[0]}/>
 <CardContent>
-<Typography gutterBottom variant="h4" component="div">
+<Typography gutterBottom variant="h5" component="div">
 {props.name}
 </Typography>
 <h4 className="price">{props.price}</h4>
@@ -34,6 +35,20 @@ return (
 </Typography>
 </CardContent>
 <div className="btn-quantity">
+
+<Button variant="contained">Lägg till i kundvagn</Button>
+</div>
+</Card>
+</div>
+
+
+</>
+);
+}
+
+/*
+
+// OM VI VILL HA ANTAL FÄLT
 <FormControl sx={{ m: 0.5, minWidth: 80, height: 60 }}>
 <InputLabel id="simple-select-autowidth-label">Antal</InputLabel>
 <Select
@@ -47,12 +62,5 @@ label={props.id}
 <MenuItem>3</MenuItem>
 </Select>
 </FormControl>
-<Button variant="contained">Lägg till i kundvagn</Button>
-</div>
-</Card>
-</div>
 
-
-</>
-);
-}
+*/

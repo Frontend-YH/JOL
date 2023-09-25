@@ -3,6 +3,7 @@ import Footer from "../components/Footer.tsx";
 import "../components/start-container.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import VideoReact from "../components/VideoReact.tsx";
 
 function Home(props) {
@@ -71,9 +72,9 @@ function Home(props) {
         )}
       </div>
 
-      <Button variant="contained" size="large" className="start-btn">
+      <Link to="/butik"><Button variant="contained" size="large" className="start-btn">
         {props.lang === "swe" ? "Till butiken" : "Go to store"}
-      </Button>
+      </Button></Link>
 
     </div>
 
