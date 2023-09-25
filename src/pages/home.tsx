@@ -1,30 +1,15 @@
-
 import About from "../components/About.tsx";
 import Footer from "../components/Footer.tsx";
-import ProdCard from "../components/ProdCard.tsx";
 import "../components/start-container.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import Smallshop from "../components/ShopSmall.tsx";
+import { Link } from "react-router-dom"
 import VideoReact from "../components/VideoReact.tsx";
 
 function Home(props) {
 
-  const [data, setData] = useState([]);
-  const [infoText, setInfoText] = useState([{"info": [], "video": [{"name": "Spett", "url": "https://gardsjosmedja.com/spett.mp4"}]}]);
 
-  /* Collect Product Data from Backend Database */
-  const getData = () => {
-    fetch("http://localhost:3000/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-        throw new Error("Kan inte hämta data");
-      });
-  };
+  const [infoText, setInfoText] = useState([{"info": [], "video": [{"name": "Spett", "url": "https://gardsjosmedja.com/spett.mp4"}]}]);
 
 
     /* Collect Information Texts from Backend Database */
@@ -42,16 +27,12 @@ function Home(props) {
         });
     };
 
-    useEffect(() => {
-      getData();
-    }, []);
+ 
 
     useEffect(() => {
       getInfo();
       
     }, []);
-
-
 
     //flexbox container
     const flexContainer = {
@@ -91,9 +72,9 @@ function Home(props) {
         )}
       </div>
 
-      <Button variant="contained" size="large" className="start-btn">
+      <Link to="/butik"><Button variant="contained" size="large" className="start-btn">
         {props.lang === "swe" ? "Till butiken" : "Go to store"}
-      </Button>
+      </Button></Link>
 
     </div>
 
@@ -104,24 +85,6 @@ function Home(props) {
         <VideoReact index={index} video={filename.url} name={filename.name}/>
       ))}
 </div>
-
-<Smallshop/>
-      <div className="products-div">
-        {data.map((dataItem) => (
-          <ProdCard
-            key={dataItem._id}
-            name={dataItem.name}
-            price={dataItem.price + ":-"}
-            description={dataItem.description}
-            imgUrls={(dataItem.pictures || dataItem.picture || [])
-              .filter(Boolean)
-              .map(
-                (picture) => `https://gardsjosmedja.com/products/${picture}`
-              )}
-          />
-        ))}
-      </div>
-
       <Footer />
     </>
   );

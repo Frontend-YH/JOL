@@ -1,3 +1,14 @@
+@font-face {
+  font-family: StarBlushSerif;
+  src: url(./assets/fonts/star-blush-serif-font/StarBlushSerif-EaAol.ttf);
+}
+h1 {
+  font-family: StarBlushSerif;
+  font-weight: 500!important;
+  font-size: 2rem !important;
+  line-height: 2.2rem!important;
+  
+}
 nav {
   height: 100px;
   align-items: center;
@@ -31,7 +42,5 @@ a {
 }
 
 .flag {
-
   width: 30px;
-
 }
