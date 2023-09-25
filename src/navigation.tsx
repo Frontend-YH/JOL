@@ -10,12 +10,22 @@ interface CustomLinkProps{
     children: ReactNode;
 }
 
-const Navigation = () => {
+const Navigation = (props) => {
+
   const [showCart, setShowCart] = useState(false);
   const showSidebar = () => setShowCart(!showCart);
 
   const location = useLocation();
   const isNotAdminRoute = !location.pathname.startsWith('/admin');
+
+/* Switch between different languages */
+  const handleSweClick = ()=> {
+      props.setLang("swe");
+  };
+  const handleEngClick = ()=> {
+    props.setLang("eng");
+};
+/* ################################### */
 
   return (
     isNotAdminRoute && (
@@ -23,8 +33,10 @@ const Navigation = () => {
         <nav className={"nav"}>
           <h1>Gärdsjö smedja</h1>
           <ul>
+            <a href="#swedish" onClick={handleSweClick}><img src="./src/assets/Images/swe.png" className="flag"/></a>
+            <a href="#english" onClick={handleEngClick}><img src="./src/assets/Images/eng.png" className="flag"/></a>
             <Link to="/">Home</Link>
-            <CustomLink to="/product">Product</CustomLink>
+            <CustomLink to="/product">Products</CustomLink>
             <Button onClick={showSidebar}>
               <ShoppingCartIcon fontSize="large" />
             </Button>

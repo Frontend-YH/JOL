@@ -66,3 +66,12 @@ h1{
 .orderLi{
   margin: 10px;
 }
+.Shop-Container {
+  position: absolute;
+  top: 16%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+}

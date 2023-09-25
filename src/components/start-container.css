@@ -1,31 +1,199 @@
+
+
+@font-face {
+    font-family: MiltonOne;
+    src: url(../assets/fonts/Milton_One.otf);
+  }
+
+  @font-face {
+    font-family: FashionFetishLight;
+    src: url(../assets/fonts/fashion_fetish/Fashion Fetish Light.ttf);
+  }
+
+
+  @keyframes moveBackground {
+    0%, 100% {
+      background-position: 50% 50%; 
+    }
+    50% {
+      background-position: 50% 100%; 
+    }
+  }
+  
+
 .start-container{
     
-  display: grid;
- vertical-align: bottom;
-    height: 100vh;
-    background-image: url("../assets/Images/smedjan.jpg");
+    display: grid;
+    vertical-align: bottom;
+    height:auto;
+    background-image: url("../assets/Images/1.jpg");
+    background-position: center top;
+    background-attachment:fixed; /* fixed or scroll */
+    background-repeat: no-repeat; 
+    background-size:cover; 
+    background-clip: border-box;
+   
     text-align: center;
     color: antiquewhite;
+    border-radius: 6px;
+
+    position: relative;
+    width: 100%;
+
+    padding-bottom: 60px;
+
+    /* Backgrundsanimation */
+    animation: moveBackground 50s linear infinite alternate; 
+        
+    
+   
+}
+
+  
+  
+
+
+.start-container::before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    background-attachment: fixed; /* Background stays fixed */
+    background-repeat: no-repeat; /* No repetition */
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    bottom: 0;
+    
+    
+    
+  }
+
+
+  
+.start-text h2{
+    font-family: MiltonOne;
+    font-weight: 500;
+    margin-top: 5%;
+    font-size: 12vw;
+    color: whitesmoke;
+    position: relative;
+    z-index: 1; /* Ensure text is above the overlay */
+    padding-left: 28px;
+    padding-right: 28px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.start-text h3{
+    font-family: MiltonOne;
+    margin-top: 2%;
+    margin-bottom: 70px;
+    font-size: 8vw;
+    color: whitesmoke;
+    position: relative;
+    z-index: 1; /* Ensure text is above the overlay */
+    padding-left: 28px;
+    padding-right: 28px;
+    font-weight: 100;
     
 }
-.start-text h2{
-    margin-top: 5%;
-    font-size: 3.5rem;
-    color: whitesmoke;
-}
 .start-text h4{
-    font-size: 1rem;
+    font-family: FashionFetishLight;
+    font-size: 2.4vw;
     color: whitesmoke;
+    position: relative;
+    z-index: 1; /* Ensure text is above the overlay */
+    padding-left: 28px;
+    padding-right: 28px;
+    line-height: 30px;
+    font-weight: 100;
+    margin-bottom: 70px;
+    line-height: 5vw;
 }
 
 .start-btn{
-    margin: auto!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
     height: 8vh;
     width: 350px;
+    
 }
 
-@media (min-width: 390px) {
+
+
+
+ @media (min-width: 360px) {
     .start-text h2{
-        font-size: 3.0rem;
+        font-size: 20vw;
+        font-weight: 500;
+        
+    }
+    .start-text h4 {
+       font-size: 3.6vw;
+       line-height: 7vw;
     }
 }
+
+@media (min-width: 600px) {
+    .start-text h2{
+        font-size: 14vw;
+        font-weight: 500;
+        
+    }
+    .start-container h3 {
+      
+        font-size: 7vw;
+        font-weight: 500;        
+    }
+    .start-text h4 {
+        font-size: 3.2vw;
+        line-height: 7vw;
+     }
+}
+
+@media (min-width: 890px) {
+    .start-text h2{
+        font-size: 12vw;
+        font-weight: 500;
+        
+    }
+    .start-container h3 {
+      
+        font-size: 6vw;
+        font-weight: 500;       
+    }
+    .start-text h4 {
+        font-size: 2.4vw;
+        line-height: 5vw;
+     }   
+}
+
+
+
+@media (min-width: 1350px) {
+    .start-container {
+         
+         font-size: 12vw;
+         font-weight: 500;
+         
+    
+               
+     }
+     .start-container h2 {
+
+         font-size: 10vw;
+         font-weight: 500;
+         
+         
+     }
+     .start-container h3 {
+      
+          font-size: 5vw;
+          font-weight: 500;
+          
+          
+      }
+
+} 

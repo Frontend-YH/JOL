@@ -1,0 +1,23 @@
+
+@font-face {
+  font-family: FashionFetishLight;
+  src: url(../assets/fonts/fashion_fetish/Fashion Fetish Light.ttf);
+}
+
+  .flexItem {
+
+    flex: 1;
+    min-width: 280px;
+    margin: 10px;
+    text-align: center;
+    padding: 20px 20px 0px 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-family: FashionFetishLight;
+  }

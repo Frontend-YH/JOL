@@ -4,14 +4,16 @@ const mongoose = require('mongoose');
 const app = express();
 
 // CORS konfiguration som allowar access från http://localhost:5137
+/*
 const corsOptions = {
-  origin: 'http://localhost:5137',
+  origin: 'http://localhost:5137/',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillåtna metoder
   optionsSuccessStatus: 204, 
 };
+*/
 
 // Aktivera vors med vald cors-konfiguration
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
@@ -64,6 +66,7 @@ const InfoModel = mongoose.model('DynamicModel', minimalSchema, 'Information');
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
+const OrdersData = mongoose.model('DynamicModel', minimalSchema, 'OrderData')
 // ####################################################################################
 
 
@@ -139,7 +142,15 @@ app.post('/addCustomer', async (req, res) => {
 
 
 
-
+  app.get('/OrderData', async(req, res) =>{
+    try{
+      const Orders = await OrdersData.find();
+      res.json(Orders)
+    }catch (error){
+      console.log(error)
+      res.status(500).json({error: 'hittar inte'})
+    } 
+  })
 
 
 app.get("/admins", (req, res) => {
