@@ -35,8 +35,8 @@ const Navigation = (props) => {
           <ul>
             <a href="#swedish" onClick={handleSweClick}><img src="./src/assets/Images/swe.png" className="flag"/></a>
             <a href="#english" onClick={handleEngClick}><img src="./src/assets/Images/eng.png" className="flag"/></a>
-            <Link to="/">Home</Link>
-            <CustomLink to="/product">Products</CustomLink>
+            <Link to="/">Hem</Link>
+            <CustomLink to="/product">Produkter</CustomLink>
             <Button onClick={showSidebar}>
               <ShoppingCartIcon fontSize="large" />
             </Button>
