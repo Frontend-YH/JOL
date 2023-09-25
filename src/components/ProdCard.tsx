@@ -7,7 +7,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
 import './prodcard.css';
-import SwipeableTextMobileStepper from './ImageCarousel';
+//import SwipeableTextMobileStepper from './ImageCarousel';
 
 
 interface ProdCardProps {
@@ -24,7 +24,6 @@ return (
 <>
 <div className="prod-card">
 <Card sx={{ padding: 2, marginBottom: 2 }}>
-<SwipeableTextMobileStepper imgUrls={props.imgUrls} />
 <CardContent>
 <Typography gutterBottom variant="h4" component="div">
 {props.name}
