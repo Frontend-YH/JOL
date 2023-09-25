@@ -16,6 +16,7 @@ import About from "./components/About.tsx"
 
 import { useState, useEffect } from "react";
 
+
 /* import images from "./assets/Images/images.ts";
 import ImageCarousel from "./components/ImageCarousel.tsx"; */
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route path="/admin/editproduct" element={<AdminEditProduct />} />
             <Route path="/admin/Addproduct" element={<AdminAddProduct />} />
             <Route path="/admin/Orders" element={<AdminOrders />} />
+           
             </Routes>
             {/* <ImageCarousel images={images} /> */}
       </>

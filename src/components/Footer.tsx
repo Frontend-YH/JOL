@@ -4,7 +4,7 @@ function Footer() {
     <>
       <footer>
         <div className="open-hour">
-          <p>Vi tillverkar allt från krokar till bilyxor och ljuskronor.</p>
+          
           <p>
             <strong>Öppettider: vardagar 9-17, lunchstängt 13 - 14.</strong>
           </p>

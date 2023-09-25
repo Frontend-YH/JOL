@@ -1,10 +1,12 @@
 import { ReactNode, useState } from "react";
 import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 import { Grid, Box, Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from "@mui/material/Badge";
 import './Navigation.css'
-import BasketStart from "./components/BasketStart";
-
+import Cart from "./Cart";
 interface CustomLinkProps{
     to: string;
     children: ReactNode;
@@ -12,6 +14,7 @@ interface CustomLinkProps{
 
 const Navigation = (props) => {
 
+  const { cart } = useContext(CartContext);
   const [showCart, setShowCart] = useState(false);
   const showSidebar = () => setShowCart(!showCart);
 
@@ -27,6 +30,8 @@ const Navigation = (props) => {
 };
 /* ################################### */
 
+const cartLength = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     isNotAdminRoute && (
       <>
@@ -37,12 +42,12 @@ const Navigation = (props) => {
             <a href="#english" onClick={handleEngClick}><img src="./src/assets/Images/eng.png" className="flag"/></a>
             <Link to="/">Hem</Link>
             <CustomLink to="/butik">Butik</CustomLink>
-            <Button onClick={showSidebar}>
-              <ShoppingCartIcon fontSize="large" />
-            </Button>
+            <Badge color="primary" badgeContent={cartLength} onClick={showSidebar}>
+              <ShoppingCartIcon  style={{ cursor: 'pointer' }} fontSize="large" />
+            </Badge>
           </ul>
         </nav>
-        {showCart && <BasketStart />}
+        {showCart && <Cart toggleSidebar={showSidebar}/>}
       </>
     )
   );
