@@ -1,13 +1,70 @@
 .shop-block {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
+    position: absolute;
+    top: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Shop-Container{
+    position: absolute;
+    top: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+  }
+  .Shop-CartPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#CartPage{
+  min-height: 300px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(25,118,210,0.3);
+}
+
+.ShopContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#Orderingpage{
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+.Register{
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  background-color: rgb(165, 165, 165);
+  border-radius: 15px;
+  width: 450px;
+  padding-top: 20px;
+
+}
+h1{
+  font-size: x-large;
+  margin-top: 20px;
+  text-align: center;
+}
+.custom-checkbox-root .MuiSvgIcon-root{
+  width: 36px;
+  height: 36px;
+}
+.orderLi{
+  margin: 10px;
 }
 .Shop-Container {
   position: absolute;

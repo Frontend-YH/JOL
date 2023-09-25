@@ -1,21 +1,19 @@
 import { Box, Container } from '@mui/material';
 import '../shopblock.css';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
+import OrdersContainer from '../pages/orders';
 
 function ShopBlock() {
-    return ( <>
-        <div className='Shop-Container'>
-            <h1>hej</h1>
-            <Container>
+    return ( <div id= 'ShopContainer'>
+
+            <Container sx={{minHeight: '20%'}}>
                 <Container sx={{ height: '10%', width: '100%', alignItems: 'center', display: 'flex', justifyContent: 'end'}}>
-                <Box justifyContent={'end'}>
-                    <ArrowForwardIcon fontSize='large'/>                   
-                </Box>
+                    <h1></h1>
+                         <Box justifyContent={'end'}>  
+                            <OrdersContainer></OrdersContainer>          
+                        </Box>
                 </Container>
             </Container>
-        </div>
-    </> );
+    </div> );
 }
 
 export default ShopBlock;
