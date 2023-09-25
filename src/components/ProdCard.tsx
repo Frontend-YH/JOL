@@ -36,7 +36,7 @@ return (
 <>
 <div className="prod-card">
 <Card sx={{ padding: 2, marginBottom: 2 }}>
-    <img src={props.imgUrls[0]}/>
+    <img style={{borderRadius: "6px"}} src={props.imgUrls[0]}/>
 <CardContent>
 <Typography gutterBottom variant="h5" component="div">
 {props.name}
