@@ -25,6 +25,12 @@
   background-color: #f0f0f0;
   text-align: center;
   align-items: center;
+  justify-content: center;
+}
+
+.prod-card img {
+  width: auto;
+  height: 200px;
 }
 
 /* Container för produktkort */
@@ -32,6 +38,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
 }
 .css-1x1xx5k{
   max-width: 100!important;

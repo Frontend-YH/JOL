@@ -45,7 +45,7 @@ function App() {
             <Route path= "/CustomerRegister" element={<CustomerRegister/>}/>
             <Route path="/shop" element={<ShopContainer />} />
             <Route path="/checkout" element={<CheckoutContainer />} />
-            <Route path="/product" element={<ProductsContainer />} />
+            <Route path="/butik" element={<ProductsContainer />} />
             <Route path="/admin/editproduct" element={<AdminEditProduct />} />
             <Route path="/admin/Addproduct" element={<AdminAddProduct />} />
             <Route path="/admin/Orders" element={<AdminOrders />} />
