@@ -5,7 +5,8 @@ export interface Product {
     name: string,
     price: number,
     description: string,
-    imgUrls: []
+    imgUrls: [],
+    thumbnailUrls: []
 }
 
 export interface CartProduct extends Product {

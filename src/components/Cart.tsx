@@ -32,7 +32,7 @@ export default function Cart(props) {
 
   return (
     <div className="cart-container">
-      <h3>Kundvagn:</h3>
+      <h3>Kundvagn</h3>
       {cart.map((product, index) => (
         <div key={index}>
           
@@ -47,8 +47,13 @@ export default function Cart(props) {
             <AddIcon color="primary" />
           </button>
           </div>
-          <div className="grid-item">
-           <p>st {product.name}   | {product.price} kr /st</p> 
+          <div className="grid-item-img">
+          <img src={product.thumbnailUrls[0]}/>
+          </div>
+          <div className="grid-item" style={{width: "150px"}}>
+           <p> {product.name}</p>
+           </div>
+           <div className="grid-item"><p>{product.price} kr /st</p> 
            </div>
            <div className="grid-item">
            <IconButton aria-label="delete" size="small" color="primary" onClick={() => removeFromCart(product.id)}>
