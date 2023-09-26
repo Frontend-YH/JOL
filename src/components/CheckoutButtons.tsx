@@ -34,7 +34,7 @@ const CheckoutButtons = (props) => {
 
   const handleCheckoutClick = () => {
     // Use navigate() to navigate to /checkout
-    navigate('/checkout');
+    navigate('/customerregister');
     props.toggleSidebar();
   };
 

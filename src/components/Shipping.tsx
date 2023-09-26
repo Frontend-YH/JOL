@@ -30,6 +30,8 @@ function ShippingForm() {
     city: localStorage.getItem("city") || "",
   });
 
+  const [formValid, setFormValid] = useState(false); // State för att hålla koll på om formuläret är giltigt
+
   const handleTextFieldChange = (fieldName: string, value: string) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -53,6 +55,20 @@ function ShippingForm() {
     }));
   }, []);
 
+  // Funktion för att kontrollera om formuläret är giltigt
+  const isFormValid = () => {
+    return (
+      formData.address.trim() !== '' &&
+      formData.postalCode.trim() !== '' &&
+      formData.city.trim() !== ''
+    );
+  };
+
+  // Uppdatera formValid-state när formuläret ändras
+  useEffect(() => {
+    setFormValid(isFormValid());
+  }, [formData]);
+
   return (
     <div id="Orderingpage">
       <div className='Register'>
@@ -65,18 +81,22 @@ function ShippingForm() {
           padding="5px"
         >
           <TextField
+          required
             label="Adress"
             sx={{ bgcolor: 'white', borderRadius: "5px", marginTop: "35px" }}
             value={formData.address}
             onChange={(e) => handleTextFieldChange("address", e.target.value)}
           ></TextField>
           <TextField
+          required
             label="Postnummer"
+            type="number"
             sx={{ bgcolor: 'white', borderRadius: "5px", marginTop: "35px" }}
             value={formData.postalCode}
             onChange={(e) => handleTextFieldChange("postalCode", e.target.value)}
           ></TextField>
           <TextField
+          required
             label="Ort"
             sx={{ bgcolor: 'white', borderRadius: "5px", marginTop: "35px", marginBottom: "127px" }}
             value={formData.city}
@@ -90,7 +110,16 @@ function ShippingForm() {
           justifyContent="center"
         >
           <Button component={CustomLink} to="/CustomerRegister" variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}>Tillbaka</Button>
-          <Button component={CustomLink} to="/Payment" variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}>Nästa</Button>
+          <Button
+            component={CustomLink}
+            to="/Payment"
+            variant="contained"
+            size="small"
+            sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}
+            disabled={!formValid} // Inaktivera knappen om formuläret inte är giltigt
+          >
+            Nästa
+          </Button>
         </Box>
       </div>
     </div>
