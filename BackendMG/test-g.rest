@@ -25,3 +25,10 @@ Content-Type: application/json
 }
 
 ###
+
+// LOGGA IN USER
+GET http://localhost:3000/addProducts
+Content-Type: application/json
+
+
+###

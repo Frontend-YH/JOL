@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const app = express();
 
 // CORS konfiguration som allowar access från http://localhost:5137
-/*
+
 const corsOptions = {
-  origin: 'http://localhost:5137/',
+  origin: 'http://localhost:5173/',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // tillåtna metoder
   optionsSuccessStatus: 204, 
 };
-*/
+
 
 // Aktivera vors med vald cors-konfiguration
 app.use(cors());
@@ -66,7 +66,8 @@ const InfoModel = mongoose.model('DynamicModel', minimalSchema, 'Information');
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
-const OrdersData = mongoose.model('DynamicModel', minimalSchema, 'OrderData')
+const OrdersData = mongoose.model('DynamicModel', minimalSchema, 'OrderData');
+const Products = mongoose.model('DynamicModel', minimalSchema, 'product');
 // ####################################################################################
 
 
@@ -140,7 +141,46 @@ app.post('/addCustomer', async (req, res) => {
   res.send(result);
   });
 
+app.post('/addProduct'), async (req, res) => {
 
+  res.json({"test": "resulttest"});
+  try{
+    
+      
+    /*
+    const newProduct = {
+      articleNumber: req.body.articleNumber,
+      name: req.body.name,
+      engName: req.body.engName,
+      description: req.body.description,
+      engDescription: req.body.engDescription,
+      price: req.body.price,
+      picture: req.body.picture,
+      thumbnail: req.body.thumbnail,
+      category: req.body.category,
+      numberAvailable: req.body.numberAvailable
+    };
+
+    const productsarr = []
+    productsarr.push(newProduct)
+    let data = Products(productsarr)
+    const result = await data.save();
+    res.send(result)
+*/
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+app.get('/addProducts', async (req, res) => {
+  try {
+    const dBdata = await Product.find();
+    res.json(dBdata);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
   app.get('/OrderData', async(req, res) =>{
     try{
@@ -148,7 +188,7 @@ app.post('/addCustomer', async (req, res) => {
       res.json(Orders)
     }catch (error){
       console.log(error)
-      res.status(500).json({error: 'hittar inte'})
+      res.status(500).json({error: 'Internal Server Error'})
     } 
   })
 

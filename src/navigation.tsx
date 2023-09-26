@@ -10,6 +10,7 @@ interface CustomLinkProps{
     children: ReactNode;
 }
 
+
 const Navigation = (props) => {
 
   const [showCart, setShowCart] = useState(false);
@@ -51,6 +52,7 @@ const Navigation = (props) => {
 export default Navigation;
 
 const AdminNavigation = () =>{
+
   return(<>
     <Grid 
       container spacing={2}
@@ -81,7 +83,7 @@ const AdminNavigation = () =>{
       </Grid>
     </Grid>
   </>);
-}
+};
 
 export {AdminNavigation};
 
