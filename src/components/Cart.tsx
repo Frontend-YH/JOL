@@ -59,8 +59,8 @@ export default function Cart(props) {
           </div>
         </div>
       ))}
-      <p>Moms 25%: {(totalPrice() * 0.8) / 4} kr</p>
-      <h4>Totalpris: {totalPrice()} kr</h4>
+      <p>Moms 25%: {(totalPrice() * 0.8) / 4} :-</p>
+      <h4>Totalpris: {totalPrice()} :-</h4>
       <CheckoutButtons toggleSidebar={props.toggleSidebar}></CheckoutButtons>
     </div>
   );
