@@ -31,6 +31,8 @@ function CustomerRegister() {
     email: localStorage.getItem("email") || "",
   });
 
+  const [formValid, setFormValid] = useState(false); // State för att hålla koll på om formuläret är giltigt
+
   // Define a generic event handler for text fields
   const handleTextFieldChange = (fieldName: string, value: string) => {
     setFormData((prevData) => ({
@@ -57,6 +59,21 @@ function CustomerRegister() {
       email: localStorage.getItem("email") || "",
     }));
   }, []);
+
+  // Funktion för att kontrollera om formuläret är giltigt
+  const isFormValid = () => {
+    return (
+      formData.firstName.trim() !== '' &&
+      formData.lastName.trim() !== '' &&
+      formData.phoneNumber.trim() !== '' &&
+      formData.email.trim() !== ''
+    );
+  };
+
+ 
+  useEffect(() => {
+    setFormValid(isFormValid());
+  }, [formData, isFormValid]);
 
   return (
     <div id="Orderingpage">
@@ -101,8 +118,17 @@ function CustomerRegister() {
           flexDirection="row"
           justifyContent="center"
         >
-          <Button variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}>Tillbaka</Button>
-          <Button component={CustomLink} to="/Shipping" variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}>Nästa</Button>
+          <Button variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }} disabled={true} >Tillbaka</Button>
+          <Button
+            component={CustomLink}
+            to="/Shipping"
+            variant="contained"
+            size="small"
+            sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}
+            disabled={!formValid} // Inaktivera knappen om formuläret inte är giltigt
+          >
+            Nästa
+          </Button>
         </Box>
       </div>
     </div>
@@ -110,7 +136,3 @@ function CustomerRegister() {
 }
 
 export default CustomerRegister;
-
-
-
-
