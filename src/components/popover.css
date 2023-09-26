@@ -14,6 +14,9 @@
 }
 #All-Products2{
  
-    gap:5% !important;
-    margin: auto;
+    padding: 13px;
+    width: 340px;
+}
+.MuiBox-root{
+    align-items: center;
 }
