@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState, useEffect } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { Product, CartProduct, Lang } from "./dataInterfaces.ts";
 
 interface ContextValue {
@@ -71,8 +71,7 @@ export default function CartProvider({ children }: Props) {
 
   return (
     <CartContext.Provider
-      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang }}
-    >
+      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang }}>
       {children}
     </CartContext.Provider>
   );

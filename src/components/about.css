@@ -1,7 +1,7 @@
 
 
 @font-face {
-  font-family: JosefinSlab;
+  font-family: GeosansLight;
   src: url(../assets/fonts/geo_sans_light/GeosansLight.ttf);
 }
 
@@ -34,7 +34,7 @@
 p {
 
     padding: 0px 15px 20px 5px;
-    font-family: JosefinSlab, Arial, Helvetica, sans-serif;
+    font-family: GeosansLight, Arial, Helvetica, sans-serif;
     line-height: 30px;
     font-size: 1.2rem;
   
@@ -64,7 +64,7 @@ p {
   padding-top: 20px;
   margin: 0;
 
-  font-family: JosefinSlab;
+  font-family: GeosansLight;
 
 }
 
@@ -82,7 +82,7 @@ p {
 
   margin: 0;
 
-  font-family: JosefinSlab;
+  font-family: GeosansLight;
  
 }
 
@@ -90,7 +90,7 @@ p {
 
     color:dodgerblue;
     font-size: 2vw;
-    font-family: JosefinSlab;
+    font-family: GeosansLight;
 
 }
 
@@ -165,7 +165,7 @@ p {
   
   .info2 a {
   
-      font-family: JosefinSlab;
+      font-family: GeosansLight;
       color:dodgerblue;
       font-size: 2.6vw;
   
@@ -173,7 +173,7 @@ p {
 
   .info2 a:visited {
   
-    font-family: JosefinSlab;
+    font-family: GeosansLight;
     color:dodgerblue;
     font-size: 2.6vw;
 

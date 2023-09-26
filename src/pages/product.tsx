@@ -37,7 +37,11 @@ function ProductsContainer() {
             name={dataItem.name}
             price={parseInt(dataItem.price)}
             description={dataItem.description}
-            imgUrls={(dataItem.pictures || dataItem.picture || [])
+            thumbnailUrls={(dataItem.thumbnail || []).filter(Boolean)
+              .map(
+                (thumbnail) => `https://gardsjosmedja.com/products/${thumbnail}`
+              )}
+            imgUrls={(dataItem.picture || [])
               .filter(Boolean)
               .map(
                 (picture) => `https://gardsjosmedja.com/products/${picture}`
