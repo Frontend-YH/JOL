@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { Product, CartProduct } from "./data.ts";
+import { Product, CartProduct } from "./dataInterfaces.ts";
 
 interface ContextValue {
   cart: CartProduct[];
