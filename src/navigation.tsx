@@ -1,11 +1,11 @@
 import { ReactNode, useState } from "react";
-import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import { Grid, Box, Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from "@mui/material/Badge";
-import './Navigation.css'
+import './Navigation.css';
 import Cart from "./components/Cart"; 
 interface CustomLinkProps {
     to: string;
