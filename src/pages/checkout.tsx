@@ -51,11 +51,9 @@ interface CustomLinkProps{
     children: ReactNode;
 }
 
-
 function CustomLink({ to, children, ...props}: CustomLinkProps){
     const resolvePath = useResolvedPath(to)
     const isActive = useMatch({ path: resolvePath.pathname, end: true})
-
     return (
         <li className={isActive ? "active" : ""}>
           <Link to={to} {...props}>
@@ -64,7 +62,6 @@ function CustomLink({ to, children, ...props}: CustomLinkProps){
         </li>
       );
 }
-
 
 
 function CheckoutContainer() {

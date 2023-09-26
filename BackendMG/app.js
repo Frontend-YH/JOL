@@ -19,6 +19,7 @@ app.use(express.json());
 
 const Product = require('./productSchema')
 const CustomerData = require('./customerSchema')
+const Order = require('./orderSchema')
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -64,9 +65,9 @@ const minimalSchema = new mongoose.Schema({}, { strict: false });
 
 const InfoModel = mongoose.model('DynamicModel', minimalSchema, 'Information');
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
-const customerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
+const CustomerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
-const OrdersData = mongoose.model('DynamicModel', minimalSchema, 'OrderData')
+const OrderData = mongoose.model('DynamicModel', minimalSchema, 'OrderData')
 // ####################################################################################
 
 
@@ -117,7 +118,7 @@ app.get('/customers', async (req, res) => {
 
 app.post('/newCustomerData', async (req, res) => {
   try {
-    const dBdata = await ProdModel.find();
+    const dBdata = await CustomerModel.find();
     res.json(dBdata);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -142,9 +143,57 @@ app.post('/addCustomer', async (req, res) => {
 
 
 
-  app.get('/OrderData', async(req, res) =>{
+//####### Save orders to the database code section ###########################
+/*
+const orderSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  phone: String,
+  email: String,
+  address: String,
+  city: String,
+  postCode: String
+}); */
+
+const addOrder = mongoose.model('Order', minimalSchema, 'OrderData');
+app.post('/addOrder', async (req, res) => {
+  try {
+    // Create a new user instance based on the request body
+    const newOrder = new addOrder({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phone: req.body.phone,
+      email: req.body.email,
+      address: req.body.address,
+      city: req.body.city,
+      postCode: req.body.postCode,
+      totalCost: req.body.totalCost,
+      payed: req.body.payed,  
+      payMethod: req.body.payMethod, 
+      products: req.body.products  
+    });
+
+    // Save the user to the database
+    await newOrder.save();
+
+    res.status(201).json({ message: 'OrderData added successfully', user: newOrder });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// #######################################################################################
+
+
+
+
+
+
+
+  app.get('/OrderData', async(req, res) => {
     try{
-      const Orders = await OrdersData.find();
+      const Orders = await OrderData.find();
       res.json(Orders)
     }catch (error){
       console.log(error)

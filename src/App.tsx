@@ -14,24 +14,15 @@ import AdminAddProduct from "./admin/AddProduct.tsx"
 import AdminOrders from "./admin/Order.tsx"
 import About from "./components/About.tsx"
 
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { CartContext } from "./CartContext.tsx"
 
 
 /* import images from "./assets/Images/images.ts";
 import ImageCarousel from "./components/ImageCarousel.tsx"; */
 function App() {
 
-  /* ### Switch between eng and swe ######################################### */
-  const language = localStorage.getItem("language") || "swe";
-  const [lang, setLang] = useState(language);
-
-    // Create a useEffect that updates localStorage so that the chosen
-    // language remains even if the user refreshed the browser
-    useEffect(() => {
-      // Update the localStorage value with the current 'lang'
-      localStorage.setItem("language", lang);
-    }, [lang]); // The effect will run whenever the 'lang' useState changes
-  /* ######################################################################## */
+  const { lang, setLang } = useContext(CartContext);
 
   return (
     <>
