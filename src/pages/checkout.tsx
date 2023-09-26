@@ -3,6 +3,40 @@ import Button from '@mui/material/Button';
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { ReactNode } from "react";
 import { Box, Checkbox, TextField } from '@mui/material';
+function DeliveryInfo() {
+    // Retrieve boolean values from localStorage
+    const postnordChecked = localStorage.getItem('postnord') === 'true';
+    const dhlChecked = localStorage.getItem('dhl') === 'true';
+    const dbSchenkerChecked = localStorage.getItem('dbSchenker') === 'true';
+  
+    return (
+      <div>
+        {postnordChecked && <p>Postnord. 5 dagar.</p>}
+        {dhlChecked && <p>DHL. 3 dagar.</p>}
+        {dbSchenkerChecked && <p>DBSchenker. 3 dagar.</p>}
+      </div>
+    );
+  }
+  
+
+function UserInfo() {
+  // Retrieve values from localStorage
+  const firstName = localStorage.getItem('firstName') || '';
+  const lastName = localStorage.getItem('lastName') || '';
+  const address = localStorage.getItem('address') || '';
+  const postalCode = localStorage.getItem('postalCode') || '';
+  const city = localStorage.getItem('city') || '';
+ 
+  
+
+  return (
+    <div>
+      <p>{firstName}  {lastName}</p>
+      <p>{address}</p>
+      <p>{postalCode}  {city}.</p>
+    </div>
+  );
+}
 
 
 interface CustomLinkProps{
@@ -53,10 +87,12 @@ function CheckoutContainer() {
                 <p>Varor</p>
             </li>
             <li id='adress'className='orderLi'>
-                <p>adress</p>
+                <p>Adress:</p>
+                <UserInfo/>
             </li>
             <li id='shipping'className='orderLi'>
                 <p>Frakt</p>
+                <DeliveryInfo/>
             </li>
             <div id="kostnad"className='orderLi'>
                 <p>Total kostnad</p>

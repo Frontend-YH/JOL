@@ -8,6 +8,7 @@ import kort from './pics/kort.png';
 import postnord from './pics/postnord.png';
 import DHL from './pics/DHL.jpg';
 import DBS from './pics/DBS.jpg';
+import PhoneNumberTextField from './PhoneNumberTextField'
 
 interface CustomLinkProps {
   to: string;
@@ -166,12 +167,8 @@ function PaymentForm() {
                 checked={swishChecked}
                 onChange={(e) => setSwishChecked(e.target.checked)}
               ></Checkbox>
-              <TextField
-                label='Telefonnummer'
-                sx={{ bgcolor: 'white', borderRadius: '5px' }}
-                value={telefonnummer}
-                onChange={(e) => setTelefonnummer(e.target.value)}
-              ></TextField>
+              <PhoneNumberTextField
+              ></PhoneNumberTextField>
             </Box>
             <Box id={kortId} display='flex' flexDirection='row'>
               <img
@@ -188,18 +185,21 @@ function PaymentForm() {
               <Box className='CardInput' display='flex' flexDirection='column'>
                 <TextField
                   label='Kortnummer'
+                  type='number'
                   sx={{ bgcolor: 'white', borderRadius: '5px' }}
                   value={kortnummer}
                   onChange={(e) => setKortnummer(e.target.value)}
                 ></TextField>
                 <TextField
                   label='Datum'
+                  type='number'
                   sx={{ bgcolor: 'white', borderRadius: '5px' }}
                   value={datum}
                   onChange={(e) => setDatum(e.target.value)}
                 ></TextField>
                 <TextField
                   label='CVV'
+                  type='number'
                   sx={{ bgcolor: 'white', borderRadius: '5px' }}
                   value={cvv}
                   onChange={(e) => setCvv(e.target.value)}

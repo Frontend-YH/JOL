@@ -72,6 +72,7 @@ function ShippingForm() {
           ></TextField>
           <TextField
             label="Postnummer"
+            type='number'
             sx={{ bgcolor: 'white', borderRadius: "5px", marginTop: "35px" }}
             value={formData.postalCode}
             onChange={(e) => handleTextFieldChange("postalCode", e.target.value)}
@@ -83,7 +84,6 @@ function ShippingForm() {
             onChange={(e) => handleTextFieldChange("city", e.target.value)}
           ></TextField>
         </Box>
-        <Button onClick={handleSaveToLocalStorage} variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}>Spara</Button>
         <Box
           display="flex"
           flexDirection="row"

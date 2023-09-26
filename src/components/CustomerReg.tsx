@@ -84,6 +84,7 @@ function CustomerRegister() {
           ></TextField>
           <TextField
             label="Telefonnummer"
+            type='number'
             sx={{ bgcolor: 'white', borderRadius: "5px" }}
             value={formData.phoneNumber}
             onChange={(e) => handleTextFieldChange("phoneNumber", e.target.value)}
@@ -95,7 +96,6 @@ function CustomerRegister() {
             onChange={(e) => handleTextFieldChange("email", e.target.value)}
           ></TextField>
         </Box>
-        <Button onClick={handleSaveToLocalStorage} variant="contained" size="small" sx={{ backgroundColor: 'rgb(13, 184, 13)', margin: '10px' }}>Spara</Button>
         <Box
           display="flex"
           flexDirection="row"
