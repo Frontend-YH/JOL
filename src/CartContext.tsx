@@ -7,6 +7,7 @@ interface ContextValue {
   removeFromCart: (productId: number) => void;
   lang: Lang;
   setLang: (lang: Lang) => void; 
+  updateCart: (productId: string, quantity: number) => void;
 }
 
 export const CartContext = createContext<ContextValue>({
@@ -14,7 +15,8 @@ export const CartContext = createContext<ContextValue>({
   addToCart: () => {},
   removeFromCart: () => {},
   lang: "swe",
-  setLang: (lang: string) => {}
+  setLang: (lang: string) => {},
+  updateCart: () => {},
 });
 
 interface Props {
@@ -51,11 +53,25 @@ export default function CartProvider({ children }: Props) {
     setCart(updatedCart);
   };
 
-
+    // update cart-product quantity. Decreasing on 1 means 0
+    // which means complete DELETE of that product from the cart
+  const updateCart = (productId: string, quantity: number) => {
+    const updatedCart = cart.map((product) => { 
+      if (product.id == productId) {
+        if(quantity<1) { 
+            return null; // make the entry (product) NULL
+        } else {
+          product.quantity = quantity;
+        }
+      }
+      return product;
+    }).filter(Boolean); // Remove all NULL entries in the cart Array
+    setCart(updatedCart);
+  };
 
   return (
     <CartContext.Provider
-      value={{ cart, lang, addToCart, removeFromCart, setLang }}
+      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang }}
     >
       {children}
     </CartContext.Provider>

@@ -4,12 +4,13 @@ import CheckoutButtons from "./CheckoutButtons";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import './Cart.css';
-import NumberInputBasic from "./NumberInputBasic";
-
+//import QuantityInput from "./_QuantityInput";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 
 export default function Cart(props) {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, updateCart, removeFromCart } = useContext(CartContext);
   const totalPrice = () => {
     let total = 0;
     cart.forEach((product) => {
@@ -19,19 +20,43 @@ export default function Cart(props) {
     return total;
   };
 
+  // increase or decrease cart-product quantity. Decreasing on 1 = 0, = complete delete.
+  const handleButtonClick = (event, operation, product, quantity) => {
+    event.preventDefault();
+    if (operation === 'increase') {
+      updateCart(product, (quantity + 1));
+    } else if (operation === 'decrease') {
+      updateCart(product, (quantity - 1));
+    }
+  };
+
   return (
     <div className="cart-container">
       <h3>Kundvagn:</h3>
       {cart.map((product, index) => (
         <div key={index}>
-          <IconButton aria-label="delete" size="small" color="primary" onClick={() => removeFromCart(product.id)}>
-          <p>
-{product.quantity} st {product.name}   | {product.price} kr /st
-          </p>
           
+     
+          <div style={{display: "flex", minWidth: "320px"}} className="cart-item">
+          <div className="grid-item">
+          <button onClick={(e) => handleButtonClick(e, 'decrease', product.id, product.quantity)}>
+            <RemoveIcon color="primary" />
+          </button>
+          <input type="text" value={product.quantity} readOnly />
+          <button onClick={(e) => handleButtonClick(e, 'increase', product.id, product.quantity)}>
+            <AddIcon color="primary" />
+          </button>
+          </div>
+          <div className="grid-item">
+           <p>st {product.name}   | {product.price} kr /st</p> 
+           </div>
+           <div className="grid-item">
+           <IconButton aria-label="delete" size="small" color="primary" onClick={() => removeFromCart(product.id)}>
             <DeleteIcon fontSize="inherit" />
           </IconButton>
-          <NumberInputBasic></NumberInputBasic>
+          </div>
+          
+          </div>
         </div>
       ))}
       <h4>Totalpris: {totalPrice()} kr</h4>
@@ -39,3 +64,11 @@ export default function Cart(props) {
     </div>
   );
 }
+
+/*
+
+      <IconButton aria-label="delete" size="small" color="primary" onClick={() => removeFromCart(product.id)}>
+            <DeleteIcon fontSize="inherit" />
+          </IconButton>
+
+          */
