@@ -4,10 +4,9 @@
 }
 h1 {
   font-family: StarBlushSerif;
-  font-weight: 500!important;
+  font-weight: 500 !important;
   font-size: 2rem !important;
-  line-height: 2.2rem!important;
-  
+  line-height: 2.2rem !important;
 }
 nav {
   height: 80px;
@@ -43,4 +42,10 @@ a {
 
 .flag {
   width: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    gap: 6vw;
+  }
 }
