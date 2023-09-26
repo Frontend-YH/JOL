@@ -18,8 +18,7 @@ import { useContext } from "react";
 import { CartContext } from "./CartContext.tsx"
 
 
-/* import images from "./assets/Images/images.ts";
-import ImageCarousel from "./components/ImageCarousel.tsx"; */
+
 function App() {
 
   const { lang, setLang } = useContext(CartContext);
@@ -43,7 +42,7 @@ function App() {
             <Route path="/admin/Orders" element={<AdminOrders />} />
            
             </Routes>
-            {/* <ImageCarousel images={images} /> */}
+           
       </>
   )
 }
