@@ -1,34 +1,34 @@
-.SSDiv{
-display: block;
-text-align: center;
-border: 1px solid #ddd;
-border-radius: 6px;
-width: 100%;
-background-color: #eee;
-
+.SSDiv {
+  display: block;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #eee;
 }
 
-#All-Products{
-    background-color: rgb(13, 184, 13);
-    color: white;
-    margin: 0px 30px 30px 30px;
-    
-    box-sizing: border-box;
+#All-Products {
+  background-color: rgb(13, 184, 13);
+  color: white;
+  margin: 0px 30px 30px 30px;
+
+  box-sizing: border-box;
 }
 
-#All-Products2{
-    background-color: rgb(255, 255, 255);
-    color: green;
-    margin: 0px 30px 30px 30px;
-    border: 1px solid green;
-    box-sizing: border-box;
+#All-Products2 {
+  background-color: rgb(255, 255, 255);
+  color: green;
+  margin: 0px 30px 30px 30px;
+  border: 1px solid green;
+  box-sizing: border-box;
 }
 
 @media only screen and (max-width: 600px) {
-.SSDiv{
-    margin-left: 10px;
-    margin-left: 10px;
+  .SSDiv {
+   
     border-top: 1px solid #ccc;
+    width: 100%;
   }
-
+  .prod-card{
+    width: 50%;
+  }
 }

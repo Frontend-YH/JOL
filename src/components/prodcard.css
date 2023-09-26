@@ -38,17 +38,21 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
 }
-.css-1x1xx5k{
-  max-width: 100!important;
+.css-1x1xx5k {
+  max-width: 100 !important;
 }
 /* Mediaförfrågan för att anpassa layouten för mobila enheter */
 @media (max-width: 768px) {
-  .products-div {
-    flex-direction: column; /* Ändra till kolumnlayout på mobilen */
+  .css-1x1xx5k {
+    max-width: 100 !important;
   }
-  .css-1x1xx5k{
-  max-width: 100!important;
+  .prod-card {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 }
