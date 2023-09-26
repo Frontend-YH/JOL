@@ -227,11 +227,18 @@ function PaymentForm() {
                 <p>49:- , 5 dagars leveranstid</p>
                 <p>Levererar till ombud</p>
               </Box>
-              <Checkbox
-                classes={{ root: 'custom-checkbox-root' }}
-                checked={postnordChecked}
-                onChange={(e) => setPostnordChecked(e.target.checked)}
-              ></Checkbox>
+                <Checkbox
+                    classes={{ root: 'custom-checkbox-root' }}
+                    checked={postnordChecked}
+                    onChange={(e) => {
+                    setPostnordChecked(e.target.checked);
+                    if (e.target.checked) {
+                    localStorage.setItem('shippingcost', '49');
+                    } else {
+                    localStorage.removeItem('shippingcost');
+                    }
+                    }}
+                ></Checkbox>
             </Box>
             <Box id={dhlId} display='flex' flexDirection='row' margin='10px'>
               <Box className='imgBlock'>
@@ -247,7 +254,14 @@ function PaymentForm() {
               <Checkbox
                 classes={{ root: 'custom-checkbox-root' }}
                 checked={dhlChecked}
-                onChange={(e) => setDhlChecked(e.target.checked)}
+                onChange={(e) => {
+                    setDhlChecked(e.target.checked);
+                    if (e.target.checked) {
+                    localStorage.setItem('shippingcost', '99');
+                    } else {
+                    localStorage.removeItem('shippingcost');
+                    }
+                    }}
               ></Checkbox>
             </Box>
             <Box
@@ -269,7 +283,14 @@ function PaymentForm() {
               <Checkbox
                 classes={{ root: 'custom-checkbox-root' }}
                 checked={dbSchenkerChecked}
-                onChange={(e) => setDbSchenkerChecked(e.target.checked)}
+                onChange={(e) => {
+                    setDbSchenkerChecked(e.target.checked);
+                    if (e.target.checked) {
+                    localStorage.setItem('shippingcost', '79');
+                    } else {
+                    localStorage.removeItem('shippingcost');
+                    }
+                    }}
               ></Checkbox>
             </Box>
           </Box>

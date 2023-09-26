@@ -33,8 +33,9 @@ function ProductsContainer() {
         {data.map((dataItem) => (
           <ProdCard
             key={dataItem._id}
+            id={dataItem._id}
             name={dataItem.name}
-            price={dataItem.price + ":-"}
+            price={parseInt(dataItem.price)}
             description={dataItem.description}
             imgUrls={(dataItem.pictures || dataItem.picture || [])
               .filter(Boolean)

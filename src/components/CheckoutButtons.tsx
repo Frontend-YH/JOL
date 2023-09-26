@@ -1,8 +1,11 @@
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
+/*
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { ReactNode } from "react";
+*/
 
-
+/*
 interface CustomLinkProps{
     to: string;
     children: ReactNode;
@@ -21,14 +24,30 @@ function CustomLink({ to, children, ...props}: CustomLinkProps){
         </li>
       );
 }
+*/
 
 
 
-const CheckoutButtons = () => {
+const CheckoutButtons = (props) => {
+
+  const navigate = useNavigate();
+
+  const handleCheckoutClick = () => {
+    // Use navigate() to navigate to /checkout
+    navigate('/customerregister');
+    props.toggleSidebar();
+  };
+
+  const handleContinueShoppingClick = () => {
+    // Use navigate() to navigate to /checkout
+    navigate('/butik');
+    props.toggleSidebar();
+  };
+
      return (
 <div className= 'Shop-Button-Container'>
-<Button variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin:'10px'}}>Fortsätt handla</Button>
-<Button href="/CustomerRegister"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}}>Checkout</Button>
+<Button variant="contained" size="small" sx={{backgroundColor: 'grey', margin:'10px'}} onClick={handleContinueShoppingClick}>Fortsätt handla</Button>
+<Button variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}} onClick={handleCheckoutClick}>Checkout</Button>
 </div>
     )}
 

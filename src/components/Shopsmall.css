@@ -1,9 +1,11 @@
 .SSDiv{
 display: block;
 text-align: center;
-border: 2px solid #ddd;
+border: 1px solid #ddd;
 border-radius: 6px;
 width: 100%;
+background-color: #eee;
+
 }
 
 #All-Products{
@@ -29,15 +31,4 @@ width: 100%;
     border-top: 1px solid #ccc;
   }
 
-  .product-categories {
-
-    
-    
-
-  }
-
-  .product-button {
-   
-
-  }
-
+}

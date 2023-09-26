@@ -1,30 +1,42 @@
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import React, { useContext  } from 'react';
+import { CartContext } from "../CartContext";
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
 import './prodcard.css';
-//import SwipeableTextMobileStepper from './ImageCarousel';
+
+/*
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select"; 
+*/
 
 
+/*
 interface ProdCardProps {
     imgUrls: string[];
     name: string;
     price: string;
     description: string;
     id: string;
+    key: string;
 }
+*/
 
 
-export default function ProdCard(props: ProdCardProps) {
+export default function ProdCard(props) {
+
+    
+    const { addToCart } = useContext(CartContext);
+
+
 return (
 <>
 <div className="prod-card">
 <Card sx={{ padding: 2, marginBottom: 2 }}>
-    <img src={props.imgUrls[0]}/>
+    <img style={{borderRadius: "6px"}} src={props.imgUrls[0]}/>
 <CardContent>
 <Typography gutterBottom variant="h5" component="div">
 {props.name}
@@ -36,7 +48,7 @@ return (
 </CardContent>
 <div className="btn-quantity">
 
-<Button variant="contained">Lägg till i kundvagn</Button>
+<Button variant="contained" onClick={() => addToCart(props)}>Lägg till i kundvagn</Button>
 </div>
 </Card>
 </div>
