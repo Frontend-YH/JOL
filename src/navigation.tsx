@@ -30,6 +30,7 @@ const Navigation = (props) => {
 };
 /* ################################### */
 
+// Show how many items is in the Cart
 const cartLength = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
