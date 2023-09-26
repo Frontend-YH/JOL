@@ -5,16 +5,14 @@ interface ContextValue {
   cart: CartProduct[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
-  toggleCart: () => void;
-  isCartOpen: boolean;
+
 }
 
 export const CartContext = createContext<ContextValue>({
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
-  toggleCart: () => {},
-  isCartOpen: false,
+
 });
 
 interface Props {
@@ -23,11 +21,9 @@ interface Props {
 
 export default function CartProvider({ children }: Props) {
   const [cart, setCart] = useState<CartProduct[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+
+
 
   const addToCart = (product: Product) => {
     //setCart((prevState) => [...prevState, product]);
@@ -56,7 +52,7 @@ export default function CartProvider({ children }: Props) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, isCartOpen, toggleCart }}
+      value={{ cart, addToCart, removeFromCart }}
     >
       {children}
     </CartContext.Provider>
