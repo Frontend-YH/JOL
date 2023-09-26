@@ -1,8 +1,10 @@
 import '../shopblock.css';
+import { useContext } from "react";
+import { CartContext } from "../CartContext";
 import Button from '@mui/material/Button';
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { ReactNode } from "react";
-import { Box, Checkbox, TextField } from '@mui/material';
+import { Box } from '@mui/material';
 
 
 interface CustomLinkProps{
@@ -26,6 +28,9 @@ function CustomLink({ to, children, ...props}: CustomLinkProps){
 
 
 function CheckoutContainer() {
+
+    const { cart } = useContext(CartContext);
+
     return ( 
 <div id= 'Orderingpage'>
     <Box className= 'Register'>

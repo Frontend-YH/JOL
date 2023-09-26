@@ -24,9 +24,8 @@ export default function CartProvider({ children }: Props) {
 
 
 
-
   const addToCart = (product: Product) => {
-    //setCart((prevState) => [...prevState, product]);
+  
     const productInCart = cart.find(
       (cartProduct) => cartProduct.id === product.id
     );
