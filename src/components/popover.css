@@ -1,0 +1,19 @@
+.product-categories{
+    margin: 3%;
+}
+.css-wudn58 {
+    display: flex;
+    flex-direction: column;
+    gap:5% !important;
+   
+}
+
+#transition-popper{
+    width: 100%;
+    padding-top: 3%;
+}
+#All-Products2{
+ 
+    gap:5% !important;
+    margin: auto;
+}
