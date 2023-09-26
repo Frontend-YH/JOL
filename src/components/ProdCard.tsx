@@ -41,7 +41,7 @@ return (
 <Typography gutterBottom variant="h5" component="div">
 {props.name}
 </Typography>
-<h4 className="price">{props.price}</h4>
+<h4 className="price">{props.price}:-</h4>
 <Typography variant="body2" color="text.secondary">
 {props.description}
 </Typography>
