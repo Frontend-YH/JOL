@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const CustomerData = mongoose.Schema({
+const CustomerSchema = mongoose.Schema({
     firstName:String,
       lastName:String,
       phoneNumber:Number,
@@ -10,4 +10,4 @@ const CustomerData = mongoose.Schema({
       postCode:Number
 });
 
-module.exports= mongoose.model('customerData',CustomerData);
+module.exports= mongoose.model('customerData',CustomerSchema);

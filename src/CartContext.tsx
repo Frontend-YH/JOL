@@ -1,18 +1,20 @@
-import { ReactNode, createContext, useState } from "react";
-import { Product, CartProduct } from "./dataInterfaces.ts";
+import { ReactNode, createContext, useState, useEffect } from "react";
+import { Product, CartProduct, Lang } from "./dataInterfaces.ts";
 
 interface ContextValue {
   cart: CartProduct[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
-
+  lang: Lang;
+  setLang: (lang: Lang) => void; 
 }
 
 export const CartContext = createContext<ContextValue>({
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
-
+  lang: "swe",
+  setLang: (lang: string) => {}
 });
 
 interface Props {
@@ -21,8 +23,8 @@ interface Props {
 
 export default function CartProvider({ children }: Props) {
   const [cart, setCart] = useState<CartProduct[]>([]);
-
-
+  //const language = localStorage.getItem("language") || "swe"; // swe or eng possible
+  const [lang, setLang] = useState<Lang>(); // swedish or engling language switch
 
   const addToCart = (product: Product) => {
   
@@ -49,9 +51,11 @@ export default function CartProvider({ children }: Props) {
     setCart(updatedCart);
   };
 
+
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart }}
+      value={{ cart, lang, addToCart, removeFromCart, setLang }}
     >
       {children}
     </CartContext.Provider>

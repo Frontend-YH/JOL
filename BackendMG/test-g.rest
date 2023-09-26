@@ -25,3 +25,23 @@ Content-Type: application/json
 }
 
 ###
+
+// LOGGA IN USER
+POST http://localhost:3000/addOrder
+Content-Type: application/json
+
+{
+  "firstName": "jonas",
+  "lastName": "bergman",
+  "phone": "0171544543",
+  "email": "xxx@test.net",
+  "address": "Tebyvegen 9",
+  "city": "Uppsala",
+  "postCode": "74565",
+  "totalCost": "1000",
+  "payed": "true",
+  "payMethod": "swish",
+  "products": [{"test": "test", "test2": "test2"}]
+    
+}
+

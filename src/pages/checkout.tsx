@@ -5,18 +5,14 @@ import Button from '@mui/material/Button';
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { ReactNode } from "react";
 import { Box } from '@mui/material';
-
-
 interface CustomLinkProps{
     to: string;
     children: ReactNode;
 }
 
-
 function CustomLink({ to, children, ...props}: CustomLinkProps){
     const resolvePath = useResolvedPath(to)
     const isActive = useMatch({ path: resolvePath.pathname, end: true})
-
     return (
         <li className={isActive ? "active" : ""}>
           <Link to={to} {...props}>
@@ -25,7 +21,6 @@ function CustomLink({ to, children, ...props}: CustomLinkProps){
         </li>
       );
 }
-
 
 function CheckoutContainer() {
 
