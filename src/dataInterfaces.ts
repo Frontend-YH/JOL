@@ -12,3 +12,4 @@ export interface CartProduct extends Product {
     quantity: number
 }
 
+export type Lang = string;
