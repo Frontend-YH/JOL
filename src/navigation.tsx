@@ -6,7 +6,7 @@ import { Grid, Box, Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from "@mui/material/Badge";
 import './Navigation.css'
-import Cart from "./Cart";
+import Cart from "./components/Cart";
 interface CustomLinkProps{
     to: string;
     children: ReactNode;

@@ -2,7 +2,7 @@
 import CheckoutButtons from "./CheckoutButtons";
 import ShopBlock from "./shopBlock";
 */
-import Cart from "../Cart";
+import Cart from "./Cart";
 
 /* <ShopBlock></ShopBlock> */
 

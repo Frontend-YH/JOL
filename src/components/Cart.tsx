@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CartContext } from "./CartContext";
-import CheckoutButtons from "./components/CheckoutButtons";
+import { CartContext } from "../CartContext"
+import CheckoutButtons from "./CheckoutButtons";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import './Cart.css';
