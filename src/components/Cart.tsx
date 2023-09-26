@@ -55,10 +55,11 @@ export default function Cart(props) {
             <DeleteIcon fontSize="inherit" />
           </IconButton>
           </div>
-          
+
           </div>
         </div>
       ))}
+      <p>Moms 25%: {(totalPrice() * 0.8) / 4} kr</p>
       <h4>Totalpris: {totalPrice()} kr</h4>
       <CheckoutButtons toggleSidebar={props.toggleSidebar}></CheckoutButtons>
     </div>
