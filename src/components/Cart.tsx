@@ -4,6 +4,9 @@ import CheckoutButtons from "./CheckoutButtons";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import './Cart.css';
+import NumberInputBasic from "./NumberInputBasic";
+
+
 
 export default function Cart(props) {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -23,11 +26,12 @@ export default function Cart(props) {
         <div key={index}>
           <IconButton aria-label="delete" size="small" color="primary" onClick={() => removeFromCart(product.id)}>
           <p>
-            {product.quantity} st {product.name}   | {product.price} kr /st
+{product.quantity} st {product.name}   | {product.price} kr /st
           </p>
           
             <DeleteIcon fontSize="inherit" />
           </IconButton>
+          <NumberInputBasic></NumberInputBasic>
         </div>
       ))}
       <h4>Totalpris: {totalPrice()} kr</h4>
