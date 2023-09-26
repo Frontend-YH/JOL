@@ -53,7 +53,7 @@ export default function Cart(props) {
           <div className="grid-item" style={{width: "150px"}}>
            <p> {product.name}</p>
            </div>
-           <div className="grid-item"><p>{product.price} kr /st</p> 
+           <div className="grid-item"><p>{product.price} :- /st</p> 
            </div>
            <div className="grid-item">
            <IconButton aria-label="delete" size="small" color="primary" onClick={() => removeFromCart(product.id)}>
