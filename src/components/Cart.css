@@ -2,6 +2,8 @@
 
 .cart-container {
 
+    display: block;
+    min-width: 300px;
     position: fixed;
     top: 5.5rem;
     right: 0rem;
@@ -15,6 +17,32 @@
 
 }
 
+.grid-item {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+  
+}
+
+.cart-item {
+    font-size: 1.1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 100px 150px 20px); 
+    gap: 10px; 
+    align-items: end;
+}
+
+.cart-item input {
+    width: 24px;
+    height: 22px;
+}
+
+.cart-item button {
+    width: 38px;
+    height: 28px;
+}
+
 h3 {
     margin-top: 0px;
     font-size: 20px;
@@ -26,4 +54,6 @@ h3 {
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 0px;
     color: black;
+    display: inline;
+    margin: 0;
 }
