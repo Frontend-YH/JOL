@@ -31,6 +31,12 @@
 .prod-card img {
   width: auto;
   height: 200px;
+  box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.prod-card img:hover {
+  box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.0);
+    /* box-shadow: 3px 3px solid rgb(2, 137, 255); */
 }
 
 /* Container för produktkort */
@@ -79,12 +85,12 @@ body {
   display: flex;
   position: fixed;
   top: 0;
-  right: 10%;
+  right: 7%;
   padding: 4%;
   bottom: 0;
   top: 7%;
   width: 80%;
-  height: 89%;
+  height: 79%;
   background-color: #fff;
   z-index: 1000;
   justify-content: center;
@@ -93,6 +99,7 @@ body {
   -moz-border-radius: 5%;
   -ms-border-radius: 5%;
   -o-border-radius: 5%;
+  border: 2px solid #000;
 }
 
 .popup-content {
