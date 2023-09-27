@@ -20,9 +20,9 @@ export default function ProdCard(props) {
 
     return (
         <>
-            <div className="prod-card" onClick={openPopup}>
+            <div className="prod-card">
                 <Card sx={{ padding: 2, marginBottom: 2 }}>
-                    <img style={{ borderRadius: "6px" }} src={props.imgUrls[0]} alt={props.name} />
+                    <img style={{ borderRadius: "6px", cursor: "pointer" }} src={props.imgUrls[0]} alt={props.name} onClick={openPopup} />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.name}
