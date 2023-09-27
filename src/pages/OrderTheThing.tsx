@@ -16,7 +16,3 @@ function OrderTheThing() {
 }
 
 export default OrderTheThing;
-
-
-
-
