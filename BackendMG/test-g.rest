@@ -49,10 +49,12 @@ Content-Type: application/json
 ###
 
 // ADD PRODUCT DATA
-POST http://localhost:3000/addProduct
+POST http://localhost:3000/addproduct
 Content-Type: application/json
 
 {
   "articleNumber": "12345",
   "name": "bergman",
+  "picture": ["hej", "hejsan"],
+  "thumbnail": ["hej", "hejsan"]
 }

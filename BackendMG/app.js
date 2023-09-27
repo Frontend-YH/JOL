@@ -130,29 +130,38 @@ app.post('/newCustomerData', async (req, res) => {
 
 //const addProduct = mongoose.model('addProduct', minimalSchema, 'Products');
 app.post('/addproduct', async (req, res) => {
-  try {
-    // Create a new user instance based on the request body
-    const newProduct = new AddProducts({
-      articleNumber: req.body.articleNumber,
-      name: req.body.name,
-      engName: req.body.engName,
-      description: req.body.description,
-      engDescription: req.body.engDescription,
-      price: req.body.price,
-      picture: req.body.picture,
-      thumbnail: req.body.thumbnail,
-      category: req.body.category,
-      numberAvailable: req.body.numberAvailable,
-    });
 
-    // Save the user to the database
-    await newProduct.save();
+  if (Array.isArray(req.body.picture)) {
 
-    res.status(201).json({ message: 'Product Data added successfully', user: newProduct });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
+    if (Array.isArray(req.body.thumbnail)) {
+
+        try {
+          // Create a new user instance based on the request body
+          const newProduct = new AddProducts({
+            articleNumber: req.body.articleNumber,
+            name: req.body.name,
+            engName: req.body.engName,
+            description: req.body.description,
+            engDescription: req.body.engDescription,
+            price: req.body.price,
+            picture: req.body.picture,
+            thumbnail: req.body.thumbnail,
+            category: req.body.category,
+            numberAvailable: req.body.numberAvailable,
+          });
+
+          // Save the user to the database
+          await newProduct.save();
+
+          res.status(201).json({ message: 'Product Data added successfully', user: newProduct });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: 'Internal Server Error' });
+        }
+
+      } { res.status(401).json({ message: 'Thumbnail is not an array. Add blocked.' }) }
+} else { res.status(401).json({ message: 'Picture is not an array. Add blocked.' }) }
+
 });
 
 // #######################################################################################
@@ -184,6 +193,7 @@ const orderSchema = new mongoose.Schema({
 const addOrder = mongoose.model('Order', minimalSchema, 'OrderData');
 app.post('/addOrder', async (req, res) => {
   try {
+    
     // Create a new user instance based on the request body
     const newOrder = new addOrder({
       firstName: req.body.firstName,
