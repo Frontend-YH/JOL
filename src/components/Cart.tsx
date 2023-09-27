@@ -84,7 +84,7 @@ export default function Cart(props) {
           </>
         )}
 
-      <CheckoutButtons lang={lang} toggleSidebar={props.toggleSidebar}></CheckoutButtons>
+      <CheckoutButtons toggleSidebar={props.toggleSidebar}></CheckoutButtons>
     </div>
   );
 }

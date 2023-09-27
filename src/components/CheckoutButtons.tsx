@@ -1,5 +1,13 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+
+import { useContext } from "react";
+import { CartContext } from "../CartContext.tsx"
+
+
+
+ 
+
 /*
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { ReactNode } from "react";
@@ -30,13 +38,9 @@ function CustomLink({ to, children, ...props}: CustomLinkProps){
 
 const CheckoutButtons = (props) => {
 
+  const { cart, lang } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const handleCheckoutClick = () => {
-    // Use navigate() to navigate to /checkout
-    navigate('/customerregister');
-    props.toggleSidebar();
-  };
 
   const handleContinueShoppingClick = () => {
     // Use navigate() to navigate to /checkout
@@ -44,9 +48,23 @@ const CheckoutButtons = (props) => {
     props.toggleSidebar();
   };
 
+  const handleCheckoutClick = () => {
+
+    if(cart.length>0) {
+      // Use navigate() to navigate to /checkout
+      navigate('/customerregister');
+      props.toggleSidebar();
+  } else {
+    alert("Kundvagnen är tom!")
+  }
+
+  };
+
+
+
   let continueShopping: string;
   let checkOut: string;
-  if(props.lang==="swe") { continueShopping = "Fortsätt handla"; checkOut = "Till Kassan"; }
+  if(lang==="swe") { continueShopping = "Fortsätt handla"; checkOut = "Till Kassan"; }
   else { continueShopping = "Continue shopping"; checkOut = "Checkout"; }
 
      return (
