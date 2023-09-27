@@ -21,7 +21,7 @@ export default function ProdCard(props) {
     return (
         <>
             <div className="prod-card">
-                <Card sx={{ padding: 2, marginBottom: 2 }}>
+                <Card sx={{ padding: 8, paddingBottom: "10px", marginBottom: 2, margin: "0px" }}>
                     <img style={{ borderRadius: "6px", cursor: "pointer" }} src={props.imgUrls[0]} alt={props.name} onClick={openPopup} />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
@@ -35,7 +35,7 @@ export default function ProdCard(props) {
                     <div className="btn-quantity">
                         <Button variant="contained" onClick={() => addToCart(props)}>
                             {props.lang === "swe" ? (
-                                <>Lägg till i kundvagn</>
+                                <>Lägg i kundvagn</>
                             ) : (
                                 <>Add to cart</>
                             )}
@@ -58,7 +58,7 @@ export default function ProdCard(props) {
         {props.description}
     </Typography>
 </CardContent>
-<Button variant="contained" onClick={() => addToCart(props)}>
+<Button size="large" style={{marginRight: "10px", width: "260px", padding: "12px"}} variant="contained" onClick={() => addToCart(props)}>
                             {props.lang === "swe" ? (
                                 <>Lägg till i kundvagn</>
                             ) : (
@@ -71,7 +71,7 @@ export default function ProdCard(props) {
                     }
                     <Card>
                         {/* ... Produktdetaljer ... */}
-                        <Button onClick={closePopup}>Stäng</Button>
+                        <Button size="large" onClick={closePopup}>Stäng</Button>
                     </Card>
                 </div>
             )}

@@ -6,8 +6,8 @@ const Form1 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can do something with the 'name' value here, like sending it to a server or performing some action.
-    console.log(name);
+  
+    
   };
 
   return (
