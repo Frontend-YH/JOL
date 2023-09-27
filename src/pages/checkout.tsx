@@ -69,7 +69,7 @@ function CheckoutContainer() {
     const names = cart.map((item) => item.name);
     const price = cart.map((item) => item.price);
     const id = cart.map((item) => item.id);
-    console.log(price);
+ 
     
     const TotalPrice = () => {
         let total = 0;

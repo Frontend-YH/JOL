@@ -24,15 +24,29 @@
   padding: 20px;
   background-color: #f0f0f0;
   text-align: center;
-  align-items: center;
+  align-items:center;
   justify-content: center;
 }
 
 .prod-card img {
-  width: auto;
-  height: 200px;
+  max-width: 264px;
+  height:auto;
+  max-height: 300px;
   box-shadow:  0px 0px 10px rgba(0,0,0, 0.2);
+
 }
+
+
+@media (max-width: 600px) {
+  .prod-card img {
+    max-width: 204px;
+    height:auto;
+    max-height: 300px;
+    box-shadow:  0px 0px 10px rgba(0,0,0, 0.2);
+  
+  }
+}
+
 
 .prod-card img:hover {
   box-shadow:  0px 0px 10px rgba(24,118,209,0.5);
@@ -83,14 +97,15 @@ body {
 .product-popup {
   border-radius: 5%;
   display: flex;
+  flex-wrap: wrap;
   position: fixed;
-  top: 0;
-  right: 7%;
+  gap: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 4%;
-  bottom: 0;
-  top: 7%;
-  width: 80%;
-  height: 79%;
+  width: 76%;
+  height: 76%;
   background-color: #fff;
   z-index: 1000;
   justify-content: center;
@@ -106,13 +121,70 @@ body {
 .popup-content {
   /* Innehållet i popup-fönstret */
   background-color: #fff; /* Vit bakgrund för innehåll */
-  padding: 20px;
+  padding-right: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
+  
 }
 .product-popup img {
-  width: 42%;
-  height: 77%;
+  margin: 00px 20px 20px 20px;
+  max-width: 67%;
+  max-height: 65%;
+  box-shadow:  0px 0px 10px rgba(0,0,0, 0.2);
+  
 }
+
+@media (max-width: 600px) {
+  
+  .popup-content {
+    /* Innehållet i popup-fönstret */
+    background-color: #fff; /* Vit bakgrund för innehåll */
+    padding: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+  }
+  .product-popup img {
+    max-width: 88%;
+    max-height: 65%;
+    box-shadow:  0px 0px 10px rgba(0,0,0, 0.2);
+    margin: 0px;
+  }
+
+/* Popup-fönstret */
+.product-popup {
+
+  display: flex;
+  align-items: center;
+  position: fixed;
+  gap: 10px;
+  top: 0;
+  right: 0;
+  padding: 0;
+  bottom: 0;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, 0%);
+  background-color: #fff;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius: 0%;
+  -moz-border-radius: 0%;
+  -ms-border-radius: 0%;
+  -o-border-radius: 0%;
+  border-radius: 0;
+  border: 0px solid #1876d1;
+  overflow-y: scroll;
+  /* box-shadow:  0px 0px 20px rgba(24,118,209,0.5); */
+}  
+
+
+}
+
+
+
+
 
 #root > div.products-div > div.product-popup > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-bhp9pd-MuiPaper-root-MuiCard-root{
   width: 20%;

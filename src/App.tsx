@@ -22,7 +22,7 @@ import { CartContext } from "./CartContext.tsx"
 function App() {
 
   const { lang, setLang } = useContext(CartContext);
-console.log(lang);
+
   return (
     <>
     <Navigation lang={lang} setLang={setLang}/>
