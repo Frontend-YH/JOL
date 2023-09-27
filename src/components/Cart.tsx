@@ -9,8 +9,10 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 
+
+
 export default function Cart(props) {
-  const { cart, updateCart, removeFromCart } = useContext(CartContext);
+  const { cart, updateCart, removeFromCart, lang } = useContext(CartContext);
   const totalPrice = () => {
     let total = 0;
     cart.forEach((product) => {
@@ -32,7 +34,11 @@ export default function Cart(props) {
 
   return (
     <div className="cart-container">
-      <h3>Kundvagn</h3>
+       {lang==="swe" ? (
+          <h3>Kundvagn</h3>
+        ) : (
+          <h3>Cart</h3>
+        )}
       {cart.map((product, index) => (
         <div key={index}>
           
@@ -64,9 +70,21 @@ export default function Cart(props) {
           </div>
         </div>
       ))}
-      <p>Moms 25%: {(totalPrice() * 0.8) / 4} :-</p>
-      <h4>Totalbelopp: {totalPrice()} :-</h4>
-      <CheckoutButtons toggleSidebar={props.toggleSidebar}></CheckoutButtons>
+      
+
+       {lang==="swe" ? (
+          <>
+          <p>Moms 25%: {(totalPrice() * 0.8) / 4} :-</p>
+          <h4>Totalbelopp: {totalPrice()} :-</h4>
+          </>
+        ) : (
+          <>
+          <p>VAT 25%: {(totalPrice() * 0.8) / 4} :-</p>
+          <h4>Total amount: {totalPrice()} :-</h4>
+          </>
+        )}
+
+      <CheckoutButtons lang={lang} toggleSidebar={props.toggleSidebar}></CheckoutButtons>
     </div>
   );
 }

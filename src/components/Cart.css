@@ -30,10 +30,10 @@
     flex-direction: row; 
     align-items: center;
     height: 23px;
-    width: 46px;
+    width: 46px;    
     border: 0px solid #eee;
     justify-content: center;
-    border-radius: 2px;
+    border-radius: 6px;
     overflow: hidden;
     padding: 5px;
     margin: 1px;
