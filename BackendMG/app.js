@@ -68,6 +68,7 @@ const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
 const CustomerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
 const OrderData = mongoose.model('DynamicModel', minimalSchema, 'OrderData')
+const AddProducts = mongoose.model('DynamicModel', minimalSchema, 'Products')
 // ####################################################################################
 
 
@@ -127,12 +128,37 @@ app.post('/newCustomerData', async (req, res) => {
 });
 
 
-//Spara produkter i databasen.
-app.post('/addProduct', async (req, res) => {
-let data = Product(req.body);
-const result = await data.save();
-res.send(result);
+//const addProduct = mongoose.model('addProduct', minimalSchema, 'Products');
+app.post('/addproduct', async (req, res) => {
+  try {
+    // Create a new user instance based on the request body
+    const newProduct = new AddProducts({
+      articleNumber: req.body.articleNumber,
+      name: req.body.name,
+      engName: req.body.engName,
+      description: req.body.description,
+      engDescription: req.body.engDescription,
+      price: req.body.price,
+      picture: req.body.picture,
+      thumbnail: req.body.thumbnail,
+      category: req.body.category,
+      numberAvailable: req.body.numberAvailable,
+    });
+
+    // Save the user to the database
+    await newProduct.save();
+
+    res.status(201).json({ message: 'Product Data added successfully', user: newProduct });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 });
+
+// #######################################################################################
+
+
+
 
 //Spara kunder i databasen
 app.post('/addCustomer', async (req, res) => {

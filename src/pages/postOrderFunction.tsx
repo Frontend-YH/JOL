@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import { CartContext } from '../CartContext';
+import { useContext } from "react";
 
 function useOrderPost() {
+  const { cart } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -22,13 +25,15 @@ function useOrderPost() {
       const kort = localStorage.getItem('kort') === 'true';
       const phonenumber = localStorage.getItem('phoneNumber');
       const totalAndShipping = localStorage.getItem('totalCost');
+    
+      
 
       const orderData = {
         shipping: postnordChecked || dhlChecked || dbSchenkerChecked,
         address: address,
         city: city,
         phone: phonenumber,
-        products: [],
+        products: cart,
         totalCost: totalAndShipping,
         payMethod: swish || kort,
         payed: true,
@@ -52,7 +57,11 @@ function useOrderPost() {
 
       const responseData = await response.json();
       console.log('Order posted successfully:', responseData);
+      window.alert(`Din order är nu beställd. Ditt ordernummer är: ${responseData.user._id}`);
       // If successful, you can update state or return any data if needed
+
+      localStorage.clear();
+      cart.splice(0, cart.length);
 
     } catch (err) {
       setError(err);
