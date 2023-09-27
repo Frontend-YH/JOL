@@ -1,24 +1,48 @@
-import React, { useContext, useEffect } from "react";
-import { CartContext } from "../CartContext";
+import { useEffect, useState } from 'react';
+import { CartContext } from '../CartContext';
+import { useContext } from "react";
 
-function PostOrderToServer() {
+function useOrderPost() {
   const { cart } = useContext(CartContext);
-  const firstName = localStorage.getItem('firstName') || '';
-  const lastName = localStorage.getItem('lastName') || '';
-  const address = localStorage.getItem('address') || '';
-  const postalCode = localStorage.getItem('postalCode') || '';
-  const city = localStorage.getItem('city') || '';
-  const postnordChecked = localStorage.getItem('postnord') === 'true';
-  const dhlChecked = localStorage.getItem('dhl') === 'true';
-  const dbSchenkerChecked = localStorage.getItem('dbSchenker') === 'true';
-  const swish = localStorage.getItem('swish') === 'true';
-  const kort = localStorage.getItem('kort') === 'true';
-  const phonenumber = localStorage.getItem('phoneNumber');
-  const totalAndShipping = localStorage.getItem("totalCost");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  const handlePostOrder = async () => {
+    setIsLoading(true);
+    setError(null);
 
-  async function postOrderToServer(orderData) {
     try {
+      // Your order posting logic here
+      const firstName = localStorage.getItem('firstName') || '';
+      const lastName = localStorage.getItem('lastName') || '';
+      const address = localStorage.getItem('address') || '';
+      const postalCode = localStorage.getItem('postalCode') || '';
+      const city = localStorage.getItem('city') || '';
+      const postnordChecked = localStorage.getItem('postnord') === 'true';
+      const dhlChecked = localStorage.getItem('dhl') === 'true';
+      const dbSchenkerChecked = localStorage.getItem('dbSchenker') === 'true';
+      const swish = localStorage.getItem('swish') === 'true';
+      const kort = localStorage.getItem('kort') === 'true';
+      const phonenumber = localStorage.getItem('phoneNumber');
+      const totalAndShipping = localStorage.getItem('totalCost');
+    
+      
+
+      const orderData = {
+        shipping: postnordChecked || dhlChecked || dbSchenkerChecked,
+        address: address,
+        city: city,
+        phone: phonenumber,
+        products: cart,
+        totalCost: totalAndShipping,
+        payMethod: swish || kort,
+        payed: true,
+        isDone: false,
+        firstName: firstName,
+        lastName: lastName,
+        postCode: postalCode
+      };
+
       const response = await fetch('http://localhost:3000/addOrder', {
         method: 'POST',
         headers: {
@@ -33,39 +57,20 @@ function PostOrderToServer() {
 
       const responseData = await response.json();
       console.log('Order posted successfully:', responseData);
-      return responseData;
-    } catch (error) {
-      console.error('Error posting order:', error);
-      throw error;
+      window.alert(`Din order är nu beställd. Ditt ordernummer är: ${responseData.user._id}`);
+      // If successful, you can update state or return any data if needed
+
+      localStorage.clear();
+      cart.splice(0, cart.length);
+
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
-  useEffect(() => {
-    const orderData = {
-      shipping: postnordChecked || dhlChecked || dbSchenkerChecked,
-      address: address,
-      city: city,
-      phone: phonenumber,
-      products: cart,
-      totalCost: totalAndShipping,
-      payMethod: swish || kort,
-      payed: true,
-      isDone: false,
-      firstName: firstName,
-      lastName: lastName,
-      postCode: postalCode,
-    };
-
-    postOrderToServer(orderData)
-      .then((responseData) => {
-        console.log('Order posted successfully:', responseData);
-      })
-      .catch((error) => {
-        console.error('Error posting order:', error);
-      });
-  }, []);
-
-  return <div>Order is being posted...</div>;
+  return { isLoading, error, handlePostOrder };
 }
 
-export default PostOrderToServer;
+export default useOrderPost;

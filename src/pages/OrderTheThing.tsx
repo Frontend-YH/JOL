@@ -3,7 +3,6 @@ import useOrderPost from './postOrderFunction'; // Import your custom hook
 
 function OrderTheThing() {
   const { isLoading, error, handlePostOrder } = useOrderPost();
-  
 
   return (
     <div>
@@ -17,7 +16,3 @@ function OrderTheThing() {
 }
 
 export default OrderTheThing;
-
-
-
-
