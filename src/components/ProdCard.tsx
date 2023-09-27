@@ -48,7 +48,11 @@ return (
 </CardContent>
 <div className="btn-quantity">
 
-<Button variant="contained" onClick={() => addToCart(props)}>Lägg till i kundvagn</Button>
+<Button variant="contained" onClick={() => addToCart(props)}> {props.lang==="swe" ? (
+          <>Lägg till i kundvagn</>
+        ) : (
+          <>Add to cart</>
+        )}</Button>
 </div>
 </Card>
 </div>

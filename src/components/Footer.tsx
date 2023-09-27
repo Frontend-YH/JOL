@@ -1,12 +1,19 @@
 import "./footer.css";
+import { useContext } from "react";
+import { CartContext } from "../CartContext.tsx"
+
+
 function Footer() {
+
+  const { lang } = useContext(CartContext);
+
   return (
     <>
       <footer>
         <div className="open-hour">
           
           <p>
-            <strong>Öppettider: vardagar 9-17, lunchstängt 13 - 14.</strong>
+            <strong>{lang==="swe" ? "Öppettider: vardagar 9-17, lunchstängt 13 - 14." : "Opening hours: weekdays 9-17, closed for lunch 13-14."}</strong>
           </p>
         </div>
         <div className="company-info">

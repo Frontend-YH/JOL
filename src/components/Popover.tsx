@@ -5,7 +5,14 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import "./popover.css"
 
+import { useContext } from "react";
+import { CartContext } from "../CartContext.tsx"
+
+
+
 export default function MenuPopper() {
+
+  const { lang } = useContext(CartContext);
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -20,21 +27,21 @@ export default function MenuPopper() {
   return (
     <div className='product-categories'>
       <Button variant="outlined" aria-describedby={id} type="button" onClick={handleClick}>
-       Kategorier
+      {lang==="swe" ? "Kategorier" : "Categories"}
       </Button>
       <Popper id={id} open={open} anchorEl={anchorEl} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-            <Button variant="contained" size="medium"id="All-Products">Alla kategorier</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Redskap</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Till dörren</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Ljustakar ljuskronor belysning</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Inredning</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Övrigt</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Grindar och räcken</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Gravkors</Button>
-            <Button variant="contained" size="medium"id="All-Products2">Till spisar</Button>
+            <Button variant="contained" size="medium"id="All-Products">{lang==="swe" ? "Alla kategorier" : "All categories"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Redskap" : "Tools"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Till dörren" : "For the door"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Ljustakar ljuskronor belysning" : "Candlestick holders, chandeliers and lighting"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Inredning" : "Interior"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Övrigt" : "Other"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Grindar och räcken" : "Gates and railings"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Gravkors" : "Monumental cross markers"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Till spisar" : "For stoves"}</Button>
             </Box>
           </Fade>
         )}

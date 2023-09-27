@@ -33,6 +33,11 @@ const Navigation = (props) => {
 // Show how many items is in the Cart
 const cartLength = cart.reduce((total, item) => total + item.quantity, 0);
 
+let homeLink: string;
+let shopLink: string;
+if(props.lang==="swe") { homeLink = "Hem"; shopLink = "Butik"; }
+else { homeLink = "Home"; shopLink = "Shop"; }
+
   return (
     isNotAdminRoute && (
       <>
@@ -41,8 +46,8 @@ const cartLength = cart.reduce((total, item) => total + item.quantity, 0);
           <ul>
             <a href="#swedish" onClick={handleSweClick}><img src="./src/assets/Images/swe.png" className="flag"/></a>
             <a href="#english" onClick={handleEngClick}><img src="./src/assets/Images/eng.png" className="flag"/></a>
-            <Link to="/">Hem</Link>
-            <CustomLink to="/butik">Butik</CustomLink>
+            <Link to="/">{homeLink}</Link>
+            <CustomLink to="/butik">{shopLink}</CustomLink>
             <Badge color="primary" badgeContent={cartLength} onClick={showSidebar}>
               <ShoppingCartIcon  style={{ cursor: 'pointer' }} fontSize="large" />
             </Badge>

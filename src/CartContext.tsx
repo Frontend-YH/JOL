@@ -25,8 +25,8 @@ interface Props {
 
 export default function CartProvider({ children }: Props) {
   const [cart, setCart] = useState<CartProduct[]>([]);
-  //const language = localStorage.getItem("language") || "swe"; // swe or eng possible
-  const [lang, setLang] = useState<Lang>(); // swedish or engling language switch
+  const language = localStorage.getItem("language") || "swe"; // swe or eng possible
+  const [lang, setLang] = useState<Lang>(language); // swedish or engling language switch
 
   const addToCart = (product: Product) => {
   

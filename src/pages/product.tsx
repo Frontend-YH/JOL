@@ -3,9 +3,14 @@ import Footer from "../components/Footer.tsx";
 import Smallshop from "../components/ShopSmall.tsx";
 import ProdCard from "../components/ProdCard.tsx";
 
+import { useContext } from "react";
+import { CartContext } from "../CartContext.tsx"
+
+
 
 function ProductsContainer() {
 
+  const { lang } = useContext(CartContext); // swe or eng picked?
     const [data, setData] = useState([]);
 
   /* Collect Product Data from Backend Database */
@@ -33,10 +38,11 @@ function ProductsContainer() {
         {data.map((dataItem) => (
           <ProdCard
             key={dataItem._id}
+            lang={lang}
             id={dataItem._id}
-            name={dataItem.name}
+            name={lang === "swe" ? dataItem.name : dataItem.engName} // English if english have been picked
             price={parseInt(dataItem.price)}
-            description={dataItem.description}
+            description={lang === "swe" ? dataItem.description : dataItem.engDescription} // English if english is picked
             thumbnailUrls={(dataItem.thumbnail || []).filter(Boolean)
               .map(
                 (thumbnail) => `https://gardsjosmedja.com/products/${thumbnail}`

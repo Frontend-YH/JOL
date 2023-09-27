@@ -44,10 +44,15 @@ const CheckoutButtons = (props) => {
     props.toggleSidebar();
   };
 
+  let continueShopping: string;
+  let checkOut: string;
+  if(props.lang==="swe") { continueShopping = "Fortsätt handla"; checkOut = "Till Kassan"; }
+  else { continueShopping = "Continue shopping"; checkOut = "Checkout"; }
+
      return (
 <div className= 'Shop-Button-Container'>
-<Button variant="contained" size="small" sx={{backgroundColor: 'grey', margin:'10px'}} onClick={handleContinueShoppingClick}>Fortsätt handla</Button>
-<Button variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}} onClick={handleCheckoutClick}>Checkout</Button>
+<Button variant="contained" size="small" sx={{backgroundColor: 'grey', margin:'10px'}} onClick={handleContinueShoppingClick}>{continueShopping}</Button>
+<Button variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}} onClick={handleCheckoutClick}>{checkOut}</Button>
 </div>
     )}
 
