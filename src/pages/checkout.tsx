@@ -7,8 +7,7 @@ import Button from '@mui/material/Button';
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { ReactNode } from "react";
 import { Box, Checkbox, TextField } from '@mui/material';
-import OrderPost from './Orderpost';
-
+import OrderButton from './Orderpost'; // Import the OrderButton component
 
 
 function DeliveryInfo() {
@@ -138,7 +137,7 @@ function CheckoutContainer() {
             display="flex"
             flexDirection="row"
         >
-            <OrderPost/>
+            <OrderButton/>
             <Button component={CustomLink} to="/Payment"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin:'10px'}}>Tillbaka</Button>
             <Button component={CustomLink} to="/"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}}>Beställ</Button>
         </Box>
