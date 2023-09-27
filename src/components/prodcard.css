@@ -31,13 +31,13 @@
 .prod-card img {
   width: auto;
   height: 200px;
-  box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.3);
+  box-shadow:  0px 0px 10px rgba(0,0,0, 0.2);
 }
 
 .prod-card img:hover {
-  box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.0);
+  box-shadow:  0px 0px 10px rgba(24,118,209,0.5);
     /* box-shadow: 3px 3px solid rgb(2, 137, 255); */
-}
+} 
 
 /* Container för produktkort */
 .products-div {
@@ -99,7 +99,8 @@ body {
   -moz-border-radius: 5%;
   -ms-border-radius: 5%;
   -o-border-radius: 5%;
-  border: 2px solid #000;
+  border: 0px solid #1876d1;
+  box-shadow:  0px 0px 20px rgba(24,118,209,0.5);
 }
 
 .popup-content {
