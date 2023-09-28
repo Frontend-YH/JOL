@@ -21,6 +21,34 @@ interface Orders {
   isDone: boolean;
 }
 
+function toggleIsDone(orderId: string, currentIsDone: boolean) {
+  const updatedIsDone = !currentIsDone; // Flip the value
+
+  fetch(`http://localhost:3000/order/${orderId}/update`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ isDone: updatedIsDone }), // Skicka det uppdaterade värdet
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Hantera den uppdaterade orderdatan (data) här om det behövs
+      console.log("Orderdata har uppdaterats:", data);
+      // Uppdatera den lokala state eller utför andra åtgärder här
+    })
+    .catch((error) => {
+      // Hantera fel här
+      console.error("Fel vid uppdatering av isDone:", error);
+    });
+}
+
+
 function AdminOrders() {
   const [orders, setOrders] = useState<Orders[]>([]);
 
@@ -56,7 +84,9 @@ function AdminOrders() {
               <p>Beställningen är inte betald.</p>
             )}
 
-            {order.isDone ? <p>Ordern är klar</p> : <p>Ordern är inte klar</p>}
+<button onClick={() => toggleIsDone(order._id, order.isDone)}>
+  Ändra isDone
+</button>
             <h5>Kund id:{order._id}</h5>
             <h5>Kundens Förnamn: {order.firstName}</h5>
             <h5>Kundens Efternamn: {order.lastName}</h5>
@@ -66,8 +96,8 @@ function AdminOrders() {
             <h5>Telefonnummer: {order.phone}</h5>
 
            
-         {/*    <h5>
-  Produkter:
+{/*      <h5>
+  
   {order.products.map((product, index) => (
     <div key={index}>
       <h6>{product.name}</h6>
@@ -75,7 +105,7 @@ function AdminOrders() {
       <p>Pris: {product.price} kr</p>
     </div>
   ))}
-</h5> */}
+</h5>  */}
 
             <h5>Kostnad:{order.totalCost}KR</h5>
             <h5>
