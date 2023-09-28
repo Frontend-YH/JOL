@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { CartContext } from '../CartContext';
 import { useContext } from "react";
-
+function clear (){
+  const { cart } = useContext(CartContext);
+  localStorage.clear();
+  cart.splice(0, cart.length);
+}
 function useOrderPost() {
   const { cart } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -59,9 +63,6 @@ function useOrderPost() {
       console.log('Order posted successfully:', responseData);
       window.alert(`Din order är nu beställd. Ditt ordernummer är: ${responseData.user._id}`);
       // If successful, you can update state or return any data if needed
-
-      localStorage.clear();
-      cart.splice(0, cart.length);
 
     } catch (err) {
       setError(err);

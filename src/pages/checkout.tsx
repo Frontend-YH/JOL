@@ -135,9 +135,9 @@ function CheckoutContainer() {
             display="flex"
             flexDirection="row"
         >
-            <OrderTheThing/>
+           
             <Button component={CustomLink} to="/Payment"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin:'10px'}}>Tillbaka</Button>
-            <Button component={CustomLink} to="/"variant="contained" size="small" sx={{backgroundColor: 'rgb(13, 184, 13)', margin: '10px'}}>Beställ</Button>
+            <OrderTheThing/>
         </Box>
         </Box> 
         </Box>
