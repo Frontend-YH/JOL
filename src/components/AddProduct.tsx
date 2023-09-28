@@ -83,12 +83,18 @@ export default function AddProduct() {
     };
 
 return(
+    <Box
+    sx={{
+        flexDirection: "column"
+    }}
+    >
     <Box 
     className="container"
     sx={{
     flexDirection: "row",
     display: 'flex',
-    alignItems: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 4}}>
         <TextField
         label="atikle-nr"
@@ -96,7 +102,7 @@ return(
         name='articleNumber'
         onChange={handleInputChange}
         value={formData.articleNumber}
-        style = {{width: 120}}>
+        style = {{width: 120, marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <TextField
@@ -105,7 +111,7 @@ return(
         name='name'
         onChange={handleInputChange}
         value={formData.name}
-        style = {{width: 120}}>
+        style = {{width: '120px', marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <TextField
@@ -114,7 +120,7 @@ return(
         onChange={handleInputChange}
         value={formData.engName}
         size="small"
-        style = {{width: 120}}>
+        style = {{width: 120, marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <TextField
@@ -126,8 +132,8 @@ return(
         multiline
         placeholder="Placeholder"
         rows={4}
-        variant="standard">
-            
+        variant="standard"
+        style = {{width: '200px', marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>   
         </TextField>
         <TextField
         id="standard-multiline-static"
@@ -138,17 +144,27 @@ return(
         multiline
         placeholder="Placeholder"
         rows={4}
-        variant="standard">
+        variant="standard"
+        style = {{width: '200px', marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
             
         </TextField>
+        </Box>
+        <Box
+            className="container"
+            sx={{
+            flexDirection: "row",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 4}}>
         <TextField
         className="picture"
         size="small"
-        label="Antal"
+        label="Picture"
         name='picture'
         onChange={handleInputChange}
         value={formData.picture}
-        style = {{width: 70}}>
+        style = {{width: 200, marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <TextField
@@ -158,7 +174,7 @@ return(
         onChange={handleInputChange}
         value={formData.thumbnail}
         label="Antal"
-        style = {{width: 70}}>
+        style = {{width: 120, marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <TextField 
@@ -166,7 +182,8 @@ return(
         name='numberAvailable'
         onChange={handleInputChange}
         value={formData.numberAvailable}
-        size="small">
+        size="small"
+        style = {{width: 120, marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <TextField
@@ -174,13 +191,15 @@ return(
         name='category'
         onChange={handleInputChange}
         value={formData.category}
-        size="small">
+        size="small"
+        style = {{width: 120, marginBottom: 30, marginTop: 30, backgroundColor: "white", }}>
 
         </TextField>
         <Button 
-        className="AddProduct" onClick={handleAddProduct}>
+        className="AddProduct" onClick={handleAddProduct}sx={{width: 150, marginBottom: 30, marginTop: 30, bgcolor: 'success.main',color: 'black'}}>
             Lägg till Product
         </Button>
+    </Box>
     </Box>
     );
 }
