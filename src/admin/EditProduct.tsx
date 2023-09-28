@@ -3,15 +3,10 @@ import { CartContext } from "../CartContext";
 import { Card, CardContent, Button, TextField } from "@mui/material";
 
 
-function AdminEditProduct(props) {
-    const { addToCart } = useContext(CartContext);
-    const [data, setData] = useState([]);
-
+function AdminEditProduct() {
+    //const { addToCart } = useContext(CartContext);
    
-
-
-
-    interface Product {
+/*     interface Product {
         _id: string,
         articleNumber: string,
         name: string;
@@ -24,9 +19,9 @@ function AdminEditProduct(props) {
         numberAvailable: string;
         category: string;
         //filter: (criteria: string) => [];
-    }
+    } */
         
-        const [formData, setFormData] = useState<Product>({
+/*         const [formData, setFormData] = useState<Product>({
             _id: "",
             articleNumber: '',
             name: "",
@@ -39,7 +34,9 @@ function AdminEditProduct(props) {
             numberAvailable: "",
             category: "",
             //filter: (criteria: string) => [];
-        });
+        }); */
+
+
     //    const handleAddProduct = () => {
     //        const productDataJson = JSON.stringify(formData);
     //
@@ -72,47 +69,55 @@ function AdminEditProduct(props) {
     //            console.error("Network error:", error);
     //        });
     //    };
-    const getData = () => {
-        fetch("http://localhost:3000/products")
-          .then((res) => res.json())
-          .then((formData) => {
-            
-            setFormData(formData);
-            console.log(formData)
-          })
-          .catch((error) => {
-            console.log(error);
-            throw new Error("Kan inte hämta data");
-          });
-      };
-    
-      useEffect(() => {
-        getData();
-      }, []);
+    const { lang } = useContext(CartContext); // swe or eng picked?
+    const [data, setData] = useState([]);
 
-    //const filtreratResultat = formData.filter((detFiltreradeResultatet) => {
-    //return detFiltreradeResultatet._id === "65004e52c6f96ae13130f136";}
-    return(<>
+  /* Collect Product Data from Backend Database */
+  const getData = () => {
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Kan inte hämta data");
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+
+
+console.log(data);
+ 
+ 
+
+//console.log(typeof fresultat);
+
+    return (
 
         <div className="prod-card">
         <Card sx={{ padding: 8, paddingBottom: "10px", marginBottom: 2, margin: "0px" }}>
             <img style={{ borderRadius: "6px", cursor: "pointer" }} />
             <CardContent>
                 <h5>src</h5>
-            <TextField component="div" value={filtreratResultat[0].price}>
+            <TextField component="div" value="{price}">
                 </TextField>
                <TextField component="div">
                 </TextField>
                 <TextField component="div" >
                 </TextField>
-                <h4 className="price">{formData[0].price}:-</h4>
+                <h4 className="price">"price"-</h4>
                 <TextField>
-                    {props.description}
+                    "description"
                 </TextField>
             </CardContent>
                 <div className="btn-quantity">
-                    <Button variant="contained" onClick={() => addToCart(props)}>
-                        {props.lang === "swe" ? (
+                    <Button variant="contained">
+                        {lang === "swe" ? (
                             <>Ändra Producten</>
                         ) : (
                             <>Edit Product</>
@@ -121,8 +126,8 @@ function AdminEditProduct(props) {
                 </div>
         </Card>
         </div>
-    </>
-    );
+    
+    );  
 }
 
 export default AdminEditProduct;
