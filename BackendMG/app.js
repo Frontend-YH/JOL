@@ -294,3 +294,30 @@ app.post('/admins/login', async (req, res) => {
 
 
 
+
+
+
+// Uppdatera orders
+app.post('/order/:orderId/update', async (req, res) => {
+  try {
+    const orderId = req.params.orderId;
+    const update = req.body; 
+
+    const updatedOrder = await OrderData.findByIdAndUpdate(orderId, update, {
+      new: true, 
+    });
+
+    if (!updatedOrder) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    res.json(updatedOrder);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: `Server error: ${error}`});
+  }
+});
+
+
+
+

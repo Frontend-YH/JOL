@@ -58,3 +58,18 @@ Content-Type: application/json
   "picture": ["hej", "hejsan"],
   "thumbnail": ["hej", "hejsan"]
 }
+
+
+
+###
+
+// ADD PRODUCT DATA
+POST http://localhost:3000/order/65155f1f13ed7ade98e4b28e/update
+Content-Type: application/json
+
+{
+  "firstName": "JonasZ",
+  "lastName": "BergmanZ"
+}
+
+
