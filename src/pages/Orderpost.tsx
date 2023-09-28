@@ -2,15 +2,18 @@ import React from 'react';
 import useOrderPost from './postOrderFunction'; // Import your custom hook
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { CartContext } from '../CartContext';
+import { useContext } from "react";
 
 function OrderTheThing() {
   const { isLoading, error, handlePostOrder } = useOrderPost();
+  const { clearCart } = useContext(CartContext); 
   
   const handleOrderButtonClick = async () => {
     // Call the handlePostOrder function
     await handlePostOrder();
 
-    // Clear local storage
+    clearCart()
     localStorage.clear();
   }
 
