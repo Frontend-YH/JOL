@@ -192,10 +192,12 @@ const orderSchema = new mongoose.Schema({
 
 const addOrder = mongoose.model('Order', minimalSchema, 'OrderData');
 app.post('/addOrder', async (req, res) => {
+  console.log('Request Body:', req.body);
   try {
     
     // Create a new user instance based on the request body
     const newOrder = new addOrder({
+      shipping: req.body.shipping,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phone: req.body.phone,
@@ -205,6 +207,7 @@ app.post('/addOrder', async (req, res) => {
       postCode: req.body.postCode,
       totalCost: req.body.totalCost,
       payed: req.body.payed,  
+      isDone: false,
       payMethod: req.body.payMethod, 
       products: req.body.products  
     });

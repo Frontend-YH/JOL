@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { CartContext } from '../CartContext';
 import { useContext } from "react";
-
+function clear (){
+  const { cart } = useContext(CartContext);
+  localStorage.clear();
+  cart.splice(0, cart.length);
+}
 function useOrderPost() {
   const { cart } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,24 +22,32 @@ function useOrderPost() {
       const address = localStorage.getItem('address') || '';
       const postalCode = localStorage.getItem('postalCode') || '';
       const city = localStorage.getItem('city') || '';
-      const postnordChecked = localStorage.getItem('postnord') === 'true';
-      const dhlChecked = localStorage.getItem('dhl') === 'true';
-      const dbSchenkerChecked = localStorage.getItem('dbSchenker') === 'true';
-      const swish = localStorage.getItem('swish') === 'true';
-      const kort = localStorage.getItem('kort') === 'true';
+      const shipping = localStorage.getItem('postnord') === 'true'
+      ? 'Postnord'
+      : localStorage.getItem('dhl') === 'true'
+      ? 'DHL'
+      : localStorage.getItem('dbSchenker') === 'true'
+      ? 'DB Schenker'
+      : ''; 
+      const payMethod = {
+        swish: localStorage.getItem('swish') === 'true' ? 'true' : 'false',
+        kort: localStorage.getItem('kort') === 'true' ? 'true' : 'false',
+      };
       const phonenumber = localStorage.getItem('phoneNumber');
       const totalAndShipping = localStorage.getItem('totalCost');
+      const email = localStorage.getItem('email');
     
       
 
       const orderData = {
-        shipping: postnordChecked || dhlChecked || dbSchenkerChecked,
+        shipping: shipping,
+        email: email,
         address: address,
         city: city,
         phone: phonenumber,
         products: cart,
         totalCost: totalAndShipping,
-        payMethod: swish || kort,
+        payMethod: payMethod,
         payed: true,
         isDone: false,
         firstName: firstName,
@@ -59,9 +71,6 @@ function useOrderPost() {
       console.log('Order posted successfully:', responseData);
       window.alert(`Din order är nu beställd. Ditt ordernummer är: ${responseData.user._id}`);
       // If successful, you can update state or return any data if needed
-
-      localStorage.clear();
-      cart.splice(0, cart.length);
 
     } catch (err) {
       setError(err);

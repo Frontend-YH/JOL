@@ -81,17 +81,17 @@ function PaymentForm() {
 
     const savedPostnordChecked = localStorage.getItem(postnordId);
     if (savedPostnordChecked !== null) {
-      setPostnordChecked(savedPostnordChecked === 'true');
+      setPostnordChecked(savedPostnordChecked === 'Postnord');
     }
 
     const savedDhlChecked = localStorage.getItem(dhlId);
     if (savedDhlChecked !== null) {
-      setDhlChecked(savedDhlChecked === 'true');
+      setDhlChecked(savedDhlChecked === 'DHL');
     }
 
     const savedDbSchenkerChecked = localStorage.getItem(dbSchenkerId);
     if (savedDbSchenkerChecked !== null) {
-      setDbSchenkerChecked(savedDbSchenkerChecked === 'true');
+      setDbSchenkerChecked(savedDbSchenkerChecked === 'DbSchenker');
     }
   }, []);
 
