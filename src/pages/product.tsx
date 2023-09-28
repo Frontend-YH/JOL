@@ -45,12 +45,38 @@ function ProductsContainer() {
             description={lang === "swe" ? dataItem.description : dataItem.engDescription} // English if english is picked
             thumbnailUrls={(dataItem.thumbnail || []).filter(Boolean)
               .map(
-                (thumbnail) => `https://gardsjosmedja.com/products/${thumbnail}`
+                (thumbnail) => { 
+                  
+                  
+                  // Om databas-array strängen innehåller ordet http så tas hela URLen med
+                  // Om databas-array strängen INTE INNEHÅLLER http så läggs default url-pathen till.
+                  if (thumbnail.includes("http")) {
+                     
+                    return thumbnail;
+                  } else {
+                    // default url path läggs till
+                    return `https://gardsjosmedja.com/products/${thumbnail}`; 
+                  } 
+              
+              }
               )}
             imgUrls={(dataItem.picture || [])
               .filter(Boolean)
               .map(
-                (picture) => `https://gardsjosmedja.com/products/${picture}`
+                (picture) => { 
+                  
+                  
+                  // Om databas-array strängen innehåller ordet http så tas hela URLen med
+                  // Om databas-array strängen INTE INNEHÅLLER http så läggs default url-pathen till.
+                  if (picture.includes("http")) {
+                     
+                    return picture;
+                  } else {
+                    // default url path läggs till
+                    return `https://gardsjosmedja.com/products/${picture}`; 
+                  } 
+              
+              }
               )}
           />
         ))}

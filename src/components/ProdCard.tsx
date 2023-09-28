@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { CartContext } from "../CartContext";
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
@@ -8,7 +8,8 @@ import './prodcard.css';
 
 export default function ProdCard(props) {
     const { addToCart } = useContext(CartContext);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);;
 
     const openPopup = () => {
         setIsPopupOpen(true);
@@ -17,6 +18,23 @@ export default function ProdCard(props) {
     const closePopup = () => {
         setIsPopupOpen(false);
     };
+
+    // ################### SLIDER SECTION ###############################################
+    // Change image every 4 seconds based on the imageUrls array
+    useEffect(() => {
+      const interval = setInterval(changeImage, 4000); 
+  
+      return () => {
+        clearInterval(interval); 
+      };
+    }, []);
+  
+    const changeImage = () => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % props.imgUrls.length);
+    };
+  
+    const currentImage = props.imgUrls[currentImageIndex];
+    // ####################################################################################
 
     return (
         <>
@@ -48,7 +66,7 @@ export default function ProdCard(props) {
                 <div className="product-popup">
                     {
 <>
-<img style={{ borderRadius: "6px" }} src={props.imgUrls[0]} alt={props.name} />
+<img style={{ borderRadius: "6px" }} src={currentImage} alt={props.name} />
 <CardContent>
     <Typography gutterBottom variant="h5" component="div">
         {props.name}
