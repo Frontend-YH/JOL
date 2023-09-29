@@ -49,6 +49,11 @@ to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
+
+##Sidenotes
+
+To access adminpage visit url: http://localhost:5173/adminPage
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

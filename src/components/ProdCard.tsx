@@ -30,11 +30,13 @@ export default function ProdCard(props) {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     const [isEditPopupOpen, setIsEditPopupOpen] = useState(false)
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
     const [prodInputValue, setProdInputValue] = useState();
 
     const { callback } = props;
 
     console.log(props);
+
 
     const openPopup = () => {
         setIsPopupOpen(true);
