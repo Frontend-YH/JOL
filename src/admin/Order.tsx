@@ -10,7 +10,7 @@ interface Orders {
   postCode: number;
   city: string;
   address: string;
-  _id: number;
+  _id: string;
   customerId: string;
   firstName: string;
   lastName: string;
@@ -21,7 +21,7 @@ interface Orders {
   isDone: boolean;
 }
 
-function toggleIsDone(orderId: string, currentIsDone: boolean) {
+async function toggleIsDone(orderId: string, currentIsDone: boolean) {
   const updatedIsDone = !currentIsDone; // Flip the value
 
   fetch(`http://localhost:3000/order/${orderId}/update`, {
@@ -40,6 +40,7 @@ function toggleIsDone(orderId: string, currentIsDone: boolean) {
     .then((data) => {
       // Hantera den uppdaterade orderdatan (data) här om det behövs
       console.log("Orderdata har uppdaterats:", data);
+      
       // Uppdatera den lokala state eller utför andra åtgärder här
     })
     .catch((error) => {
@@ -85,7 +86,7 @@ function AdminOrders() {
             )}
 
 <button onClick={() => toggleIsDone(order._id, order.isDone)}>
-  Ändra isDone
+{order.isDone ? "Ordern är skickad ✅" : "Ordern är inte skickad❌"}
 </button>
             <h5>Kund id:{order._id}</h5>
             <h5>Kundens Förnamn: {order.firstName}</h5>
