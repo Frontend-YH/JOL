@@ -6,15 +6,37 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import './prodcard.css';
 
+async function postData(toBackend, productId) {
+
+    const response = await fetch(`http://localhost:3000/product/${productId}/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(toBackend),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed response!');
+    }
+
+    const responseData = await response.json();
+    return responseData;
+
+}
+
 export default function ProdCard(props) {
     const { addToCart } = useContext(CartContext);
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     const [isEditPopupOpen, setIsEditPopupOpen] = useState(false)
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [prodInputValue, setProdInputValue] = useState({
-        name: "",
-        price: ""
-    });
+
+    const [prodInputValue, setProdInputValue] = useState();
+
+    const { callback } = props;
+
+    console.log(props);
+
 
     const openPopup = () => {
         setIsPopupOpen(true);
@@ -34,20 +56,26 @@ export default function ProdCard(props) {
     };
     const saveToProduct = async (productId) => {
         
-        const toBackend = {
+    /*     const toBackend = {
             name: prodInputValue.name,
             price: prodInputValue.price,
-          }; 
-        
-          //console.log("YAY!", productId);
+          };  */
           
+        
           try {
-            const response = await postData(toBackend, productId);
-            // Handle success response
-            console.log('Form submitted successfully. Response:', response);
+            const response = await postData(prodInputValue, productId);
+            // Success response
+            console.log('Data submitted successfully. Response:', response);
+            //const tarr = [];
+            //props.getData(tarr); 
+            callback([]);
+            closeEditPopup();
+            
+
           } catch (error) {
-            // Handle error
-            console.error('Form submission error:', error);
+            // Error response
+            console.error('Data submission error:', error);
+            alert(`Error: ${error}`);
           }
           
     };
@@ -55,30 +83,22 @@ export default function ProdCard(props) {
     const handleProdInputChange = (e) => {
       
         const { name, value } = e.target;
+
+        if(name==="imgUrls") { 
+            const newName = "picture";
+            setProdInputValue({
+                ...prodInputValue,
+                [newName]: [value],
+              });        
+         } else {
                 setProdInputValue({
                   ...prodInputValue,
                   [name]: value,
                 });
+            }
       };
     
-      async function postData(toBackend, productId) {
 
-          const response = await fetch(`http://localhost:3000/product/${productId}/update`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(toBackend),
-          });
-      
-          if (!response.ok) {
-            throw new Error('Failed response!');
-          }
-      
-          const responseData = await response.json();
-          return responseData;
-      
-      }
 
     // ##################################################################################
 
@@ -86,7 +106,7 @@ export default function ProdCard(props) {
     // Change image every 4 seconds based on the imageUrls array
     useEffect(() => {
       const interval = setInterval(changeImage, 4000); 
-  
+      
       return () => {
         clearInterval(interval); 
       };
@@ -223,10 +243,10 @@ export default function ProdCard(props) {
     <label htmlFor="price">Pris: </label><input type="text" style={inputTextStylingPrice} id="price" name="price" defaultValue={props.price} onChange={handleProdInputChange}/>
     </Typography>
     <Typography variant="h6" color="text.secondary">
-    <label htmlFor="description">Beskrivning: <br/></label><textarea style={textAreaStyling} name="description" defaultValue={props.description} id="description" readOnly/>
+    <label htmlFor="description">Beskrivning: <br/></label><textarea style={textAreaStyling} name="description" defaultValue={props.description} id="description" onChange={handleProdInputChange}/>
     </Typography>
     <Typography variant="h6" color="text.secondary">
-    <label htmlFor="imgUrl">Bild-URL: <br/></label><textarea style={textAreaStyling} defaultValue={props.imgUrls[0]} name="imgUrls" id="imgUrl" readOnly/>
+    <label htmlFor="imgUrl">Bild-URL: <br/></label><textarea style={textAreaStyling} defaultValue={props.imgUrls[0]} name="imgUrls" id="imgUrl" onChange={handleProdInputChange}/>
     </Typography>
 </CardContent>
 <Button size="large" style={{marginRight: "10px", width: "260px", padding: "12px"}} variant="contained" onClick={() => saveToProduct(props.id)}>

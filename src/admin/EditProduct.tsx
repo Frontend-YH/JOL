@@ -39,6 +39,7 @@ function ProductsContainer() {
         {data.map((dataItem) => (
           <ProdCard
             admin={true}
+            callback={getData}
             key={dataItem._id}
             lang={lang}
             id={dataItem._id}
