@@ -25,6 +25,7 @@ function ProductsContainer() {
         throw new Error("Kan inte hämta data");
       });
   };
+  
 
   useEffect(() => {
     getData();
@@ -38,6 +39,7 @@ function ProductsContainer() {
       <div className="products-div">
         {data.map((dataItem) => (
           <ProdCard
+            admin={false}
             key={dataItem._id}
             lang={lang}
             id={dataItem._id}
