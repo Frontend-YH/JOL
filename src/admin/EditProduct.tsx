@@ -1,75 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../CartContext";
-import { Card, CardContent, Button, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import Footer from "../components/Footer.tsx";
+import ShopHeader from "../components/ShopHeader.tsx";
+import ProdCard from "../components/ProdCard.tsx";
+
+import { useContext } from "react";
+import { CartContext } from "../CartContext.tsx"
 
 
-function AdminEditProduct() {
-    //const { addToCart } = useContext(CartContext);
-   
-/*     interface Product {
-        _id: string,
-        articleNumber: string,
-        name: string;
-        engName: string;
-        description: string;
-        engDescription: string;
-        price: string;
-        picture: string[];
-        thumbnail: string[];
-        numberAvailable: string;
-        category: string;
-        //filter: (criteria: string) => [];
-    } */
-        
-/*         const [formData, setFormData] = useState<Product>({
-            _id: "",
-            articleNumber: '',
-            name: "",
-            engName: "",
-            description: "",
-            engDescription: "",
-            price: "",
-            picture: [""],
-            thumbnail: [""],
-            numberAvailable: "",
-            category: "",
-            //filter: (criteria: string) => [];
-        }); */
 
+function ProductsContainer() {
 
-    //    const handleAddProduct = () => {
-    //        const productDataJson = JSON.stringify(formData);
-    //
-    //        fetch('http://localhost:3000/products', {
-    //            method: "GET",
-    //            headers: {
-    //                "Content-Type": "application/json",
-    //            },
-    //            body: productDataJson,
-    //        })
-    //        .then((response) => {
-    //            if (response.ok) {
-    //                console.log(productDataJson);
-    //                setFormData({
-    //                    name: "",
-    //                    engName: "",
-    //                    description: "",
-    //                    engDescription: "",
-    //                    price: "",
-    //                    picture: [""],
-    //                    thumbnail: [""],
-    //                    numberAvailable: "",
-    //                    category: "",
-    //                });
-    //            } else {
-    //                console.error("Failed to add product");
-    //            }
-    //        })
-    //        .catch((error) => {
-    //            console.error("Network error:", error);
-    //        });
-    //    };
-    const { lang } = useContext(CartContext); // swe or eng picked?
+  const { lang } = useContext(CartContext); // swe or eng picked?
     const [data, setData] = useState([]);
 
   /* Collect Product Data from Backend Database */
@@ -88,48 +29,64 @@ function AdminEditProduct() {
   useEffect(() => {
     getData();
   }, []);
+  
 
 
+    return ( <>
 
-console.log(data);
- 
- 
+<ShopHeader admin={true}/>
+      <div className="products-div">
+        {data.map((dataItem) => (
+          <ProdCard
+            admin={true}
+            key={dataItem._id}
+            lang={lang}
+            id={dataItem._id}
+            name={lang === "swe" ? dataItem.name : dataItem.engName} // English if english have been picked
+            price={dataItem.price} // OBS: har haft parseInt(dataItem.price) här tidigare. Ev. ERROR pga byte?
+            description={lang === "swe" ? dataItem.description : dataItem.engDescription} // English if english is picked
+            thumbnailUrls={(dataItem.thumbnail || []).filter(Boolean)
+              .map(
+                (thumbnail) => { 
+                  
+                  
+                  // Om databas-array strängen innehåller ordet http så tas hela URLen med
+                  // Om databas-array strängen INTE INNEHÅLLER http så läggs default url-pathen till.
+                  if (thumbnail.includes("http")) {
+                     
+                    return thumbnail;
+                  } else {
+                    // default url path läggs till
+                    return `https://gardsjosmedja.com/products/${thumbnail}`; 
+                  } 
+              
+              }
+              )}
+            imgUrls={(dataItem.picture || [])
+              .filter(Boolean)
+              .map(
+                (picture) => { 
+                  
+                  
+                  // Om databas-array strängen innehåller ordet http så tas hela URLen med
+                  // Om databas-array strängen INTE INNEHÅLLER http så läggs default url-pathen till.
+                  if (picture.includes("http")) {
+                     
+                    return picture;
+                  } else {
+                    // default url path läggs till
+                    return `https://gardsjosmedja.com/products/${picture}`; 
+                  } 
+              
+              }
+              )}
+          />
+        ))}
+      </div>
 
-//console.log(typeof fresultat);
+      <Footer />
 
-    return (
-
-        <div className="prod-card">
-        <Card sx={{ padding: 8, paddingBottom: "10px", marginBottom: 2, margin: "0px" }}>
-            <img style={{ borderRadius: "6px", cursor: "pointer" }} />
-            <CardContent>
-                <h5>src</h5>
-            <TextField component="div" value="{price}">
-                </TextField>
-               <TextField component="div">
-                </TextField>
-                <TextField component="div" >
-                </TextField>
-                <h4 className="price">"price"-</h4>
-                <TextField>
-                    "description"
-                </TextField>
-            </CardContent>
-                <div className="btn-quantity">
-                    <Button variant="contained">
-                        {lang === "swe" ? (
-                            <>Ändra Producten</>
-                        ) : (
-                            <>Edit Product</>
-                        )}
-                    </Button>
-                </div>
-        </Card>
-        </div>
-    
-    );  
+    </> );
 }
 
-export default AdminEditProduct;
-
-
+export default ProductsContainer;

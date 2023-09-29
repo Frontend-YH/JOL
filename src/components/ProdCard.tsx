@@ -9,7 +9,12 @@ import './prodcard.css';
 export default function ProdCard(props) {
     const { addToCart } = useContext(CartContext);
     const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const [isEditPopupOpen, setIsEditPopupOpen] = useState(false)
     const [currentImageIndex, setCurrentImageIndex] = useState(0);;
+    const [prodInputValue, setProdInputValue] = useState({
+        name: "",
+        price: ""
+    });
 
     const openPopup = () => {
         setIsPopupOpen(true);
@@ -18,6 +23,64 @@ export default function ProdCard(props) {
     const closePopup = () => {
         setIsPopupOpen(false);
     };
+
+    // ################### ADMIN SECTION ###############################################
+
+    const openEditPopup = () => {
+        setIsEditPopupOpen(true);
+    };
+    const closeEditPopup = () => {
+        setIsEditPopupOpen(false);
+    };
+    const saveToProduct = async (productId) => {
+        
+        const toBackend = {
+            name: prodInputValue.name,
+            price: prodInputValue.price,
+          }; 
+        
+          //console.log("YAY!", productId);
+          
+          try {
+            const response = await postData(toBackend, productId);
+            // Handle success response
+            console.log('Form submitted successfully. Response:', response);
+          } catch (error) {
+            // Handle error
+            console.error('Form submission error:', error);
+          }
+          
+    };
+
+    const handleProdInputChange = (e) => {
+      
+        const { name, value } = e.target;
+                setProdInputValue({
+                  ...prodInputValue,
+                  [name]: value,
+                });
+      };
+    
+      async function postData(toBackend, productId) {
+
+          const response = await fetch(`http://localhost:3000/product/${productId}/update`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(toBackend),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed response!');
+          }
+      
+          const responseData = await response.json();
+          return responseData;
+      
+      }
+
+    // ##################################################################################
 
     // ################### SLIDER SECTION ###############################################
     // Change image every 4 seconds based on the imageUrls array
@@ -36,6 +99,34 @@ export default function ProdCard(props) {
     const currentImage = props.imgUrls[currentImageIndex];
     // ####################################################################################
 
+    const textAreaStyling = {
+        height: "100px", 
+        width: "220px", 
+        padding: "10px", 
+        border: "2px solid #ddd", 
+        overflow: "scroll",
+        borderRadius: "6px",
+        margin: "0"
+    }
+    const inputTextStylingName = {
+        height: "30px", 
+        width: "142px", 
+        padding: "10px", 
+        border: "2px solid #ddd", 
+        borderRadius: "6px",
+        margin: "0"
+    }
+
+    const inputTextStylingPrice = {
+        height: "30px", 
+        width: "165px", 
+        padding: "10px", 
+        border: "2px solid #ddd", 
+        borderRadius: "6px",
+        margin: "0"
+    }
+
+
     return (
         <>
             <div className="prod-card">
@@ -51,19 +142,34 @@ export default function ProdCard(props) {
                         </Typography>
                     </CardContent>
                     <div className="btn-quantity">
-                        <Button variant="contained" onClick={() => addToCart(props)}>
-                            {props.lang === "swe" ? (
-                                <>Lägg i kundvagn</>
+                    {props.admin === false ? (
+
+                                <Button variant="contained" onClick={() => addToCart(props)}>
+                                {props.lang === "swe" ? (
+                                    <>Lägg i kundvagn</>
+                                ) : (
+                                    <>Add to cart</>
+                                )}
+                                </Button>
+
                             ) : (
-                                <>Add to cart</>
-                            )}
-                        </Button>
+
+                                <Button variant="contained" onClick={openEditPopup} >
+                                {props.lang === "swe" ? (
+                                    <>Redigera produkt</>
+                                ) : (
+                                    <>Edit product</>
+                                )}
+                                </Button>
+
+                            )}                       
+
                     </div>
                 </Card>
             </div>
 
             {isPopupOpen && (
-                <div className="product-popup">
+                <div className="product-popup">   
                     {
 <>
 <img style={{ borderRadius: "6px" }} src={currentImage} alt={props.name} />
@@ -89,10 +195,65 @@ export default function ProdCard(props) {
                     }
                     <Card>
                         {/* ... Produktdetaljer ... */}
-                        <Button size="large" onClick={closePopup}>Stäng</Button>
+                        <Button size="large" onClick={closePopup}>
+                        {props.lang === "swe" ? (
+                                <>Stäng</>
+                            ) : (
+                                <>Close</>
+                            )}
+                        </Button>
                     </Card>
                 </div>
             )}
+            
+            {
+            
+// ############### ADMIN SECTION / Edit Product ###################################################
+
+            isEditPopupOpen && (
+                <div className="product-popup">
+                    {
+<>
+<img style={{ borderRadius: "6px", maxHeight: "300px" }} src={currentImage} alt={props.name} />
+<CardContent>
+    
+    <label htmlFor="name">Namn: </label><input type="text" style={inputTextStylingName} id="name" name="name" defaultValue={props.name} onChange={handleProdInputChange}/>
+
+    <Typography gutterBottom variant="h6" component="div">
+    <label htmlFor="price">Pris: </label><input type="text" style={inputTextStylingPrice} id="price" name="price" defaultValue={props.price} onChange={handleProdInputChange}/>
+    </Typography>
+    <Typography variant="h6" color="text.secondary">
+    <label htmlFor="description">Beskrivning: <br/></label><textarea style={textAreaStyling} name="description" defaultValue={props.description} id="description" readOnly/>
+    </Typography>
+    <Typography variant="h6" color="text.secondary">
+    <label htmlFor="imgUrl">Bild-URL: <br/></label><textarea style={textAreaStyling} defaultValue={props.imgUrls[0]} name="imgUrls" id="imgUrl" readOnly/>
+    </Typography>
+</CardContent>
+<Button size="large" style={{marginRight: "10px", width: "260px", padding: "12px"}} variant="contained" onClick={() => saveToProduct(props.id)}>
+                            {props.lang === "swe" ? (
+                                <>Spara ändringar</>
+                            ) : (
+                                <>Save changes</>
+                            )}
+                        </Button>
+
+</>
+
+                    }
+                    <Card>
+                        {/* ... Produktdetaljer ... */}
+                        <Button size="large" onClick={closeEditPopup}> 
+                                {props.lang === "swe" ? (
+                                <>Stäng</>
+                            ) : (
+                                <>Close</>
+                            )}</Button>
+                    </Card>
+                </div>
+            )}
+
+
+
         </>
     );
 }

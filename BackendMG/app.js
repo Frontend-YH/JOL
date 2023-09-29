@@ -321,3 +321,29 @@ app.post('/order/:orderId/update', async (req, res) => {
 
 
 
+// Uppdatera orders
+app.post('/product/:productId/update', async (req, res) => {
+  try {
+    const productId = req.params.productId;
+    const update = req.body; 
+
+    const updatedProduct = await AddProducts.findByIdAndUpdate(productId, update, {
+      new: true, 
+    });
+
+    if (!updatedProduct) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    res.json(updatedProduct);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: `Server error: ${error}`});
+  }
+});
+
+
+
+
+
+
