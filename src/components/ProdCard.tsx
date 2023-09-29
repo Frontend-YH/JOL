@@ -10,7 +10,7 @@ export default function ProdCard(props) {
     const { addToCart } = useContext(CartContext);
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     const [isEditPopupOpen, setIsEditPopupOpen] = useState(false)
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);;
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [prodInputValue, setProdInputValue] = useState({
         name: "",
         price: ""
