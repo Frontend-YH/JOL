@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 interface Product {
   name: string;
 }
-type PayMethod = kort | swish;
+type PayMethod = "kort" | "swish"; 
+
 interface Orders {
   phone: number;
   postCode: number;
@@ -14,41 +15,12 @@ interface Orders {
   customerId: string;
   firstName: string;
   lastName: string;
-  products: Product[]; 
+  products: Product[];
   totalCost: string;
   payMethod: PayMethod;
   payed: boolean;
   isDone: boolean;
 }
-
-async function toggleIsDone(orderId: string, currentIsDone: boolean) {
-  const updatedIsDone = !currentIsDone; // Flip the value
-
-  fetch(`http://localhost:3000/order/${orderId}/update`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ isDone: updatedIsDone }), // Skicka det uppdaterade värdet
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Hantera den uppdaterade orderdatan (data) här om det behövs
-      console.log("Orderdata har uppdaterats:", data);
-      
-      // Uppdatera den lokala state eller utför andra åtgärder här
-    })
-    .catch((error) => {
-      // Hantera fel här
-      console.error("Fel vid uppdatering av isDone:", error);
-    });
-}
-
 
 function AdminOrders() {
   const [orders, setOrders] = useState<Orders[]>([]);
@@ -72,6 +44,33 @@ function AdminOrders() {
       });
   }, []);
 
+  const toggleIsDone = async (orderId: string, currentIsDone: boolean) => {
+    const updatedIsDone = !currentIsDone; // Flip the value
+
+    try {
+      const response = await fetch(`http://localhost:3000/order/${orderId}/update`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ isDone: updatedIsDone }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Uppdatera den lokala state med det nya värdet
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? { ...order, isDone: updatedIsDone } : order
+        )
+      );
+    } catch (error) {
+      console.error("Fel vid uppdatering av isDone:", error);
+    }
+  };
+
   return (
     <>
       <h1>admin orders</h1>
@@ -85,9 +84,9 @@ function AdminOrders() {
               <p>Beställningen är inte betald.</p>
             )}
 
-<button onClick={() => toggleIsDone(order._id, order.isDone)}>
-{order.isDone ? "Ordern är skickad ✅" : "Ordern är inte skickad❌"}
-</button>
+            <button onClick={() => toggleIsDone(order._id, order.isDone)}>
+              {order.isDone ? "Ordern är skickad ✅" : "Ordern är inte skickad❌"}
+            </button>
             <h5>Kund id:{order._id}</h5>
             <h5>Kundens Förnamn: {order.firstName}</h5>
             <h5>Kundens Efternamn: {order.lastName}</h5>
@@ -96,23 +95,11 @@ function AdminOrders() {
             <h5>Postnummer: {order.postCode}</h5>
             <h5>Telefonnummer: {order.phone}</h5>
 
-           
-{/*      <h5>
-  
-  {order.products.map((product, index) => (
-    <div key={index}>
-      <h6>{product.name}</h6>
-      <p>Beskrivning: {product.description}</p>
-      <p>Pris: {product.price} kr</p>
-    </div>
-  ))}
-</h5>  */}
-
             <h5>Kostnad:{order.totalCost}KR</h5>
             <h5>
-  Betalnings metod:
-  {order.payMethod.swish ? "swish" : "kort"}
-</h5>
+              Betalnings metod:
+              {order.payMethod === "swish" ? "swish" : "kort"}
+            </h5>
           </Box>
         ))}
       </Box>
