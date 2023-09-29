@@ -9,7 +9,7 @@ import PaymentForm from "./components/Payment.tsx"
 import CheckoutContainer from "./pages/checkout.tsx"
 import OrdersContainer from "./pages/orders.tsx"
 import ProductsContainer from "./pages/product.tsx"
-import AdminEditProduct from "./admin/EditProduct.tsx"
+import EditProduct from "./admin/EditProduct.tsx"
 import AdminAddProduct from "./admin/AddProduct.tsx"
 import AdminOrders from "./admin/Order.tsx"
 import About from "./components/About.tsx"
@@ -37,7 +37,7 @@ function App() {
             <Route path="/shop" element={<ShopContainer />} />
             <Route path="/checkout" element={<CheckoutContainer />} />
             <Route path="/butik" element={<ProductsContainer />} />
-            <Route path="/admin/editproduct" element={<AdminEditProduct />} />
+            <Route path="/admin/editproduct" element={<EditProduct />} />
             <Route path="/admin/Addproduct" element={<AdminAddProduct />} />
             <Route path="/admin/Orders" element={<AdminOrders />} />
            

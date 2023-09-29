@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer.tsx";
-import Smallshop from "../components/ShopSmall.tsx";
+import ShopHeader from "../components/ShopHeader.tsx";
 import ProdCard from "../components/ProdCard.tsx";
 
 import { useContext } from "react";
@@ -34,7 +34,7 @@ function ProductsContainer() {
 
     return ( <>
 
-<Smallshop/>
+<ShopHeader admin={false}/>
       <div className="products-div">
         {data.map((dataItem) => (
           <ProdCard

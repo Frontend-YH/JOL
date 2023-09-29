@@ -73,3 +73,17 @@ Content-Type: application/json
 }
 
 
+###
+
+// UPDATE PRODUCT DATA
+POST http://localhost:3000/product/65157109f538b90d77db5811/update
+Content-Type: application/json
+
+{
+  "name": "Test name",
+  "engName": "Test engName"
+}
+
+
+
+
