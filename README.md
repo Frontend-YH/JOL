@@ -21,7 +21,7 @@ npm start
 
 Navigate to the frontend directory from the backend directory of the project using the command:
 ```bash
-cd JOL
+cd ..
 ```
 Install the necessary dependencies:
 ```bash
