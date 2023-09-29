@@ -159,8 +159,8 @@ app.post('/addproduct', async (req, res) => {
           res.status(500).json({ message: 'Internal Server Error' });
         }
 
-      } { res.status(401).json({ message: 'Thumbnail is not an array. Add blocked.' }) }
-} else { res.status(401).json({ message: 'Picture is not an array. Add blocked.' }) }
+      } //{ res.status(401).json({ message: 'Thumbnail is not an array. Add blocked.' }) }
+}// else {   res.status(401).json({ message: 'Picture is not an array. Add blocked.' }) */ }
 
 });
 

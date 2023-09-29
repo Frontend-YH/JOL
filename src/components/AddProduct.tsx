@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import './AddProduct.css'
+//import './AddProduct.css'
 import { useState } from "react";
 
 interface Product {
@@ -49,7 +49,11 @@ export default function AddProduct() {
     };
 
     const handleAddProduct = () => {
+        
+        formData.thumbnail = formData.picture;
         const productDataJson = JSON.stringify(formData);
+       
+        
 
         fetch('http://localhost:3000/addproduct', {
             method: "POST",
@@ -73,6 +77,7 @@ export default function AddProduct() {
                     numberAvailable: "",
                     category: "",
                 });
+                alert("Produkt tillagd!");
             } else {
                 console.error("Failed to add product");
             }

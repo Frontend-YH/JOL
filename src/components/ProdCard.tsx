@@ -86,9 +86,11 @@ export default function ProdCard(props) {
 
         if(name==="imgUrls") { 
             const newName = "picture";
+            const newName2 = "thumbnail";
             setProdInputValue({
                 ...prodInputValue,
                 [newName]: [value],
+                [newName2]: [value],
               });        
          } else {
                 setProdInputValue({
