@@ -22,7 +22,7 @@ function Home(props) {
           }))        
         })
         .catch((error) => {
-          console.log(error);
+          
           throw new Error("Kan inte hämta data");
         });
     };

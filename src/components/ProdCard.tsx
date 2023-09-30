@@ -35,7 +35,7 @@ export default function ProdCard(props) {
 
     const { callback } = props;
 
-    console.log(props);
+   
 
 
     const openPopup = () => {

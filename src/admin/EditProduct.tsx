@@ -10,7 +10,7 @@ import { CartContext } from "../CartContext.tsx"
 
 function ProductsContainer() {
 
-  const { lang } = useContext(CartContext); // swe or eng picked?
+  const { lang, category } = useContext(CartContext); // swe or eng picked?
     const [data, setData] = useState([]);
 
   /* Collect Product Data from Backend Database */
@@ -36,7 +36,16 @@ function ProductsContainer() {
 
 <ShopHeader admin={true}/>
       <div className="products-div">
-        {data.map((dataItem) => (
+        {data.filter((dataItem) => {
+
+        // Visa bara den kategori av produkter som valts i menyn
+        if (category==="all") {
+          return true;
+        } else {
+          return dataItem.category===category;
+        }
+
+        }).map((dataItem) => (
           <ProdCard
             admin={true}
             callback={getData}

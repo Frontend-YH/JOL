@@ -29,3 +29,4 @@ export interface CartProduct extends Product {
 }
 
 export type Lang = string;
+export type Category = string;

@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { Product, CartProduct, Lang } from "./dataInterfaces.ts";
+import { Product, CartProduct, Lang, Category } from "./dataInterfaces.ts";
 
 interface ContextValue {
   cart: CartProduct[];
@@ -8,7 +8,9 @@ interface ContextValue {
   lang: Lang;
   setLang: (lang: Lang) => void; 
   updateCart: (productId: string, quantity: number) => void;
-  clearCart: () => void; // Add this line
+  clearCart: () => void; 
+  category: Category; 
+  setCategory: (category: Category) => void;
 }
 
 export const CartContext = createContext<ContextValue>({
@@ -18,7 +20,9 @@ export const CartContext = createContext<ContextValue>({
   lang: "swe",
   setLang: (lang: string) => {},
   updateCart: () => {},
-  clearCart: () => {}, // Add this line
+  clearCart: () => {}, 
+  category: "all", // default product category
+  setCategory: (category: string) => {},
 });
 
 interface Props {
@@ -28,8 +32,9 @@ interface Props {
 export default function CartProvider({ children }: Props) {
   const [cart, setCart] = useState<CartProduct[]>([]);
   const language = localStorage.getItem("language") || "swe"; // swe or eng possible
+  const defaultCategory = localStorage.getItem("category") || "all"; // swe or eng possible
   const [lang, setLang] = useState<Lang>(language); // swedish or engling language switch
-
+  const [category, setCategory] = useState<Category>(defaultCategory); // store chosen product category
   const addToCart = (product: Product) => {
   
     const productInCart = cart.find(
@@ -77,7 +82,7 @@ export default function CartProvider({ children }: Props) {
 
   return (
     <CartContext.Provider
-      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang, clearCart }}>
+      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang, clearCart, category, setCategory }}>
       {children}
     </CartContext.Provider>
   );

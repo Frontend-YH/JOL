@@ -36,7 +36,7 @@ function AdminOrders() {
       })
       .then((data) => {
         if (Array.isArray(data)) {
-          console.log(data);
+          
           setOrders(data);
         } else {
           console.error("Received data is not an array");
