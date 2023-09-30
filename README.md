@@ -37,9 +37,9 @@ npm run dev
 
 ```
 
-Backend: Node.js Express.js 
-Frontend: React TypeScript MUI
-Server side: MongoDB Mongoose MongoDB Atlas
+Backend: Node.js, Express.js and Mongoose
+Frontend: React (Vite), TypeScript and Material UI
+Server side: MongoDB on MongoDB Atlas
 ```
 
 ## Contributing
