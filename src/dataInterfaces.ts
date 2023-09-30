@@ -9,6 +9,14 @@ export interface Product {
     thumbnailUrls: []
 }
 
+export interface Categories {
+    id: string,
+    category: string,
+    name: string,
+    engName: string,
+    type: string
+}
+
 export interface dBProduct {
     id: string,
     articleNumber: string,
