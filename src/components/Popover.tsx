@@ -5,16 +5,19 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import "./popover.css"
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../CartContext.tsx"
 
 
 
 export default function MenuPopper() {
 
-  const { lang, setCategory } = useContext(CartContext);
+  const { lang, category, setCategory, categories } = useContext(CartContext);
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [categoryName, setCategoryName] = useState("all");
+
+  
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -27,26 +30,23 @@ export default function MenuPopper() {
   const menuClickHandler = (e) => {
     setCategory(e.target.name);
     setOpen((previousOpen) => !previousOpen);
+    setCategoryName(e.target.value);
   }
+
 
   return (
     <div className='product-categories'>
       <Button variant="outlined" aria-describedby={id} type="button" onClick={handleClick}>
-      {lang==="swe" ? "Kategorier" : "Categories"}
+      {lang==="swe" ? "Kategori: " + categoryName : "Category: " + categoryName}
       </Button>
       <Popper id={id} open={open} anchorEl={anchorEl} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-            <Button variant="contained" size="medium"id="All-Products" name="all" onClick={menuClickHandler}>{lang==="swe" ? "Alla kategorier" : "All categories"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="5" onClick={menuClickHandler}>{lang==="swe" ? "Redskap" : "Tools"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="4" onClick={menuClickHandler}>{lang==="swe" ? "Till dörren" : "For the door"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="2" onClick={menuClickHandler}>{lang==="swe" ? "Ljustakar ljuskronor belysning" : "Candlestick holders, chandeliers and lighting"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="3" onClick={menuClickHandler}>{lang==="swe" ? "Inredning" : "Interior"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="6" onClick={menuClickHandler}>{lang==="swe" ? "Övrigt" : "Other"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="7" onClick={menuClickHandler}>{lang==="swe" ? "Grindar och räcken" : "Gates and railings"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="8" onClick={menuClickHandler}>{lang==="swe" ? "Gravkors" : "Monumental cross markers"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2" name="9" onClick={menuClickHandler}>{lang==="swe" ? "Till spisar" : "For stoves"}</Button>
+            <Button variant="contained" size="medium"id="All-Products" name="all" value={lang==="swe" ? "Alla" : "All"} onClick={menuClickHandler}>{lang==="swe" ? "Alla kategorier" : "All categories"}</Button>
+            {categories.map((catItem) => (  
+            <Button key={catItem.id} variant="contained" size="medium"id="All-Products2" name={catItem.category} value={lang==="swe" ? catItem.name : catItem.engName} onClick={menuClickHandler}>{lang==="swe" ? catItem.name : catItem.engName}</Button>
+            ))}
             </Box>
           </Fade>
         )}

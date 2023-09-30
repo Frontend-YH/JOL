@@ -65,6 +65,7 @@ const minimalSchema = new mongoose.Schema({}, { strict: false });
 
 const InfoModel = mongoose.model('DynamicModel', minimalSchema, 'Information');
 const ProdModel = mongoose.model('DynamicModel', minimalSchema, 'Products');
+const CategoryModel = mongoose.model('DynamicModel', minimalSchema, 'Categories');
 const CustomerModel = mongoose.model('DynamicModel', minimalSchema, 'customerdatas');
 const LoginModel = mongoose.model('DynamicModel', minimalSchema, 'LogIn');
 const OrderData = mongoose.model('DynamicModel', minimalSchema, 'OrderData')
@@ -93,6 +94,19 @@ app.get('/products', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
+//hämtar alla produkter
+app.get('/categories', async (req, res) => {
+  try {
+    const dBdata = await CategoryModel.find();
+    res.json(dBdata);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 //hämtar alla kunder
 app.get('/customers', async (req, res) => {

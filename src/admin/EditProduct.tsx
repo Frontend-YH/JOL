@@ -39,7 +39,7 @@ function ProductsContainer() {
         {data.filter((dataItem) => {
 
         // Visa bara den kategori av produkter som valts i menyn
-        if (category==="all") {
+        if (category==="all" || category==="alla") {
           return true;
         } else {
           return dataItem.category===category;

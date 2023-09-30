@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
-import { Product, CartProduct, Lang, Category } from "./dataInterfaces.ts";
+import { ReactNode, createContext, useState, useEffect } from "react";
+import { Product, CartProduct, Lang, Category, Categories } from "./dataInterfaces.ts";
 
 interface ContextValue {
   cart: CartProduct[];
@@ -11,8 +11,12 @@ interface ContextValue {
   clearCart: () => void; 
   category: Category; 
   setCategory: (category: Category) => void;
+  categories: Categories[];
+  setCategories: (categories: Categories[]) => void;
+  getCategories: () => void;
 }
 
+// Initial values of the Context
 export const CartContext = createContext<ContextValue>({
   cart: [],
   addToCart: () => {},
@@ -23,7 +27,10 @@ export const CartContext = createContext<ContextValue>({
   clearCart: () => {}, 
   category: "all", // default product category
   setCategory: (category: string) => {},
-});
+  categories: [],
+  setCategories: (categories: Categories[]) => {},
+  getCategories: () => {}
+})
 
 interface Props {
   children: ReactNode;
@@ -35,6 +42,8 @@ export default function CartProvider({ children }: Props) {
   const defaultCategory = localStorage.getItem("category") || "all"; // swe or eng possible
   const [lang, setLang] = useState<Lang>(language); // swedish or engling language switch
   const [category, setCategory] = useState<Category>(defaultCategory); // store chosen product category
+  const [categories, setCategories] = useState<Categories[]>([]); // list of product categories
+
   const addToCart = (product: Product) => {
   
     const productInCart = cart.find(
@@ -54,6 +63,7 @@ export default function CartProvider({ children }: Props) {
       setCart(updatedCart);
     }
   };
+
 
   const removeFromCart = (productId: number) => {
     const updatedCart = cart.filter((product) => product.id !== productId);
@@ -80,9 +90,27 @@ export default function CartProvider({ children }: Props) {
     setCart([]); // Set the cart state to an empty array
   };
 
+  /* Collect Product Categories from Backend Database */
+  const getCategories = () => {
+    fetch("http://localhost:3000/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Kan inte hämta data");
+      });
+  };
+  
+  // Collect the Categories on launch
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
     <CartContext.Provider
-      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang, clearCart, category, setCategory }}>
+      value={{ cart, lang, addToCart, removeFromCart, updateCart, setLang, clearCart, category, setCategory, categories, setCategories, getCategories }}>
       {children}
     </CartContext.Provider>
   );
