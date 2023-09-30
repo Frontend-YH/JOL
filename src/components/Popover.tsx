@@ -12,7 +12,7 @@ import { CartContext } from "../CartContext.tsx"
 
 export default function MenuPopper() {
 
-  const { lang } = useContext(CartContext);
+  const { lang, setCategory } = useContext(CartContext);
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -24,6 +24,11 @@ export default function MenuPopper() {
   const canBeOpen = open && Boolean(anchorEl);
   const id = canBeOpen ? 'transition-popper' : undefined;
 
+  const menuClickHandler = (e) => {
+    setCategory(e.target.name);
+    setOpen((previousOpen) => !previousOpen);
+  }
+
   return (
     <div className='product-categories'>
       <Button variant="outlined" aria-describedby={id} type="button" onClick={handleClick}>
@@ -33,15 +38,15 @@ export default function MenuPopper() {
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-            <Button variant="contained" size="medium"id="All-Products">{lang==="swe" ? "Alla kategorier" : "All categories"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Redskap" : "Tools"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Till dörren" : "For the door"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Ljustakar ljuskronor belysning" : "Candlestick holders, chandeliers and lighting"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Inredning" : "Interior"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Övrigt" : "Other"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Grindar och räcken" : "Gates and railings"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Gravkors" : "Monumental cross markers"}</Button>
-            <Button variant="contained" size="medium"id="All-Products2">{lang==="swe" ? "Till spisar" : "For stoves"}</Button>
+            <Button variant="contained" size="medium"id="All-Products" name="all" onClick={menuClickHandler}>{lang==="swe" ? "Alla kategorier" : "All categories"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="5" onClick={menuClickHandler}>{lang==="swe" ? "Redskap" : "Tools"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="4" onClick={menuClickHandler}>{lang==="swe" ? "Till dörren" : "For the door"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="2" onClick={menuClickHandler}>{lang==="swe" ? "Ljustakar ljuskronor belysning" : "Candlestick holders, chandeliers and lighting"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="3" onClick={menuClickHandler}>{lang==="swe" ? "Inredning" : "Interior"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="6" onClick={menuClickHandler}>{lang==="swe" ? "Övrigt" : "Other"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="7" onClick={menuClickHandler}>{lang==="swe" ? "Grindar och räcken" : "Gates and railings"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="8" onClick={menuClickHandler}>{lang==="swe" ? "Gravkors" : "Monumental cross markers"}</Button>
+            <Button variant="contained" size="medium"id="All-Products2" name="9" onClick={menuClickHandler}>{lang==="swe" ? "Till spisar" : "For stoves"}</Button>
             </Box>
           </Fade>
         )}
