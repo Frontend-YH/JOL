@@ -52,7 +52,8 @@ Please make sure to update tests as appropriate.
 
 ##Sidenotes
 
-To access adminpage visit url: http://localhost:5173/adminPage
+To access the public frontend visit url: http://localhost:5173/
+To access the private admin page visit url: http://localhost:5173/adminPage
 
 ## License
 
