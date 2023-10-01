@@ -1,6 +1,6 @@
 # Gärdsjö smedja Webshop
 
-This site was built for educational purposes. We built the site using backend application with Node.js and frontend application with React, TypeScript, Material UI and Video-React. For the database we used MongoDB and to store photos and videos AWS S3.
+This site was built for educational purposes. We built the site using Backend application with Node.js, Express and Mongoose and Frontend application with React, TypeScript, Material UI and Video-React. For the database we used MongoDB and to store photos and videos AWS S3.
 
 ## Installation of the backend server
 
@@ -39,7 +39,7 @@ npm run dev
 
 Backend: Node.js, Express.js and Mongoose
 Frontend: React (Vite), TypeScript, Material UI, Video-React
-Server side: MongoDB on MongoDB Atlas
+Server side: MongoDB on MongoDB Atlas and AWS S3
 ```
 
 ## Contributing
