@@ -82,7 +82,7 @@ function Home(props) {
 
 <div style={flexContainer}>
 {infoText[0].video.map((filename, index) => (
-        <VideoReact index={index} video={filename.url} name={filename.name}/>
+        <VideoReact key={index} index={index} video={filename.url} name={filename.name}/>
       ))}
 </div>
       <Footer />
