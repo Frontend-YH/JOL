@@ -33,6 +33,11 @@ export default function MenuPopper() {
     setCategoryName(e.target.value);
   }
 
+  useEffect(() => {
+    setCategoryName("all");
+    setCategory("all");
+  }, [lang, setCategory]);
+  
 
   return (
     <div className='product-categories'>
